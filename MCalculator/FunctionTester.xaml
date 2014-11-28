@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="MCalculator.FunctionTester"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:iwpf="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="750" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <iwpf:NegateConverter x:Key="Neg"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="BtnAdd" Content="Add formula" Margin="5" Width="80" Click="BtnAdd_Click" IsEnabled="{Binding ElementName=BtnEnable, Path=IsChecked, Converter={StaticResource Neg}}"/>
+            <Button x:Name="BtnRemove" Content="Remove Selected" Margin="5" Width="100" Click="BtnRemove_Click" IsEnabled="{Binding ElementName=BtnEnable, Path=IsChecked, Converter={StaticResource Neg}}"/>
+            <Button x:Name="BtnClear" Content="Clear all" Margin="5" Width="80" Click="BtnClear_Click" IsEnabled="{Binding ElementName=BtnEnable, Path=IsChecked, Converter={StaticResource Neg}}"/>
+            <ToggleButton Click="BtnEnable_Click" Content="Enabled symulation" Margin="5" IsChecked="False" x:Name="BtnEnable"/>
+        </StackPanel>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="Formulas" IsEnabled="{Binding ElementName=BtnEnable, Path=IsChecked, Converter={StaticResource Neg}}">
+            <ListBox.ItemTemplate>
+                <ItemContainerTemplate>
+                    <Grid Height="44">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Formula:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        <TextBox Text="{Binding Formula, Mode=TwoWay}" FontSize="16" Grid.Column="0" Grid.Row="1" Margin="10,0"/>
+                        <TextBlock Text="Output value:" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" FontWeight="Bold" Width="80" TextAlignment="Center" Text="{Binding Res, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                </ItemContainerTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Text="Number of variables:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5,0,5,5"/>
+        <ComboBox x:Name="ToggleNumber" Grid.Row="3" Grid.Column="0" SelectedIndex="0" Margin="10,0" VerticalAlignment="Center" SelectionChanged="ToggleNumber_SelectionChanged" IsEnabled="{Binding ElementName=BtnEnable, Path=IsChecked, Converter={StaticResource Neg}}">
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+        </ComboBox>
+        <StackPanel x:Name="TogleButtons" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Orientation="Horizontal"></StackPanel>
+    </Grid>
+</UserControl>

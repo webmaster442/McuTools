@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="MTools.FourteenSegmentCalculator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700" x:Name="FourteenSegmentCalc" Loaded="FourteenSegmentCalc_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Width="265" Height="372" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="100*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" x:Name="SegmentA" RadiusX="10" RadiusY="10" Height="25" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="1" Grid.Column="4" x:Name="SegmentB" RadiusX="10" RadiusY="10" Width="25" Height="135" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="3" Grid.Column="4" x:Name="SegmentC" RadiusX="10" RadiusY="10" Width="25" Height="135" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" x:Name="SegmentD" RadiusX="10" RadiusY="10" Height="25" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="1" Grid.Column="0" x:Name="SegmentE" RadiusX="10" RadiusY="10" Width="25" Height="135" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="3" Grid.Column="0" x:Name="SegmentF" RadiusX="10" RadiusY="10" Width="25" Height="135" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="2" Grid.Column="1" x:Name="SegmentG1" RadiusX="10" RadiusY="10" Height="25" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="2" Grid.Column="3" x:Name="SegmentG2" RadiusX="10" RadiusY="10" Height="25" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="1" Grid.Column="2" x:Name="SegmentJ" RadiusX="10" RadiusY="10" Height="135" Width="25" MouseDown="Seg_MouseDown"/>
+            <Rectangle Fill="Black" Grid.Row="3" Grid.Column="2" x:Name="SegmentM" RadiusX="10" RadiusY="10" Width="25" Height="135" MouseDown="Seg_MouseDown"/>
+            <Rectangle x:Name="SegmentH" Fill="Black" Grid.Row="1" Grid.Column="1" Width="25" RenderTransformOrigin="0.5,0.5" Height="125" RadiusX="10" RadiusY="10" MouseDown="Seg_MouseDown">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-22"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="SegmentK" Fill="Black" Grid.Row="1" Grid.Column="3" Width="25" Height="125" RenderTransformOrigin="0.5,0.5" RadiusX="10" RadiusY="10" MouseDown="Seg_MouseDown">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="22"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="SegmentN" Fill="Black" Grid.Row="3" Grid.Column="1" Width="25" Height="125" RenderTransformOrigin="0.5,0.5" RadiusX="10" RadiusY="10" MouseDown="Seg_MouseDown">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="22"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="SegmentL" Fill="Black" Width="25" Height="125" Grid.Row="3" Grid.Column="3" RenderTransformOrigin="0.5,0.5" RadiusX="10" RadiusY="10" MouseDown="Seg_MouseDown">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-22"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="SegmentDP" Fill="Black" Grid.Row="4" Grid.Column="5" RadiusX="10" RadiusY="10" MouseDown="Seg_MouseDown"/>
+        </Grid>
+        <TextBlock Text="Common anode:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Text="Common cathode:" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <TextBox Text="3fff" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="TbComAnode" FontSize="16" Margin="10,0,0,0"/>
+        <TextBox Text="0000" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="TbComCathode" FontSize="16" Margin="10,0,0,0"/>
+        <CheckBox Grid.RowSpan="2" Grid.Row="1" Grid.Column="2" x:Name="LSBBitorder" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Center" IsChecked="True" Content="Segment 'a' is LSB" Click="LSBBitorder_Checked"/>
+    </Grid>
+</UserControl>

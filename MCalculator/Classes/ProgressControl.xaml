@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="MCalculator.Classes.ProgressControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Please wait..." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ProgressBar Grid.Row="1" Margin="20, 0, 20, 0" IsIndeterminate="True" />
+        <Label Grid.Row="2" Content="00:00:00" x:Name="TimeString" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="BtnTerminate" Content="Terminate" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,5" Grid.Row="2" Click="BtnTerminate_Click" />
+    </Grid>
+</UserControl>

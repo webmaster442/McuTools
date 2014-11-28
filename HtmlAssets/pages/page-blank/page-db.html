@@ -1,0 +1,26 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["diode.png"] = "Teszt kep";
+            SetTitle("Database test");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

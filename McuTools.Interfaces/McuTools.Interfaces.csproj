@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F681F292-B6B1-45AE-A054-987380ECF6EC}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>McuTools.Interfaces</RootNamespace>
+    <AssemblyName>McuTools.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Blend|AnyCPU'">
+    <OutputPath>bin\Blend\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\AlphaSelectControl.xaml.cs">
+      <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorSpace.cs" />
+    <Compile Include="Controls\ColorTable.xaml.cs">
+      <DependentUpon>ColorTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditableSlider.xaml.cs">
+      <DependentUpon>EditableSlider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileFolderSelector.xaml.cs">
+      <DependentUpon>FileFolderSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShaderTabControl.xaml.cs">
+      <DependentUpon>ShaderTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShaderTabPopoutWin.xaml.cs">
+      <DependentUpon>ShaderTabPopoutWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShaderTransition\TransitionControl.cs" />
+    <Compile Include="Controls\ShaderTransition\TransitionHelpers.cs" />
+    <Compile Include="Controls\Syntax\CodeToken.cs" />
+    <Compile Include="Controls\Syntax\CodeTokenType.cs" />
+    <Compile Include="Controls\Syntax\HighlightWordsCollection.cs" />
+    <Compile Include="Controls\Syntax\ISyntaxLexer.cs" />
+    <Compile Include="Controls\Syntax\SyntaxHighlightTextBox.xaml.cs">
+      <DependentUpon>SyntaxHighlightTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Syntax\SyntaxRuleCollection.cs" />
+    <Compile Include="Controls\Syntax\SyntaxRuleItem.cs" />
+    <Compile Include="Controls\VirtualizingWrapPanel.cs" />
+    <Compile Include="DenseArray.cs" />
+    <Compile Include="Effects\BlodTransitionEffectEffect.cs" />
+    <Compile Include="Effects\BwFadeEffect.cs" />
+    <Compile Include="Effects\FoldTransitionEffectEffect.cs" />
+    <Compile Include="Effects\OpacityFadeEffect.cs" />
+    <Compile Include="Effects\PivotTransitionEffectEffect.cs" />
+    <Compile Include="Effects\PngOverlayEffect.cs" />
+    <Compile Include="Effects\ViewEnhancersEffect.cs" />
+    <Compile Include="EventRaisingStreamWriter.cs" />
+    <Compile Include="NativeCode\NativeConsts.cs" />
+    <Compile Include="NativeCode\NativeMethods.cs" />
+    <Compile Include="NativeCode\NativeTypes.cs" />
+    <Compile Include="WPF\FileToIcon.cs" />
+    <Compile Include="WPF\SysImageList.cs" />
+    <Compile Include="WPF\Converters.cs" />
+    <Compile Include="Interfaces.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="WPF\KineticBehaviour.cs" />
+    <Compile Include="WPF\WpfHelpers.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Effects\PngOverlayEffect.ps" />
+    <Resource Include="Effects\ViewEnhancersEffect.ps" />
+    <Resource Include="Effects\BwFadeEffect.ps" />
+    <Resource Include="Effects\BlodTransitionEffectEffect.ps" />
+    <Resource Include="Effects\FoldTransitionEffectEffect.ps" />
+    <Resource Include="Effects\PivotTransitionEffectEffect.ps" />
+    <Resource Include="Effects\OpacityFadeEffect.ps" />
+    <None Include="Interfaces.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Effects\PngOverlay.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Effects\ViewEnhancers.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\AlphaSelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EditableSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FileFolderSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ImageButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ShaderTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ShaderTabPopoutWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Syntax\SyntaxHighlightTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\application_delete.png" />
+    <Resource Include="Icons\arrow_left.png" />
+    <Resource Include="Icons\arrow_out.png" />
+    <Resource Include="Icons\arrow_right.png" />
+    <Resource Include="Icons\edit.png" />
+    <Resource Include="Icons\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Effects\BlodTransitionEffect.fx" />
+    <Content Include="Effects\BwFade.fx" />
+    <Content Include="Effects\FoldTransitionEffect.fx" />
+    <Content Include="Effects\OpacityFade.fx" />
+    <Content Include="Effects\PivotTransitionEffect.fx" />
+    <Resource Include="Icons\splash.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

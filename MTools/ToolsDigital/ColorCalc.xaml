@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MTools.ToolsDigital.ColorCalc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             xmlns:mcontrols="clr-namespace:MTools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="PWM Controller bit length" Margin="5,5,0,5"/>
+            <controls:EditableSlider x:Name="PWMBits" DisplayFormat="0" Minimum="4" Maximum="24" DefaultValue="8" Value="8" ValueChanged="PrefixInput_ValueChanged" Margin="12,0,8,0"/>
+        </StackPanel>
+        <TabControl  Grid.Row="1" Grid.Column="0" x:Name="Tabs">
+            <TabItem Header="Color Picker">
+                <controls:ColorPicker ColorSelected="Colpicker_ColorSelected" x:Name="Colorpicker" Width="350" Height="350"/>
+            </TabItem>
+            <TabItem Header="Color Presets">
+                <controls:ColorTable x:Name="ColorTable" SelectedColorChanged="ColorTable_SelectedColorChanged"/>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Red chanel value" Margin="5,5,0,0" FontSize="14"/>
+            <TextBox x:Name="TbRed" IsReadOnly="True" Margin="20,0" FontSize="14"/>
+            <TextBlock Text="Green chanel value" Margin="5,5,0,0" FontSize="14"/>
+            <TextBox x:Name="TbGreen" IsReadOnly="True" Margin="20,0" FontSize="14"/>
+            <TextBlock Text="Blue chanel value" Margin="5,5,0,0" FontSize="14"/>
+            <TextBox x:Name="TbBlue" IsReadOnly="True" Margin="20,0" FontSize="14"/>
+            <TextBlock Text="RGB 565 Color value:" Margin="5,5,0,0" FontSize="14"/>
+            <TextBox x:Name="TbRGB565" IsReadOnly="True" Margin="20,0" FontSize="14"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

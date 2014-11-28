@@ -1,0 +1,24 @@
+﻿<Window 
+    x:Class="TabbedWPFSample.PopupWindow" 
+    x:Name="popupWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:TabbedWPFSample"
+    ShowInTaskbar="False"
+    WindowStyle="ToolWindow"
+    ResizeMode="NoResize"
+    TextOptions.TextFormattingMode="Display"
+    RenderOptions.ClearTypeHint="Enabled"
+    Height="300" 
+    Width="300">
+    <Window.Title>
+        <Binding 
+            Path="Browser.Title" 
+            ElementName="tabView"
+            StringFormat="Awesomium Tabbed WPF Sample - {0}"/>
+    </Window.Title>
+    <local:TabView 
+        x:Name="tabView"
+        NativeView="{Binding NativeView, ElementName=popupWindow}"
+        IsRegularTab="False"/>
+</Window>

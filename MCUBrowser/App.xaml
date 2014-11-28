@@ -1,0 +1,61 @@
+﻿<!-- *****************************************************************************
+ *    Project   : Awesomium.NET (TabbedWPFSample)
+ *    File      : App.xaml
+ *    Version   : 1.7.0.0 
+ *    Date      : 3/5/2013
+ *    Author    : Perikles C. Stephanidis (perikles@awesomium.com)
+ *    Copyright : (C)2013 Awesomium Technologies LLC
+ *    
+ *    This code is provided "AS IS" and for demonstration purposes only,
+ *    without warranty of any kind.
+ *     
+ *********************************************************************************
+ *
+ *    Notes     :
+ *
+ *    Application's main resources dictionary. Here we demonstrate
+ *    customizing the WebControl's context menu.
+ *    
+ *    
+ ***************************************************************************** -->
+
+<Application 
+    x:Class="TabbedWPFSample.App" 
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:awe="http://schemas.awesomium.com/winfx"
+    xmlns:local="clr-namespace:TabbedWPFSample">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MCUBrowser;component/Themes/Button.xaml"/>
+                <ResourceDictionary Source="/MCUBrowser;component/Themes/ToggleButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">None</PopupAnimation>
+
+            <!-- We override the items that appear when we right-click a link in a page -->
+            <x:Array x:Key="{x:Static awe:WebControl.ContextMenuLinkItemsArrayRecourceKey}" Type="{x:Type DependencyObject}">
+                <MenuItem Command="{x:Static local:MainWindow.OpenInTab}" CommandParameter="{Binding TargetURL}"/>
+                <MenuItem Command="{x:Static local:MainWindow.OpenInWindow}" CommandParameter="{Binding TargetURL}"/>
+                <MenuItem Command="{x:Static awe:WebControlCommands.CopyLinkAddress}" />
+                <Separator />
+            </x:Array>
+
+            <!-- We override the items that appear when we right-click a page, to add the "Show Source Code" item. -->
+            <x:Array x:Key="{x:Static awe:WebControl.ContextMenuPageItemsArrayRecourceKey}" Type="{x:Type DependencyObject}">
+                <MenuItem Command="BrowseBack" />
+                <MenuItem Command="BrowseForward" />
+                <MenuItem Command="Refresh" />
+                <Separator />
+                <MenuItem Command="{x:Static local:MainWindow.OpenSource}"/>
+                <Separator />
+                <MenuItem Command="Print" />                
+                <Separator />
+                <MenuItem Command="SelectAll" />
+            </x:Array>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

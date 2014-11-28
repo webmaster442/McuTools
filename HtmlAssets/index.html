@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="framework/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="framework/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="framework/helpers/jquery.fancybox-buttons.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="framework/jquery.bxslider.css" />
+    <script type="text/javascript" src="framework/jquery-211.js"></script>
+    <script type="text/javascript" src="framework/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="framework/helpers/jquery.fancybox-buttons.js"></script>
+    <script type="text/javascript" src="framework/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="program.js"></script>
+    <script type="text/javascript">
+        function SetTitle(value) {
+            document.title = value;
+            $("#Title").html(value);
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        $(document).ready(function () {
+            var file = getParameterByName("file");
+            if (file != "") {
+                $("#content").load("pages/" + file + ".html", function (responseTxt, statusTxt, xhr) {
+                    if (statusTxt == "error") alert("Error: " + xhr.status + ": " + xhr.statusText);
+                    if (statusTxt == "success") PageLoaded();
+                });
+            }
+
+            $("#topbutton").click(function () {
+                $('html, body').animate({
+                    scrollTop: $($.attr(this, 'href')).offset().top
+                }, 500);
+                return false;
+            });
+
+            $("#backbutton").click(function () {
+                window.history.back();
+            });
+
+            SetTitle("MCU Tools web tools");
+        });
+    </script>
+</head>
+<body>
+    <a id="top" name="top" />
+    <div id="menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html?file=page-about">About</a></li>
+            <li>Tools
+    <ul>
+        <li><a href="index.html?file=page-arduinoabc">Arduino ABC</a></li>
+        <li><a href="index.html?file=page-arduinopinreference">Arduino Pinouts</a></li>
+        <li><a href="index.html?file=page-devboard">Development Board pinouts</a></li>
+        <li><a href="index.html?file=page-digitalic74">74xx Series Digital IC List</a></li>
+        <li><a href="index.html?file=page-digitalic4x">4xxx Series Digital IC List</a></li>
+        <li><a href="index.html?file=page-digitalsch">Digital Schematics</a></li>
+        <li><a href="index.html?file=page-pinout74">74xx series pinouts</a></li>
+        <li><a href="index.html?file=page-pinout4x">4xxx series pinouts</a></li>
+        <li><a href="index.html?file=page-pinoutetc">Various IC pinouts</a></li>
+        <li><a href="index.html?file=page-videos">Tutorial videos</a></li>
+    </ul>
+            </li>
+        </ul>
+        <span id="Title"></span>
+    </div>
+    <hr />
+    <div id="content">
+    </div>
+    <div id="footer">
+        <a id="backbutton" class="button button-blue" href="#">Back</a>
+        <a id="topbutton" class="button button-blue" href="#top">Up</a>
+    </div>
+</body>
+</html>

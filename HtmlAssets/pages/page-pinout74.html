@@ -1,0 +1,59 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/LogicIC/74xx/7400.png"] = "7400 - quad 2-input NAND gate";
+            database["Images/LogicIC/74xx/7402.png"] = "7402 - quad 2-input NOR gate";
+            database["Images/LogicIC/74xx/7404.png"] = "7404 - hex inverter";
+            database["Images/LogicIC/74xx/7408.png"] = "7408 - quad 2-input AND gate";
+            database["Images/LogicIC/74xx/7410.png"] = "7410 - triple 3-input NAND gate";
+            database["Images/LogicIC/74xx/7413.png"] = "7413 - dual Schmitt trigger 4-input NAND gate";
+            database["Images/LogicIC/74xx/7414.png"] = "7414 - hex Schmitt trigger inverter";
+            database["Images/LogicIC/74xx/7420.png"] = "7420 - dual 4-input NAND gate";
+            database["Images/LogicIC/74xx/7421.png"] = "7421 - dual 4-input AND gate";
+            database["Images/LogicIC/74xx/7427.png"] = "7427 - triple 3-input NOR gate";
+            database["Images/LogicIC/74xx/7430.png"] = "7430 - 8-input NAND gate";
+            database["Images/LogicIC/74xx/7447.png"] = "7447 - BCD to 7-segment decoder/driver with 15 V open collector outputs";
+            database["Images/LogicIC/74xx/7448.png"] = "7448 - BCD to 7-segment decoder/driver";
+            database["Images/LogicIC/74xx/7449.png"] = "7449 - BCD to 7-segment decoder/driver";
+            database["Images/LogicIC/74xx/7473.png"] = "7473 - dual J-K flip-flop with clear";
+            database["Images/LogicIC/74xx/7474.png"] = "7474 - dual D positive edge triggered flip-flop with preset and clear";
+            database["Images/LogicIC/74xx/7476.png"] = "7476 - dual J-K flip-flop with preset and clear";
+            database["Images/LogicIC/74xx/7477.png"] = "7477 - 4-bit bistable latch";
+            database["Images/LogicIC/74xx/7486.png"] = "7486 - quad 2-input XOR gate";
+            database["Images/LogicIC/74xx/7493.png"] = "7493 - 4-bit binary counter (separate divide-by-2 and divide-by-8 sections)";
+            database["Images/LogicIC/74xx/74112.png"] = "74112 - dual J-K negative-edge-triggered flip-flop with clear and preset";
+            database["Images/LogicIC/74xx/74133.png"] = "74133 - 13-input NAND gate";
+            database["Images/LogicIC/74xx/74138.png"] = "74138 - 3 to 8-line decoder/demultiplexer";
+            database["Images/LogicIC/74xx/74151.png"] = "74151 - 8-line to 1-line data selector/multiplexer";
+            database["Images/LogicIC/74xx/74153.png"] = "74153 - dual 4-line to 1-line data selector/multiplexer";
+            database["Images/LogicIC/74xx/74160.png"] = "74160 - synchronous 4-bit decade counter with asynchronous clear";
+            database["Images/LogicIC/74xx/74166.png"] = "74166 - parallel-Load 8-bit shift register";
+            database["Images/LogicIC/74xx/74190.png"] = "74190  - synchronous up/down decade counter";
+            database["Images/LogicIC/74xx/74373.png"] = "74373 - octal transparent latch with three-state outputs";
+            database["Images/LogicIC/74xx/74374.png"] = "74374 - octal register with three-state outputs";
+            database["Images/LogicIC/74xx/74390.png"] = "74390 - dual 4-bit decade counter";
+            database["Images/LogicIC/74xx/74393.png"] = "74393 - dual 4-bit binary counter";
+            database["Images/LogicIC/74xx/74591.png"] = "74591 - 8-bit binary counter with output register";
+            database["Images/LogicIC/74xx/74595.png"] = "74595 - 8-bit shift register with output latch";
+            SetTitle("74xx series pinouts");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

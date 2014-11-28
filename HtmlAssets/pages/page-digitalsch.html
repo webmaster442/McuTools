@@ -1,0 +1,40 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/DigitalSchematics/nandlogic.png"] = "Basic gates from NAND gates";
+            database["Images/DigitalSchematics/norlogic.png"] = "Basic gates from NOR gates";
+            database["Images/DigitalSchematics/multiplexer.png"] = "4 input multiplexer";
+            database["Images/DigitalSchematics/demultiplexer.png"] = "4 input multiplexer";
+            database["Images/DigitalSchematics/unversalgate.png"] = "Universal logic gate circuit";
+            database["Images/DigitalSchematics/flipflop_sr.png"] = "Set-Reset";
+            database["Images/DigitalSchematics/flipflop_jk.png"] = "JK";
+            database["Images/DigitalSchematics/flipflop_d.png"] = "D";
+            database["Images/DigitalSchematics/flipflop_edgedetect.png"] = "Edge triggering";
+            database["Images/DigitalSchematics/counter_binary_up.png"] = "4 bit synchronous binary up counter";
+            database["Images/DigitalSchematics/counter_binary_down.png"] = "4 bit synchronous binary down counter";
+            database["Images/DigitalSchematics/counter_binary_updown.png"] = "4 bit synchronousbinary up &amp; down counter";
+            database["Images/DigitalSchematics/counter_johnson.png"] = "Johnson (Twisted Ring) Counter";
+            database["Images/DigitalSchematics/shiftregister_serial_in_paralell_out.png"] = "Serial input, 4 bit parallel output";
+            database["Images/DigitalSchematics/shiftregister_paralell_in_serial_out.png"] = "4 bit parallel input, serial output";
+            SetTitle("Digital Schematics");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

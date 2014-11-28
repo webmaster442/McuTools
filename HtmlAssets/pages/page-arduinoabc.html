@@ -1,0 +1,58 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/ArduinoABC/01.png"] = "Pushbutton to GND, Pushbutton to 5V, Pushbuttonto 12V, Using internal pullup, Trimmer or potentiometer, Photoresistor, Optocoupled inputs";
+            database["Images/ArduinoABC/02.png"] = "Connect a LED, Connect a Lamp, LED Clusters, Dual LEDs or Bi-color LED";
+            database["Images/ArduinoABC/03.png"] = "Connect a Relay, Connect a Mosfet, Connect a Buzzer, Connect an Audio Amplifier";
+            database["Images/ArduinoABC/04.png"] = "Connect a Triac, Connect a Speaker";
+            database["Images/ArduinoABC/05.png"] = "Connect a DC Motor, Connect a RGB Led Strip, Connect an Encoder";
+            database["Images/ArduinoABC/06.png"] = "Bi-Directional Voltage Level Converter 3.3V to 5V, Bi-Directional Voltage Level Converter 3.3V to 5V with voltage divider, TTL / CMOS converter, TTL / CMOS converter (6 inputs/outputs)";
+            database["Images/ArduinoABC/07.png"] = "Connect a Microphone, Connect a Servo";
+            database["Images/ArduinoABC/08.png"] = "Charlieplexing, 7 Segments Display";
+            database["Images/ArduinoABC/09.png"] = "7 Segments Display (Common Anode) with Multiplexing, LED Array";
+            database["Images/ArduinoABC/10.png"] = "7 Segments Display (Common Anode) with MAX7221";
+            database["Images/ArduinoABC/11.png"] = "Connect a LCD HITACHI 44780 compatible";
+            database["Images/ArduinoABC/12.png"] = "Connect via I2C a LCD HITACHI 44780 compatible";
+            database["Images/ArduinoABC/13.png"] = "Connect a NOKIA LCD (Basic)";
+            database["Images/ArduinoABC/14.png"] = "Drive a Unipolar Stepper (Basic 1), Drive a Bipolar Stepper (Basic 1)";
+            database["Images/ArduinoABC/15.png"] = "Connect a graphical LCD via I2C";
+            database["Images/ArduinoABC/16.png"] = "DIY Arduino, Simple 5V Power Supply, FTDI Connector, Protect a I/O Pin";
+            database["Images/ArduinoABC/17.png"] = "Connect a SD Card, Simple 3.3V Power Supply";
+            database["Images/ArduinoABC/18.png"] = "Connect a Temperature Sensor (LM35), Connect a RTCv(DS1307), Connect to Composite Video, Connect to VGA";
+            database["Images/ArduinoABC/19.png"] = "Connect a Keypad, Connect a Keypad (with Interrupt)";
+            database["Images/ArduinoABC/20.png"] = "Connect a IR Sensor, Connect a IR Emitter";
+            database["Images/ArduinoABC/21.png"] = "Connect a MAX232";
+            database["Images/ArduinoABC/22.png"] = "MIDI Interface, Multiple Buttons using 1 Analog Input";
+            database["Images/ArduinoABC/23.png"] = "Connect a Digital Temperature Sensor (DS18B20), A simple Rain Sensor with Arduino, AC input";
+            database["Images/ArduinoABC/24.png"] = "Connect a PS2 Keyboard, Scan Codes";
+            database["Images/ArduinoABC/25.png"] = "Connect a EEPROM via I2C";
+            database["Images/ArduinoABC/26.png"] = "Connect a PS2 Dualshock® controller, A Simple programmer";
+            database["Images/ArduinoABC/27.png"] = "Port Expander (PCF8574xx)";
+            database["Images/ArduinoABC/28.png"] = "Shift Register (74HC595)";
+            database["Images/ArduinoABC/29.png"] = "Connect a Distance Sensor, Connect a Digital Potentiometer (MCP4161), Connect a DAC (MCP4921)";
+            database["Images/ArduinoABC/30.png"] = "RS485 Node, DMX Controller (Basic)";
+            database["Images/ArduinoABC/31.png"] = "Drive a Motor (L298)";
+            database["Images/ArduinoABC/32.png"] = "Debouncing a Pushbutton, Simple debouncer, Debouncing a Rotary Encoder";
+            database["Images/ArduinoABC/33.png"] = "Drive a Stepper (L293)";
+            SetTitle("Arduino ABC");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

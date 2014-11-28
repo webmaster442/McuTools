@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="MTools.LcdCharCalculator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="600" x:Name="LcdCharCalc">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Matrix" Width="200" Height="350" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Row="0" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="0" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="0" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="0" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="0" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="1" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="1" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="1" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="1" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="1" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="2" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="2" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="2" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="2" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="2" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="3" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="3" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="3" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="3" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="3" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="4" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="4" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="4" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="4" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="4" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="5" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="5" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="5" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="5" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="5" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            
+            <Rectangle Grid.Row="6" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="6" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="6" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="6" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+            <Rectangle Grid.Row="6" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown"/>
+
+            <Rectangle Grid.Row="7" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="7" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="7" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="7" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="7" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+
+            <Rectangle Grid.Row="8" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="8" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="8" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="8" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="8" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+
+            <Rectangle Grid.Row="9" Grid.Column="0" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="9" Grid.Column="1" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="9" Grid.Column="2" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="9" Grid.Column="3" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+            <Rectangle Grid.Row="9" Grid.Column="4" Fill="Black" RadiusX="10" RadiusY="10" Margin="2" MouseDown="Seg_MouseDown" Visibility="Collapsed"/>
+        </Grid>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Type:"/>
+            <RadioButton x:Name="Type5x7" Content="5x7" IsChecked="True" Checked="RadioButton_Checked" Margin="10,0,0,0"/>
+            <RadioButton x:Name="Type5x10" Content="5x10" Checked="RadioButton_Checked" Margin="10,0,0,0"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,19,0,0">
+                <Button Content="Clear Image" Margin="0,0,10,0" Width="75" x:Name="BtnClear" Click="BtnClear_Click" />
+                <Button Content="Load BMP..." Width="75" x:Name="BtnLoadBMP" Click="BtnLoadBMP_Click" />
+                <Button Content="Save BMP..." Margin="10,0,0,0" Width="75" x:Name="BtnSaveBmp" Click="BtnSaveBmp_Click" />
+            </StackPanel>
+            <TextBlock Text="Output:" Margin="0,10,0,0"/>
+            <TextBox x:Name="TbOutput" Margin="10,10,10,0"/>
+            <Button Content="Generate" Click="Button_Click" Margin="50,10,50,0"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="MMediaTools.Tools.PictureConverter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Menu x:Name="MainMenu">
+            <MenuItem x:Name="InputAdd" Header="Add File..." Click="InputAdd_Click"/>
+            <MenuItem x:Name="InputAddDir" Header="Add Directory..." Click="InputAddDir_Click"/>
+            <MenuItem x:Name="InputAddDirr" Header="Add Directory &amp; Subdirs..." Click="InputAddDirr_Click"/>
+            <MenuItem x:Name="InputClear" Header="Clear Files" Click="InputClear_Click"/>
+            <MenuItem x:Name="InputRemove" Header="Remove Selected" Click="InputRemove_Click"/>
+        </Menu>
+        <TabControl Grid.Row="1" x:Name="Tabs">
+            <TabItem Header="Input Files">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.2*"/>
+                    </Grid.RowDefinitions>
+                    <Expander Header="Input files" IsExpanded="True" Grid.Row="0">
+                        <ListBox x:Name="LbInFiles" Margin="15,5" ItemsSource="{Binding Path=Files}"/>
+                    </Expander>
+
+                    <Expander Header="Output directory" IsExpanded="True" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="TbOutDir" Grid.Column="0" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                            <Button x:Name="BtnBrowse" Grid.Column="1" Content="Browse ..." Click="BtnBrowse_Click" Margin="5,0,15,0" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Expander>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Settings">
+                <StackPanel>
+                    <Expander Header="Resize" IsExpanded="True">
+                        <StackPanel>
+                            <RadioButton x:Name="RbResNochange" Content="No Change" Margin="15,5,0,0" IsChecked="True"/>
+                            <RadioButton x:Name="RbResPercent" Content="Percent" Margin="15,5,0,0"/>
+                            <controls:EditableSlider x:Name="SlideResPercent" Minimum="0" Maximum="1" Value="1" Margin="25,5,25,0" IsEnabled="{Binding IsChecked, ElementName=RbResPercent}"/>
+                            <RadioButton x:Name="RbResFitbox" Content="Fit box" Margin="15,5,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:EditableSlider x:Name="SlideResWidth" Width="150" Minimum="1" Maximum="10000" Value="1024" Margin="25,5,0,0" IsEnabled="{Binding IsChecked, ElementName=RbResFitbox}"/>
+                                <TextBlock Text="x" Margin="10,0"/>
+                                <controls:EditableSlider x:Name="SlideResHeight" Width="150" Minimum="1" Maximum="10000" Value="768" IsEnabled="{Binding IsChecked, ElementName=RbResFitbox}" OverridesDefaultStyle="True" DataContext="{Binding}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+
+
+                    <Expander Header="Output format" IsExpanded="True">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
+                                <RadioButton x:Name="RbFormJpg" Content="JPG" Margin="0,0,10,0" IsChecked="True"/>
+                                <RadioButton x:Name="RbFormPng" Content="PNG" Margin="0,0,10,0"/>
+                                <RadioButton x:Name="RbFormBmp" Content="BMP" Margin="0,0,10,0"/>
+                                <RadioButton x:Name="RbFormTiff" Content="TIFF" Margin="0,0,10,0"/>
+                            </StackPanel>
+                            <TextBlock Text="Quality:" Margin="15,5,0,0"/>
+                            <controls:EditableSlider x:Name="SlideFormatQuality" Minimum="0" Maximum="100" Value="100" Margin="25,5,25,0"/>
+                            <TextBlock Text="Pixel format:" Margin="15,5,0,0"/>
+                            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                                <RadioButton x:Name="RbColorNo" Content="No Change" Margin="0,0,10,0" IsChecked="True"/>
+                                <RadioButton x:Name="RbColor8bit" Content="8-bit indexed" Margin="0,0,10,0"/>
+                                <RadioButton x:Name="RbColor24bit" Content="24 bit" Margin="0,0,10,0"/>
+                                <RadioButton x:Name="RbColor32bit" Content="32 bit"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Progress:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+            <ProgressBar x:Name="Progress" Width="350" Height="18" Margin="0,0,10,0"/>
+            <Button x:Name="BtnConvert" Content="Convert" Width="100" Margin="0,0,10,0" Click="BtnConvert_Click" VerticalAlignment="Center" Height="30" />
+            <Button x:Name="BtnCancel" Content="Cancel" Width="100"  Margin="0,0,10,0" IsEnabled="False" Click="BtnCancel_Click" VerticalAlignment="Center" Height="30"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

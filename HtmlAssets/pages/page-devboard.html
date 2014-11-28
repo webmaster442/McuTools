@@ -1,0 +1,41 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/DevPinout/adafruit_products_trinket2vers.jpg"] = "Adafruit Trinket 2";
+            database["Images/DevPinout/flora_pinout.png" ] = "Adafruit Flora";
+            database["Images/DevPinout/Netduino-mini.jpg"] = "Netdunio mini";
+            database["Images/DevPinout/Netduino-pluss.jpg" ] = "Netdunio pluss";
+            database["Images/DevPinout/Netduino2-Pinout-v1.jpg"] = "Netdunio2";
+            database["Images/DevPinout/Netduino-pluss2.jpg" ] = "Netdunio2 pluss";
+            database["Images/DevPinout/FraunchPadMSP430FR5739-v1.1.jpg"] = "MSP430FR5739";
+            database["Images/DevPinout/LaunchPadMSP430G2452-v1.4.jpg"] = "MSP430G2452 v.1.4";
+            database["Images/DevPinout/LaunchPadMSP430G2452-v1.5.jpg"] = "MSP430G2452 v.1.5";
+            database["Images/DevPinout/LaunchPadMSP430G2553-v1.4.jpg" ] = "MSP430G2553 v.1.4";
+            database["Images/DevPinout/LaunchPadMSP430G2553-V1.5.jpg" ] = "MSP430G2553 v.1.5";
+            database["Images/DevPinout/StellarPadLM4F120H5QR-V1.0.jpg" ] = "StellarPad LM4F120H5QR front";
+            database["Images/DevPinout/StellarPadLM4F120H5QR-V1.0BACK.jpg" ] = "StellarPad LM4F120H5QR back";
+            database["Images/DevPinout/beaglebone_pinout-1024x585.png" ] = "Beaglebone";
+            database["Images/DevPinout/RaspiModelB.png"] = "RaspberryPi";
+
+            SetTitle("Development board pinouts");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

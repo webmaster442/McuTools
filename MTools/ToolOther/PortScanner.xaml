@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="MTools.ToolOther.PortScanner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:MTools.Controls"
+             xmlns:conv="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="Window_Loaded">
+    <UserControl.Resources>
+        <conv:NegateConverter x:Key="Negate"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Start IP:" VerticalAlignment="Center" Margin="5,0"/>
+            <controls:IPInput x:Name="StartIP" Width="200"/>
+            <TextBlock Text="End IP:" VerticalAlignment="Center" Margin="5,0"/>
+            <controls:IPInput x:Name="EndIP" Width="200"/>
+        </StackPanel>
+        <TabControl TabStripPlacement="Left" Grid.Row="1" x:Name="Tabs">
+            <TabItem Header="Results" FontSize="14">
+                <ScrollViewer Grid.Row="2">
+                    <StackPanel x:Name="Results"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Ports" FontSize="14">
+                <DataGrid AlternationCount="1" Grid.Column="0" Grid.Row="1" x:Name="PortTable" CanUserAddRows="True" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFF9D995" VerticalScrollBarVisibility="Visible" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="True" CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Binding="{Binding IsChecked}" Header="Scann?" CanUserResize="True"/>
+                        <DataGridTextColumn Binding="{Binding Port}" Header="Port number" Width="Auto" CanUserResize="True"/>
+                        <DataGridTextColumn Binding="{Binding Description}" Header="Description" Width="220" CanUserResize="True"/>
+                        <DataGridCheckBoxColumn Binding="{Binding IsUDP}" Header="UDP port" CanUserResize="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.RowSpan="2" Grid.Row="0" Grid.Column="1">
+            <Button Content="Get IP Range" VerticalAlignment="Center" x:Name="RangeFinder" Click="RangeFinder_Click" Margin="5,20,5,0"/>
+            <CheckBox x:Name="ChkScanPorts" IsChecked="True" Margin="5,10,5,0" Content="Scann ports"/>
+            <Button Content="Start Scan" VerticalAlignment="Center" x:Name="BtnStartStop" Click="Button_Click" Margin="5,10,5,0"/>
+            <Button IsEnabled="{Binding ElementName=BtnStartStop, Path=IsEnabled, Converter={StaticResource ResourceKey=Negate}}" Content="Stop Scan" VerticalAlignment="Center" x:Name="BtnStop" Click="ButtonStop_Click" Margin="5,10,5,0"/>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="5,0,0,0" Grid.Column="0" Text="Scanning:"/>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=PbProgress, Path=Value}" TextAlignment="Right"/>
+            <TextBlock Grid.Column="2" Text="/" TextAlignment="Center"/>
+            <TextBlock Grid.Column="3" Text="{Binding ElementName=PbProgress, Path=Maximum}"/>
+            <ProgressBar Grid.Column="4" x:Name="PbProgress" Minimum="0" Maximum="0" Margin="0,0,10,0"></ProgressBar>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="MTools.ToolsAnalog.FilterDesigner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:MTools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" TabStripPlacement="Left" Grid.ColumnSpan="2" SelectionChanged="TabControl_SelectionChanged" x:Name="Tabs">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock TextWrapping="Wrap" Text="Passive Lowpass" TextAlignment="Center" Width="50"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <controls:PrefixInput UnitText="Ω" x:Name="LowpassR" LabelText="R" ValueChanged="ValueChanged" Width="180" Margin="5,0" Value="1"/>
+                        <controls:PrefixInput UnitText="F" x:Name="LowpassC" LabelText="C" ValueChanged="ValueChanged" Width="180" Margin="5,0" Value="1"/>
+                    </StackPanel>
+                    <Image Source="../images/lowpass.png" Grid.Row="1" MaxWidth="1000"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock TextWrapping="Wrap" Text="Passive Highpass" TextAlignment="Center" Width="50"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <controls:PrefixInput UnitText="Ω" LabelText="R" x:Name="HighpassR" Width="180" ValueChanged="ValueChanged" Margin="5,0" Value="1"/>
+                        <controls:PrefixInput UnitText="F" LabelText="C" x:Name="HighpassC" Width="180" ValueChanged="ValueChanged" Margin="5,0" Value="1"/>
+                    </StackPanel>
+                    <Image Source="../images/highpass.png" Grid.Row="1" MaxWidth="1000"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Frequency in Hz:" Margin="5,5,0,0"/>
+            <TextBox FontSize="20" Margin="10,5,10,0" x:Name="TbHertz" Text="0,159154943091895"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Frequency in Rad/s:"  Margin="5,5,0,0"/>
+            <TextBox FontSize="20" Margin="10,5,10,0" x:Name="TbRad" Text="1"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

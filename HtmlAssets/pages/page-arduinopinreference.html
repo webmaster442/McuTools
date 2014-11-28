@@ -1,0 +1,39 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/ArduinoPinout/uno.png"] = "Arduino Uno";
+            database["Images/ArduinoPinout/nano.png"] = "Arduino Nano";
+            database["Images/ArduinoPinout/promini.png"] = "Arduino Pro Mini";
+            database["Images/ArduinoPinout/leonardo.png"] = "Arduino Leonardo";
+            database["Images/ArduinoPinout/mega.png"] = "Arduino Mega256";
+            database["Images/ArduinoPinout/due.png"] = "Arduino Due";
+            database["Images/ArduinoDesigns/due.png"] = "Arduino Due schematic";
+            database["Images/ArduinoDesigns/leonardo.png"] = "Arduino Leonardo schematic";
+            database["Images/ArduinoDesigns/mega.png"] = "Arduino Mega schematic";
+            database["Images/ArduinoDesigns/nano.png"] = "Arduino Nano schematic";
+            database["Images/ArduinoDesigns/uno.png"] = "Arduino Uno schematic"
+            database["Images/ArduinoDesigns/shield_ethernet.png"] = "Arduino Ethernet shield schematic";
+            database["Images/ArduinoDesigns/shield_gsm.png"] = "Arduino GSM shield schematic";
+
+            SetTitle("Arduino Pinouts & Reference Designs");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="MTools.AsciiTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="474" d:DesignWidth="720" x:Name="AsciiTables" Loaded="AsciiTables_Loaded">
+    <Grid>
+        <Slider Panel.ZIndex="9" x:Name="AFontSize" Minimum="14" Maximum="28" Value="14" Orientation="Vertical" HorizontalAlignment="Left" Margin="22,0,0,20" Height="220" VerticalAlignment="Bottom"/>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Basic" FontSize="14">
+                <TextBox x:Name="Ascii" Grid.Column="0" FontFamily="./resources/#ASCII" TextAlignment="Center" IsReadOnly="True" FontSize="{Binding ElementName=AFontSize, Path=Value}" FontWeight="Medium" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+            </TabItem>
+            <TabItem Header="Extended" FontSize="14">
+                <TextBox x:Name="Extended" Grid.Column="0" FontFamily="./resources/#ASCII" TextAlignment="Center" IsReadOnly="True" FontSize="{Binding ElementName=AFontSize, Path=Value}" FontWeight="Medium" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

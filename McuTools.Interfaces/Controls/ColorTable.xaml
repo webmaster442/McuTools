@@ -1,0 +1,434 @@
+﻿<UserControl x:Class="McuTools.Interfaces.Controls.ColorTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="680">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid x:Name="colorchart" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBEFEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBF2EF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBF5EF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBF8EF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBFBEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8FBEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5FBEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F2FBEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFFBEF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFFBF2"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFFBF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFFBF8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFFBFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFF8FB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFF5FB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFF2FB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#EFEFFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F2EFFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5EFFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8EFFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBEFFB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBEFF8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBEFF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FBEFF2"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FFFFFF"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E0E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E6E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8ECE0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7F2E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7F8E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F1F8E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#ECF8E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E6F8E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F8E0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F8E6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F8EC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F8F1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F8F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0F2F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0ECF8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0E6F8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E0E0F8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E6E0F8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#ECE0F8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F2E0F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E0F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E0F1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E0EC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F8E0E6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FAFAFA"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6CECE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6D8CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6E3CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5ECCE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5F6CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#ECF6CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E3F6CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D8F6CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEF6CE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEF6D8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEF6E3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEF6EC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEF6F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEECF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CEE3F6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CED8F6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CECEF6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D8CEF6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E3CEF6"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#ECCEF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6CEF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6CEEC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6CEE3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F6CED8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F2F2F2"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5A9A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5BCA9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5D0A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F3E2A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F2F5A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E1F5A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D0F5A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BCF5A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9F5A9"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9F5BC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9F5D0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9F5E1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9F5F2"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9E2F3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9D0F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9BCF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A9A9F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BCA9F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D0A9F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E2A9F3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5A9F2"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5A9E1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5A9D0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5A9BC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#E6E6E6"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F78181"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F79F81"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7BE81"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F5DA81"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F3F781"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D8F781"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BEF781"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#9FF781"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81F781"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81F79F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81F7BE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81F7D8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81F7F3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81DAF5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#81BEF7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#819FF7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8181F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#9F81F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BE81F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DA81F5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F781F3"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F781D8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F781BE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7819F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D8D8D8"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA5858"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA8258"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FAAC58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7D358"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F4FA58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D0FA58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#ACFA58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#82FA58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58FA58"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58FA82"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58FAAC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58FAD0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58FAF4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58D3F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#58ACFA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5882FA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5858FA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8258FA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#AC58FA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D358F7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA58F4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA58D0"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA58AC"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FA5882"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BDBDBD"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="6">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE2E2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE642E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE9A2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FACC2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#F7FE2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#C8FE2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#9AFE2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#64FE2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2EFE2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2EFE64"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2EFE9A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2EFEC8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2EFEF7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2ECCFA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2E9AFE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2E64FE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2E2EFE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#642EFE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#9A2EFE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#CC2EFA"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE2EF7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE2EC8"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE2E9A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FE2E64"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A4A4A4"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="7">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF0000"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF4000"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF8000"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FFBF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FFFF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BFFF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#80FF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#40FF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00FF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00FF40"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00FF80"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00FFBF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00FFFF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#00BFFF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0080FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0040FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0000FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#4000FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8000FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#BF00FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF00FF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF00BF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF0080"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#FF0040"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#848484"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="8">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF0101"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF3A01"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF7401"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DBA901"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#D7DF01"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A5DF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#74DF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3ADF00"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01DF01"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01DF3A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01DF74"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01DFA5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01DFD7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#01A9DB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0174DF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#013ADF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0101DF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3A01DF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#7401DF"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#A901DB"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF01D7"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF01A5"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF0174"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#DF013A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#6E6E6E"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="9">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B40404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B43104"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B45F04"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B18904"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#AEB404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#86B404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5FB404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#31B404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#04B404"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#04B431"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#04B45F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#04B486"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#04B4AE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0489B1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#045FB4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0431B4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0404B4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3104B4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5F04B4"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8904B1"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B404AE"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B40486"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B4045F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#B40431"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#585858"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="10">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A0808"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A2908"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A4B08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#886A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#868A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#688A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#4B8A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#298A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#088A08"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#088A29"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#088A4B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#088A68"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#088A85"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#086A87"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#084B8A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#08298A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#08088A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#29088A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#4B088A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#6A0888"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A0886"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A0868"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A084B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#8A0829"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#424242"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="11">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#610B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#61210B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#61380B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5F4C0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#5E610B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#4B610B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#38610B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#21610B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B610B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B6121"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B6138"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B614B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B615E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B4C5F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3861"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B2161"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B0B61"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#210B61"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#380B61"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#4C0B5F"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#610B5E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#610B4B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#610B38"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#610B21"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2E2E2E"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="12">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B0B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B170B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B240B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3A2F0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#393B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2E3B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#243B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#173B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3B0B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3B17"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3B24"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3B2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B3B39"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B2F3A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B243B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B173B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B0B3B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#170B3B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#240B3B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2F0B3A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B0B39"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B0B2E"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B0B24"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#3B0B17"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#1C1C1C"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="13">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A0A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A120A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A1B0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#29220A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#292A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#222A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#1B2A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#122A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2A0A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2A12"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2A1B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2A22"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2A29"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A2229"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A1B2A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A122A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0A0A2A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#120A2A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#1B0A2A"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#220A29"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A0A29"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A0A22"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A0A1B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#2A0A12"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#151515"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="14">
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#190707"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#190B07"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#191007"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#181407"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#181907"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#141907"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#101907"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B1907"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071907"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#07190B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071910"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071914"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071918"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071418"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#071019"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#070B19"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#070719"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#0B0719"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#100719"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#140718"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#190718"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#190714"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#190710"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#19070B"/>
+                <Rectangle Margin="1" MouseDown="ColorClicked" Width="25" Height="25" Fill="#000000"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

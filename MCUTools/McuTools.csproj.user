@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <PublishUrlHistory>publish\|..\bin\publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://webmaster442.hu/alkalmazasok/mcutools/|https://googledrive.com/host/0BzRxNHSnXbB5RTZsQkstWldkd2s/|https://drive.google.com/folderview%3fid=0BzRxNHSnXbB5RTZsQkstWldkd2s&amp;usp=sharing/|https://googledrive.com/host/0BzRxNHSnXbB5RTZsQkstWldkd2sz/</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

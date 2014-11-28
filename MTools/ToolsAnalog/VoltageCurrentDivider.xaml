@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="MTools.ToolsAnalog.VoltageCurrentDivider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cont="clr-namespace:MTools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Voltage Divider" FontSize="14">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="0">
+                    <cont:PrefixInput x:Name="Uin" LabelText="Input voltage (U)" UnitText="V" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged"/>
+                    <Button x:Name="BtnAdd" Content="Add Resistor" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="90" Click="BtnAdd_Click"/>
+                    <Button x:Name="BtnClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="70" Click="BtnClear_Click"/>
+                </StackPanel>
+                <ScrollViewer Grid.Row="1" Grid.Column="0">
+                    <StackPanel x:Name="SpItems"/>
+                </ScrollViewer>
+                <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" x:Name="TbResults"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Current Divider" FontSize="14">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="0">
+                    <cont:PrefixInput x:Name="Iin" LabelText="Input current (I)" UnitText="A" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged2"/>
+                    <Button x:Name="BtnCurrentAdd" Content="Add Resistor" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="90" Click="BtnCurrentAdd_Click"/>
+                    <Button x:Name="BtnCurrentClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="70" Click="BtnCurrentClear_Click"/>
+                </StackPanel>
+                <ScrollViewer Grid.Row="1" Grid.Column="0">
+                    <StackPanel x:Name="SpCurrentItems"/>
+                </ScrollViewer>
+                <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" x:Name="TbCurrentResults"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

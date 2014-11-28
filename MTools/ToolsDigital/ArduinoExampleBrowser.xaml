@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="MTools.ToolsDigital.ArduinoExampleBrowser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syn="clr-namespace:McuTools.Interfaces.Controls.Syntax;assembly=McuTools.Interfaces"
+             xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700">
+    <UserControl.Resources>
+        <Style TargetType="syn:SyntaxHighlightTextBox">
+            <Setter Property="CursorColor" Value="Black" />
+            <Setter Property="BackgroundBrush" Value="{DynamicResource Gradient}"/>
+            <Setter Property="ForegroundBrush" Value="Black"/>
+            <Setter Property="SyntaxRules">
+                <Setter.Value>
+                    <syn:SyntaxRuleCollection>
+                        <syn:SyntaxRuleItem RuleType="Comment" Foreground="#149426"/>
+                        <syn:SyntaxRuleItem RuleType="Keyword" Foreground="#2361d1"/>
+                        <syn:SyntaxRuleItem RuleType="Number" Foreground="#a39601"/>
+                        <syn:SyntaxRuleItem RuleType="String" Foreground="#b00ca3"/>
+                        <syn:SyntaxRuleItem RuleType="Operator" Foreground="#d21010"/>
+                        <syn:SyntaxRuleItem RuleType="Indentifier" Foreground="Black"/>
+                    </syn:SyntaxRuleCollection>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Arduino path:" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <icontrols:FileFolderSelector DialogType="DirectorySelect" x:Name="ArduinoPath" Grid.Column="1" Margin="10,0,20,0" VerticalAlignment="Center" SelectedPathChanged="ArduinoPath_SelectedPathChanged"/>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal" VerticalAlignment="Center">
+            <Button x:Name="BtnExpand" Click="BtnExpand_Click" Content="Expand all" Margin="10,0"/>
+            <Button x:Name="BtnColapse" Click="BtnColapse_Click" Content="Colapse all"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="BtnCopy" Click="BtnCopy_Click" Content="Copy selection to clipboard" Margin="10,0"/>
+            <TextBlock Text="File: " Margin="5,0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="FilePath" Text="No file opened" VerticalAlignment="Center"/>
+        </StackPanel>
+        <TreeView Grid.Row="2" Grid.Column="0" x:Name="SampleTree" MouseDoubleClick="SampleTree_MouseDoubleClick"/>
+        <GridSplitter Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" />
+        <syn:SyntaxHighlightTextBox x:Name="Editor" Grid.Row="2" Grid.Column="2" FontSize="14" FontFamily="Courier new"/>
+    </Grid>
+</UserControl>

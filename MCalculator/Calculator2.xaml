@@ -1,0 +1,244 @@
+﻿<UserControl x:Class="MCalculator.Calculator2"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:syn="clr-namespace:McuTools.Interfaces.Controls.Syntax;assembly=McuTools.Interfaces"
+             xmlns:local="clr-namespace:MCalculator.Classes"
+             xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             xmlns:wpf="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
+    <UserControl.Resources>
+        <wpf:VisibilityConv x:Key="Visconv"/>
+        <wpf:NegateConverter x:Key="Inv"/>
+        <Style TargetType="syn:SyntaxHighlightTextBox">
+            <Setter Property="CursorColor" Value="Black" />
+            <Setter Property="BackgroundBrush" Value="{DynamicResource Gradient}"/>
+            <Setter Property="ForegroundBrush" Value="Black"/>
+            <Setter Property="SyntaxRules">
+                <Setter.Value>
+                    <syn:SyntaxRuleCollection>
+                        <syn:SyntaxRuleItem RuleType="Comment" Foreground="#149426"/>
+                        <syn:SyntaxRuleItem RuleType="Keyword" Foreground="#2361d1"/>
+                        <syn:SyntaxRuleItem RuleType="Number" Foreground="#a39601"/>
+                        <syn:SyntaxRuleItem RuleType="String" Foreground="#b00ca3"/>
+                        <syn:SyntaxRuleItem RuleType="Operator" Foreground="#d21010"/>
+                        <syn:SyntaxRuleItem RuleType="Indentifier" Foreground="Black"/>
+                    </syn:SyntaxRuleCollection>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MinHeight="125">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="25" MaxHeight="25"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <local:ConsoleControl Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Output" IsReadOnly="True" Grid.Row="0" Grid.ColumnSpan="2"  OkFontColor="DarkGreen" ErrorFontColor="Red" WarningFontColor="Orange" BackgroundColor="#FFEBEBEB" DefaultFontColor="Black" CurrentForeground="Black" FontFamily="Consolas" FontSize="14"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch">
+                <RadioButton IsChecked="True" Content="Deg"  VerticalAlignment="Center" Margin="5,0,0,0" Click="ModeChange"/>
+                <RadioButton Content="Rad"  VerticalAlignment="Center" Margin="5,0" Click="ModeChange"/>
+                <RadioButton Content="Grad"  VerticalAlignment="Center" Click="ModeChange"/>
+                <Button x:Name="BtnSaveLog" Content="Save log..."  VerticalAlignment="Center" Margin="10,0" Click="BtnSaveLog_Click"/>
+                <Button x:Name="BtnClearLog" Content="Clear log"  VerticalAlignment="Center" Margin="0,0,5,0" Click="BtnClearLog_Click"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1" Grid.Column="1" x:Name="InGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="Input" TextAlignment="Right" PreviewKeyDown="Input_KeyDown" FontSize="14" IsEnabled="{Binding Path=IsChecked, ElementName=MultiSelector, Converter={StaticResource Inv}}"/>
+                <ToggleButton IsChecked="False" Content="Multiline" Grid.Column="1" Margin="5,0,5,0" x:Name="MultiSelector" Click="MultiSelector_Click"/>
+            </Grid>
+        </Grid>
+
+        <local:ProgressControl Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Panel.ZIndex="2" Background="White" x:Name="ProgrssPanel" Visibility="Collapsed" TerminateButtonClicked="TerminateClick" />
+        
+        <Grid x:Name="InputGrid" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition Width="190"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Panel.ZIndex="1" Grid.Column="1" Grid.ColumnSpan="2" Background="White" Visibility="{Binding IsChecked, Converter={StaticResource Visconv}, ElementName=MultiSelector}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <syn:SyntaxHighlightTextBox PreviewKeyDown="Input_KeyDown" x:Name="SynBox" FontFamily="Consolas" Grid.Row="0" FontSize="{Binding ElementName=FontSlider, Path=Value}"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="Font size:" VerticalAlignment="Center"/>
+                    <icontrols:EditableSlider x:Name="FontSlider" Width="200" Minimum="12" Maximum="24" Value="14" DefaultValue="14" Margin="5,0"/>
+                    <Button Content="Execute"  Margin="5,0,10,0" x:Name="BtnExec" Click="Execute_Click" Width="55"/>
+                </StackPanel>
+            </Grid>
+            
+
+            <Grid x:Name="Numbers" Grid.Column="1" Grid.Row="1" Margin="0,0,5,0" MaxWidth="210" MinWidth="200" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button x:Name="BtnClear" Content="Clear Input" Grid.Row="0" Grid.Column="0" Margin="2" Click="BtnClear_Click" />
+                <Button Content="." Grid.Row="4" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="0" Grid.Row="4" Grid.ColumnSpan="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="1" Grid.Row="3" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="2" Grid.Row="3" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="3" Grid.Row="3" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="4" Grid.Row="2" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="5" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="6" Grid.Row="2" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="7" Grid.Row="1" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="8" Grid.Row="1" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="9" Grid.Row="1" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+            </Grid >
+
+            <Grid Grid.Column="3" Grid.Row="1" MaxWidth="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="+" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="-" Grid.Row="1" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="*" Grid.Row="2" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="/" Grid.Row="3" Grid.Column="0" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="%" Grid.Row="0" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="," Grid.Row="1" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="(" Grid.Row="2" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content=")" Grid.Row="3" Grid.Column="1" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="[" Grid.Row="0" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="]" Grid.Row="1" Grid.Column="2" FontSize="18" Margin="2" Click="InstertButton_Click"/>
+                <Button Content="=" Grid.RowSpan="2" Grid.Row="2" FontSize="18" Grid.Column="3" Margin="2" Click="Execute_Click"/>
+            </Grid>
+            
+            <TabControl x:Name="Tabs" Grid.Column="0">
+                <TabItem Header="Functions">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="22"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton Content="Expand All" Width="70" x:Name="BtnExpand" Click="BtnExpand_Click" Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <ScrollViewer Grid.Row="1">
+                            <StackPanel x:Name="FunctionL">
+                                <Expander Header="General">
+                                    <WrapPanel x:Name="Functions"/>
+                                </Expander>
+                                <Expander Header="Trigonometry">
+                                    <WrapPanel x:Name="Trig"/>
+                                </Expander>
+                                <Expander Header="Random">
+                                    <WrapPanel x:Name="Rand"/>
+                                </Expander>
+                                <Expander Header="Binary">
+                                    <WrapPanel x:Name="Bin"/>
+                                </Expander>
+                                <Expander Header="Complex">
+                                    <WrapPanel x:Name="Cplx"/>
+                                </Expander>
+                                <Expander Header="Sets &amp; Statistics">
+                                    <WrapPanel x:Name="SetStat"/>
+                                </Expander>
+                                <Expander Header="Matrix">
+                                    <WrapPanel x:Name="Matrix"/>
+                                </Expander>
+                                <Expander Header="Specials">
+                                    <WrapPanel x:Name="Specials"/>
+                                </Expander>
+                                <Expander Header="Dialogs">
+                                    <WrapPanel x:Name="Dialogs"/>
+                                </Expander>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Constants">
+                    <ScrollViewer>
+                        <WrapPanel x:Name="ConstantsPanel"></WrapPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Variables &amp; types">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="BtnVarRefres" Content="Refresh list" Margin="5,0" Click="BtnVarRefres_Click"/>
+                            <Button x:Name="BtnVarInstertSelected" Content="Insert" Click="BtnVarInstertSelected_Click"/>
+                            <Button x:Name="BtnVarDeleteSelected" Content="Delete" Margin="5,0" Click="BtnVarDeleteSelected_Click" />
+                            <Button x:Name="BtnVarDeleteAll" Content="Delete all" Click="BtnVarDeleteAll_Click" />
+                        </StackPanel>
+                        <DataGrid MouseDoubleClick="BtnVarInstertSelected_Click" x:Name="VarList" Grid.Row="1" AlternationCount="1" CanUserAddRows="False" AutoGenerateColumns="False" AlternatingRowBackground="#FFF9D995" VerticalScrollBarVisibility="Visible" CanUserReorderColumns="False" CanUserResizeColumns="true" CanUserSortColumns="False" CanUserResizeRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=Key}" CanUserSort="True" CanUserResize="True" ClipboardContentBinding="{x:Null}" Header="Name" IsReadOnly="True" SortDirection="Ascending" Width="150"/>
+                                <DataGridTextColumn Binding="{Binding Path=Value}" CanUserSort="True" CanUserResize="True" ClipboardContentBinding="{x:Null}" Header="Type" IsReadOnly="True" SortDirection="Ascending" Width="110"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="User codes">
+                    <local:CustomActions/>
+                </TabItem>
+                <TabItem Header="Command History">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="BtnClearHistory" Content="Clear History" VerticalAlignment="Center" Margin="10,0,0,0" Click="BtnClearHistory_Click"/>
+                        </StackPanel>
+                        <ListBox x:Name="LbHistory" Grid.Row="1" MouseDoubleClick="LbHistory_MouseDoubleClick">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="14" Grid.Column="0" TextAlignment="Right" Text="{Binding index}" FontWeight="Bold" Margin="0,0,10,0"/>
+                                        <TextBlock FontSize="14" Grid.Column="1" Text="{Binding value}" FontFamily="Consolas"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</UserControl>

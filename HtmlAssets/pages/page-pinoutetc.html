@@ -1,0 +1,37 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/OtherIC/tlc5941.png"] = "tlc5941";
+            database["Images/OtherIC/ne555-556.png"] = "ne555-556";
+            database["Images/OtherIC/mcp9422.png"] = "mcp9422";
+            database["Images/OtherIC/mcp4921.png"] = "mcp4921";
+            database["Images/OtherIC/mcp23017.png"] = "mcp23017";
+            database["Images/OtherIC/max232.png"] = "max232";
+            database["Images/OtherIC/ds1307.png"] = "ds1307";
+            database["Images/OtherIC/attiny45-85.png"] = "attiny45-85";
+            database["Images/OtherIC/attiny44-84.png"] = "attiny44-84";
+            database["Images/OtherIC/atmega644.png"] = "atmega644";
+            database["Images/OtherIC/atmega168-328.png"] = "atmega168-328";
+
+            SetTitle("Various IC Pinouts");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

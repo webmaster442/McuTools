@@ -1,0 +1,63 @@
+﻿<UserControl x:Name="userControl" x:Class="MTools.Controls.RColorSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="userControl_Loaded">
+	<UserControl.Resources>
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+	</UserControl.Resources>
+    <Grid>
+        <Grid x:Name="NumberSelector">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ToggleButton Content="Black" Grid.Row="0" Background="Black" Foreground="Black" Click="ValueSect_Click" IsChecked="True"/>
+            <ToggleButton Content="Brown" Grid.Row="1" Background="Brown" Foreground="Brown" Click="ValueSect_Click"/>
+            <ToggleButton Content="Red" Grid.Row="2" Background="Red" Foreground="Red" Click="ValueSect_Click"/>
+            <ToggleButton Content="Orange" Grid.Row="3" Background="Orange" Foreground="Orange" Click="ValueSect_Click"/>
+            <ToggleButton Content="Yellow" Grid.Row="4" Background="Yellow" Foreground="Yellow" Click="ValueSect_Click"/>
+            <ToggleButton Content="Green" Grid.Row="5" Background="Green" Foreground="Green" Click="ValueSect_Click"/>
+            <ToggleButton Content="Blue" Grid.Row="6" Background="Blue" Foreground="Blue" Click="ValueSect_Click"/>
+            <ToggleButton Content="Purple" Grid.Row="7" Background="Purple" Foreground="Purple" Click="ValueSect_Click"/>
+            <ToggleButton Content="Gray" Grid.Row="8" Background="Gray" Foreground="Gray" Click="ValueSect_Click"/>
+            <ToggleButton Content="White" Grid.Row="9" Background="White" Foreground="White" Click="ValueSect_Click"/>
+        </Grid>
+
+        <Grid x:Name="MultiplyerSelector" Visibility="{Binding MultiplyerSelectorMode, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=userControl}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ToggleButton Content="Silver" Grid.Row="0" Background="Silver" Foreground="Silver" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Gold" Grid.Row="1" Background="Gold" Foreground="Gold" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Black" Grid.Row="2" Background="Black" Foreground="Black" Click="MultiplyerSect_Click" IsChecked="True"/>
+            <ToggleButton Content="Brown" Grid.Row="3" Background="Brown" Foreground="Brown" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Red" Grid.Row="4" Background="Red" Foreground="Red" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Orange" Grid.Row="5" Background="Orange" Foreground="Orange" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Yellow" Grid.Row="6" Background="Yellow" Foreground="Yellow" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Green" Grid.Row="7" Background="Green" Foreground="Green" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Blue" Grid.Row="8" Background="Blue" Foreground="Blue" Click="MultiplyerSect_Click"/>
+            <ToggleButton Content="Purple" Grid.Row="9" Background="Purple" Foreground="Purple" Click="MultiplyerSect_Click"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

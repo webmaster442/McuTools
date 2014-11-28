@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="MMediaTools.Tools.UsbVideo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fx="clr-namespace:McuTools.Interfaces.Effects;assembly=McuTools.Interfaces"
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             xmlns:wpf="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"
+             xmlns:webcam="clr-namespace:CatenaLogic.Windows.Presentation.WebcamPlayer"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <DockPanel>
+        <Expander DockPanel.Dock="Right" IsExpanded="False" ExpandDirection="Left">
+            <Expander.Header>
+                <TextBlock Text="Tools">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <ScrollViewer wpf:KineticBehaviour.HandleKineticScrolling="True">
+                <StackPanel Width="230" Margin="5">
+                    <TextBlock Text="Rotate:" Margin="0,5,0,0"/>
+                    <controls:EditableSlider x:Name="RotAngle" Minimum="-180" Maximum="180" Value="0"/>
+
+                    <TextBlock Text="Flip:" Margin="0,5,0,0"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="FlipX" Content="Flip X" Grid.Column="0" Margin="5,0" Click="FlipX_Click"/>
+                        <Button x:Name="FlipY" Content="Flip Y" Grid.Column="1" Margin="5,0" Click="FlipY_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Pre Process Effect:" Margin="0,20,0,0"/>
+                    <StackPanel>
+                        <RadioButton Content="None" IsChecked="True" Click="RadioButton_Click"/>
+                        <RadioButton Content="B and W" Click="RadioButton_Click"/>
+                        <RadioButton Content="Invert" Click="RadioButton_Click"/>
+                        <RadioButton Content="Inv. B and W" Click="RadioButton_Click"/>
+                        <RadioButton x:Name="Coloverlay" Content="Color overlay" Click="RadioButton_Click"/>
+                    </StackPanel>
+                    
+                    <TextBlock Text="Color overlay color:"/>
+                    <controls:ColorPicker x:Name="Colpicker" Width="180" Height="180" IsEnabled="{Binding ElementName=Coloverlay, Path=IsChecked}"/>
+                    
+                    <TextBlock Text="Brightness:" Margin="0,5,0,0"/>
+                    <controls:EditableSlider x:Name="EffBrightness" Minimum="-1" DefaultValue="0" Maximum="1" Value="0"/>
+                    <TextBlock Text="Contrast:" Margin="0,5,0,0"/>
+                    <controls:EditableSlider x:Name="EffContrast" Minimum="0" Maximum="2" DefaultValue="1" Value="1"/>
+                    <TextBlock Text="Magnification:" Margin="0,5,0,0"/>
+                    <controls:EditableSlider x:Name="EffMagnification" Minimum="1" Maximum="5" Value="1" DefaultValue="1"/>
+                    <TextBlock Text="Sharpening:" Margin="0,5,0,0"/>
+                    <controls:EditableSlider x:Name="Sharpening" Minimum="0" Maximum="2" Value="1" DefaultValue="1" ValueChanged="Sharpening_ValueChanged_1"/>
+                    <TextBlock Text="Magnification Position:" Margin="0,5,0,0"/>
+                    <Grid Height="45">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="22"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="X:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Y:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <controls:EditableSlider x:Name="PosX" Grid.Row="0" Grid.Column="1" Minimum="0" DefaultValue="0.5" Maximum="1" Value="0.5" ValueChanged="Pos_ValueChanged"/>
+                        <controls:EditableSlider x:Name="PosY" Grid.Row="1" Grid.Column="1" Minimum="0" DefaultValue="0.5" Maximum="1" Value="0.5" ValueChanged="Pos_ValueChanged"/>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Expander>
+
+        <StackPanel DockPanel.Dock="Top" Height="25" Orientation="Horizontal">
+            <TextBlock Text="Video Source:" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <ComboBox x:Name="Devices" VerticalAlignment="Center" Width="200" Margin="5,0,0,0" SelectionChanged="ComboBox_SelectionChanged"/>
+        </StackPanel>
+
+        <webcam:CapPlayer x:Name="WPlayer">
+            <webcam:CapPlayer.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="{Binding ElementName=RotAngle, Path=Value}"/>
+                    <ScaleTransform x:Name="ScaleTrans" ScaleX="1" ScaleY="1"/>
+                </TransformGroup>
+            </webcam:CapPlayer.LayoutTransform>
+            <webcam:CapPlayer.Effect>
+                <fx:ViewEnhancersEffect x:Name="PostProcEff" 
+                    Brightness="{Binding ElementName=EffBrightness, Path=Value}"
+                    Contrast="{Binding ElementName=EffContrast, Path=Value}"
+                    MagnificationAmount="{Binding ElementName=EffMagnification, Path=Value}"
+                    Amount="{Binding ElementName=Sharpening, Path=Value}"
+                    ColorOverlay="{Binding ElementName=Colpicker, Path=Color}">
+                </fx:ViewEnhancersEffect>
+            </webcam:CapPlayer.Effect>
+        </webcam:CapPlayer>
+
+    </DockPanel>
+</UserControl>

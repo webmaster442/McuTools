@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="MTools.ResistorList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded_1" x:Name="ResistorListt">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Text="Series Multiplier:" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"/>
+            <ComboBox SelectedIndex="1" x:Name="Decade" SelectionChanged="SeriesSelector_SelectionChanged" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="100"/>
+                <ComboBoxItem Content="1000"/>
+                <ComboBoxItem Content="10000"/>
+                <ComboBoxItem Content="100000"/>
+                <ComboBoxItem Content="1000000"/>
+            </ComboBox>
+        </StackPanel>
+        <TabControl FontSize="14" Grid.Row="1" x:Name="SeriesSelector" SelectionChanged="SeriesSelector_SelectionChanged" TabStripPlacement="Left" Grid.Column="0">
+            <TabItem Header="E12 (10%)"></TabItem>
+            <TabItem Header="E24 (5%)"></TabItem>
+            <TabItem Header="E48 (2%)"></TabItem>
+            <TabItem Header="E96 (1%)"></TabItem>
+            <TabItem Header="E192 (0,5%)"></TabItem>
+        </TabControl>
+        <TextBox Grid.Row="1" x:Name="ValuesList" IsReadOnly="True" Grid.Column="1" FontSize="18" VerticalScrollBarVisibility="Visible" FontFamily="Consolas"/>
+    </Grid>
+</UserControl>

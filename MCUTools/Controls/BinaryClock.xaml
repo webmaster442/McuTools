@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="McuTools.Controls.BinaryClock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             x:Name="BinClock"
+             ToolTip="{Binding ElementName=BinClock, Path=HumanTime}"
+             d:DesignHeight="25" d:DesignWidth="200" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Width="50" x:Name="H1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Width="50" x:Name="H2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="1" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1" Width="50" x:Name="M1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="1" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="1" Width="50" x:Name="M2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="1" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="2" Width="50" x:Name="S1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="1" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+
+
+        <Grid Grid.Row="2" Grid.Column="2" Width="50" x:Name="S2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="1" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="2" Stroke="Black" Margin="1"/>
+            <Rectangle Grid.Column="3" Stroke="Black" Margin="1"/>
+        </Grid>
+    </Grid>
+</UserControl>

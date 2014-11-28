@@ -1,0 +1,27 @@
+﻿<Window x:Class="MApplicationLaunchers.SettingsWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MApplicationLaunchers"
+             mc:Ignorable="d" 
+             Width="450" Height="350" WindowStyle="ToolWindow" Loaded="Window_Loaded" Title="Launcher Settings">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <StackPanel>
+                <local:FileSelector Margin="5" x:Name="Eagle" LabelText="Eagle Path:" DownloadLink="http://www.cadsoftusa.com/download-eagle/?language=en"/>
+                <local:FileSelector Margin="5" x:Name="Arduino" LabelText="Arduino Path:" DownloadLink="http://arduino.cc/en/Main/Software"/>
+                <local:FileSelector Margin="5" x:Name="LTSpice" LabelText="LtSpice Path:" DownloadLink="http://www.linear.com/designtools/software/"/>
+                <local:FileSelector Margin="5" x:Name="Processing" LabelText="Processing Path:" DownloadLink="https://processing.org/download/"/>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button Content="Save Settings" Width="100" Margin="0,0,10,0" x:Name="BtnSave" Click="BtnSave_Click" />
+            <Button Content="Cancel" Width="100" Margin="0,0,10,0" x:Name="BtnCancel" Click="BtnCancel_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

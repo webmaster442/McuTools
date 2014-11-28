@@ -1,0 +1,59 @@
+﻿<Window 
+    x:Class="McuTools.Browser.ChildWindow" 
+    x:Name="childWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:awe="http://schemas.awesomium.com/winfx"
+    Title="{Binding Title, ElementName=webControl}" 
+    Height="480" 
+    Width="600">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <!-- We do not need to set any WebPreferences or DataSources 
+        on this provider. It uses the same DataPath as the provider in
+        MainWindow, therefore, this provider will provide the same session,
+        already created by the WebSessionProvider in MainWindow.-->
+        <awe:WebSessionProvider x:Key="mySession" DataPath=".\Cache" />
+    </Window.Resources>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=webControl}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- Note that the WebSession assigned to this WebControl, will
+             be effectively ignored when this WebControl wraps a created
+             child view. Child views share the same session as their parent
+             (opener) view. -->
+        <awe:WebControl 
+            Name="webControl" 
+            WebSession="{Binding Source={StaticResource mySession}}"
+            Source="{Binding Source, ElementName=childWindow}"
+            NativeView="{Binding NativeView, ElementName=childWindow}" 
+            NativeViewInitialized="webControl_NativeViewInitialized" 
+            LoadingFrameFailed="webControl_LoadingFrameFailed"
+            NavigationInfo="None" />
+        <StatusBar Grid.Row="1">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <TextBlock Text="{Binding TargetURL, ElementName=webControl}" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <ProgressBar 
+                    Width="100" 
+                    Height="15" 
+                    HorizontalAlignment="Right" 
+                    Visibility="{Binding IsLoading, ElementName=webControl, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                    IsIndeterminate="{Binding IsLoading, ElementName=webControl}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

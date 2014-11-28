@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="MTools.ne555Calc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MTools.Controls"
+             d:DesignHeight="450" d:DesignWidth="700" x:Name="Ne555Calculator" Loaded="Ne555Calculator_Loaded">
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Astable">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <local:PrefixInput x:Name="AstableR1" LabelText="R1" Value="1" UnitText="Ω" Width="180" Margin="10, 0" ValueChanged="Astable_ValueChanged"/>
+                    <local:PrefixInput x:Name="AstableR2" LabelText="R2" Value="1" UnitText="Ω" Width="180" Margin="10, 0" ValueChanged="Astable_ValueChanged"/>
+                    <local:PrefixInput x:Name="AstableC" LabelText="C" Value="1" UnitText="F" Width="180" Margin="10, 0" ValueChanged="Astable_ValueChanged"/>
+                </StackPanel>
+                <Image Grid.Row="1" Source="../images/1000px-555_Astable_Diagram.svg.png" StretchDirection="DownOnly"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock FontSize="16" Text="f:" Margin="10,0"/>
+                    <TextBox x:Name="AstableF" Width="120"/>
+                    <TextBlock Text="Hz" Margin="5,0,10,0"/>
+                    <TextBlock Text="tOn:" Margin="10,0"/>
+                    <TextBox x:Name="AstableTOn" Width="120"/>
+                    <TextBlock Text="sec" Margin="10,0"/>
+                    <TextBlock Text="tOff:" Margin="10,0"/>
+                    <TextBox x:Name="AstableTOff" Width="120"/>
+                    <TextBlock Text="sec" Margin="10,0"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Monostable">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <local:PrefixInput x:Name="MonostableR" LabelText="R1" Value="1" UnitText="Ω" Width="180" Margin="10, 0" ValueChanged="Monostable_ValueChanged"/>
+                    <local:PrefixInput x:Name="MonostableC" LabelText="C" Value="1" UnitText="F" Width="180" Margin="10, 0" ValueChanged="Monostable_ValueChanged"/>
+                </StackPanel>
+                <Image Grid.Row="1" Source="../images/1000px-555_Monostable.svg.png" StretchDirection="DownOnly"/>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock FontSize="16" Text="t:" Margin="10,0"/>
+                    <TextBox x:Name="MonostableT" Width="120"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Bistable">
+            <Image Source="../images/1000px-555_Bistable.svg.png" StretchDirection="DownOnly"/>
+        </TabItem>
+        <TabItem Header="Block diagram">
+            <Image Source="../images/1000px-NE555_Bloc_Diagram.svg.png" StretchDirection="DownOnly"/>
+        </TabItem>
+    </TabControl>
+</UserControl>

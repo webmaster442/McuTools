@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E83185EC-8AF3-4E1C-A46F-937A490C04E2}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MTools</RootNamespace>
+    <AssemblyName>MTools.Tool</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Blend|AnyCPU'">
+    <OutputPath>bin\Blend\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdapterList.xaml.cs">
+      <DependentUpon>AdapterList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnalogTools.cs" />
+    <Compile Include="classes\ArduinoSyntax.cs" />
+    <Compile Include="classes\AudioGeneration.cs" />
+    <Compile Include="classes\Chunks.cs" />
+    <Compile Include="classes\PortDataItem.cs" />
+    <Compile Include="classes\Counter.cs" />
+    <Compile Include="classes\Crypto.cs" />
+    <Compile Include="classes\IPPortScanner.cs" />
+    <Compile Include="classes\ResistorSolver.cs" />
+    <Compile Include="classes\ResitorListGenerator.cs" />
+    <Compile Include="classes\StatSampling.cs" />
+    <Compile Include="Controls\AnalogSampler.xaml.cs">
+      <DependentUpon>AnalogSampler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HexEditor.xaml.cs">
+      <DependentUpon>HexEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IPInput.xaml.cs">
+      <DependentUpon>IPInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MintermTable5.xaml.cs">
+      <DependentUpon>MintermTable5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewHex.xaml.cs">
+      <DependentUpon>NewHex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OscillatorControll.xaml.cs">
+      <DependentUpon>OscillatorControll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PinControl.xaml.cs">
+      <DependentUpon>PinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ResultsView.xaml.cs">
+      <DependentUpon>ResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DigitalTools.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\BuiltInContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="libs\Be.Windows.Forms.HexBox\ByteCharConverters.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\ByteCollection.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\BytePositionInfo.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\DataBlock.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\DataMap.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\DynamicByteProvider.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\DynamicFileByteProvider.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\FileByteProvider.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\FileDataBlock.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\FindOptions.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\HexBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="libs\Be.Windows.Forms.HexBox\HexCasing.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\IByteProvider.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\MemoryDataBlock.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\NativeMethods.cs" />
+    <Compile Include="libs\Be.Windows.Forms.HexBox\Util.cs" />
+    <Compile Include="libs\Sharpduino\Arduino.cs" />
+    <Compile Include="libs\Sharpduino\ArduinoMega.cs" />
+    <Compile Include="libs\Sharpduino\ArduinoUno.cs" />
+    <Compile Include="libs\Sharpduino\Base\BitHelper.cs" />
+    <Compile Include="libs\Sharpduino\Base\FirmataBase.cs" />
+    <Compile Include="libs\Sharpduino\Base\FirmataEmptyBase.cs" />
+    <Compile Include="libs\Sharpduino\Base\IHandle.cs" />
+    <Compile Include="libs\Sharpduino\Base\IHandleAdvancedMessages.cs" />
+    <Compile Include="libs\Sharpduino\Base\IHandleAllMessages.cs" />
+    <Compile Include="libs\Sharpduino\Base\IHandleBasicMessages.cs" />
+    <Compile Include="libs\Sharpduino\Base\IMessageBroker.cs" />
+    <Compile Include="libs\Sharpduino\Base\MessageBroker.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoMegaAnalogPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoMegaPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoMegaPWMPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoUnoAnalogPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoUnoPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\ArduinoUnoPWMPins.cs" />
+    <Compile Include="libs\Sharpduino\Constants\MessageConstants.cs" />
+    <Compile Include="libs\Sharpduino\Constants\PinModes.cs" />
+    <Compile Include="libs\Sharpduino\Constants\SysexCommands.cs" />
+    <Compile Include="libs\Sharpduino\Creators\AnalogOutputMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\BaseMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\DigitalMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\ExtendedAnalogMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\I2CConfigMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\I2CRequestMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\IMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\PinModeMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\PinStateQueryMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\SamplingIntervalMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\ServoConfigMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\StaticMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\ToggleAnalogReportMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\Creators\ToggleDigitalReportMessageCreator.cs" />
+    <Compile Include="libs\Sharpduino\EasyFirmata.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\DataReceivedEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\NewAnalogValueEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\NewDigitalValueEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\NewI2CMessageEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\NewStringMessageEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\EventArguments\PinStateEventArgs.cs" />
+    <Compile Include="libs\Sharpduino\Exceptions\FirmataException.cs" />
+    <Compile Include="libs\Sharpduino\Exceptions\InvalidFirmataMessageException.cs" />
+    <Compile Include="libs\Sharpduino\Exceptions\InvalidPinModeException.cs" />
+    <Compile Include="libs\Sharpduino\Exceptions\MessageCreatorException.cs" />
+    <Compile Include="libs\Sharpduino\Exceptions\MessageHandlerException.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\AnalogMappingMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\AnalogMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\BaseMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\CapabilityMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\DigitalMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\I2CMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\IMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\PinStateMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\ProtocolVersionMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\SysexFirmwareMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\SysexMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\Handlers\SysexStringMessageHandler.cs" />
+    <Compile Include="libs\Sharpduino\IArduino.cs" />
+    <Compile Include="libs\Sharpduino\Logging\DebugLogger.cs" />
+    <Compile Include="libs\Sharpduino\Logging\EmptyLogger.cs" />
+    <Compile Include="libs\Sharpduino\Logging\ILogger.cs" />
+    <Compile Include="libs\Sharpduino\Logging\LogManager.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\AnalogMappingMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\CapabilitiesFinishedMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\CapabilityMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\I2CResponseMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\PinStateMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\ProtocolVersionMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\SysexFirmwareMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Receive\SysexStringMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\AnalogMappingQueryMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ExtendedAnalogMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\I2CConfigMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\I2CReadWriteOptions.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\I2CRequestMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\PinModeMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\PinStateQueryMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ProtocolVersionRequestMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\QueryCapabilityMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\QueryFirmwareMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ResetMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\SamplingIntervalMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ServoConfigMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\StaticMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ToggleAnalogReportMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\Send\ToggleDigitalReportMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\TwoWay\AnalogMessage.cs" />
+    <Compile Include="libs\Sharpduino\Messages\TwoWay\DigitalMessage.cs" />
+    <Compile Include="libs\Sharpduino\Pin.cs" />
+    <Compile Include="libs\Sharpduino\PinCapability.cs" />
+    <Compile Include="libs\Sharpduino\SerialProviders\ComPortProvider.cs" />
+    <Compile Include="libs\Sharpduino\SerialProviders\ISerialProvider.cs" />
+    <Compile Include="OtherTools.cs" />
+    <Compile Include="SerialSettings.xaml.cs">
+      <DependentUpon>SerialSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\ArduinoInstaller.xaml.cs">
+      <DependentUpon>ArduinoInstaller.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\Crypto.xaml.cs">
+      <DependentUpon>Crypto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\DocumentBrowser.xaml.cs">
+      <DependentUpon>DocumentBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\EagleBackupRem.xaml.cs">
+      <DependentUpon>EagleBackupRem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\PortScanner.xaml.cs">
+      <DependentUpon>PortScanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\StopWatch.xaml.cs">
+      <DependentUpon>StopWatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\FilterDesigner.xaml.cs">
+      <DependentUpon>FilterDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\FirmataAnalogSampler.xaml.cs">
+      <DependentUpon>FirmataAnalogSampler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\OhmCalculator.xaml.cs">
+      <DependentUpon>OhmCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\ResistorSolver.xaml.cs">
+      <DependentUpon>ResistorSolver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\ToneGenerator.xaml.cs">
+      <DependentUpon>ToneGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\TotalResistance.xaml.cs">
+      <DependentUpon>TotalResistance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\VoltageCurrentDivider.xaml.cs">
+      <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\ADCCalculator.xaml.cs">
+      <DependentUpon>ADCCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\ArduinoExampleBrowser.xaml.cs">
+      <DependentUpon>ArduinoExampleBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\AsciiTable.xaml.cs">
+      <DependentUpon>AsciiTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="classes\LogicItem.cs" />
+    <Compile Include="classes\QuineMcclusky.cs" />
+    <Compile Include="Controls\MintermTable2.xaml.cs">
+      <DependentUpon>MintermTable2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MintermTable3.xaml.cs">
+      <DependentUpon>MintermTable3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MintermTable4.xaml.cs">
+      <DependentUpon>MintermTable4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\BooleAlgebra.xaml.cs">
+      <DependentUpon>BooleAlgebra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\ColorCalc.xaml.cs">
+      <DependentUpon>ColorCalc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\FirmataControl.xaml.cs">
+      <DependentUpon>FirmataControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\FourteenSegmentCalculator.xaml.cs">
+      <DependentUpon>FourteenSegmentCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="classes\Functions.cs" />
+    <Compile Include="ToolsAnalog\ImpedanceCalculator.xaml.cs">
+      <DependentUpon>ImpedanceCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\FreqDivCalc.xaml.cs">
+      <DependentUpon>FreqDivCalc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\LcdCharCalculator.xaml.cs">
+      <DependentUpon>LcdCharCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\LedResistor.xaml.cs">
+      <DependentUpon>LedResistor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\Lm317VoltageRegulator.xaml.cs">
+      <DependentUpon>Lm317VoltageRegulator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\LEDMatrixEditor.xaml.cs">
+      <DependentUpon>LEDMatrixEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\LogicMinimalizer.xaml.cs">
+      <DependentUpon>LogicMinimalizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\ne555Calc.xaml.cs">
+      <DependentUpon>ne555Calc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PrefixInput.xaml.cs">
+      <DependentUpon>PrefixInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\NumberConverter.xaml.cs">
+      <DependentUpon>NumberConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\OpAmpCalculator.xaml.cs">
+      <DependentUpon>OpAmpCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Controls\RColorSelect.xaml.cs">
+      <DependentUpon>RColorSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\ResistorColorCode.xaml.cs">
+      <DependentUpon>ResistorColorCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsAnalog\ResistorList.xaml.cs">
+      <DependentUpon>ResistorList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\PortEditor.xaml.cs">
+      <DependentUpon>PortEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\SerialTerminal.xaml.cs">
+      <DependentUpon>SerialTerminal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\SevenSegmentCalculator.xaml.cs">
+      <DependentUpon>SevenSegmentCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToleranceSelector.xaml.cs">
+      <DependentUpon>ToleranceSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolsDigital\SyncCounterDesigner.xaml.cs">
+      <DependentUpon>SyncCounterDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebTools.cs" />
+    <Compile Include="WebToolsInternal.cs" />
+    <EmbeddedResource Include="libs\Be.Windows.Forms.HexBox\HexBox.resx">
+      <DependentUpon>HexBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="ASCII.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AdapterList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AnalogSampler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HexEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IPInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MintermTable5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NewHex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OscillatorControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PinControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResultsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SerialSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\ArduinoInstaller.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToolOther\Crypto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\DocumentBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\EagleBackupRem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\PortScanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\StopWatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\FilterDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\FirmataAnalogSampler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\OhmCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ResistorSolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ToneGenerator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\TotalResistance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\VoltageCurrentDivider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\ADCCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\ArduinoExampleBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\AsciiTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MintermTable2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MintermTable3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MintermTable4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToolsDigital\BooleAlgebra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\ColorCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\FirmataControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\FourteenSegmentCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ImpedanceCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\FreqDivCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\LcdCharCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\LedResistor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\Lm317VoltageRegulator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\LEDMatrixEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\LogicMinimalizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ne555Calc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PrefixInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\NumberConverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\OpAmpCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RColorSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ResistorColorCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsAnalog\ResistorList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\PortEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\SerialTerminal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\SevenSegmentCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToleranceSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsDigital\SyncCounterDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\McuTools.Interfaces\McuTools.Interfaces.csproj">
+      <Project>{F681F292-B6B1-45AE-A054-987380ECF6EC}</Project>
+      <Name>McuTools.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Op-Amp_Non-Inverting_Amplifier.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1000px-Op-Amp_Differential_Amplifier.svg.png" />
+    <Resource Include="images\1000px-Op-Amp_Inverting_Amplifier.svg.png" />
+    <Resource Include="images\1000px-Op-Amp_Summing_Amplifier.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Op-Amp_Instrumentation_Amplifier.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\led_paralel.png" />
+    <Resource Include="images\led_serial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1000px-Op-Amp_Comparator.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LM317-Voltage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ADC_Symbol.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\numbersystem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\555.png" />
+    <Resource Include="icons\adc.png" />
+    <Resource Include="icons\led.png" />
+    <Resource Include="icons\opamp.png" />
+    <Resource Include="icons\resistor.png" />
+    <Resource Include="icons\sevensegment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\lm317.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\lcd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\ascii.png" />
+    <Resource Include="icons\fourteen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rlc_paralell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\rlc_serial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\logicminimizer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\rlc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\functiongen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\arduino.png" />
+    <Resource Include="icons\arduinoabc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\rs232terminal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\wavedrom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\boole_trouth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\boole_rules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\boole_gates.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LM317-Current.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\boolealgebra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\cppreference.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\schematics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\film-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\firmata.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\firmatatanalog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\timer-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\dividers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\integrated_circuit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="libs\Be.Windows.Forms.HexBox\HexBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\eagle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\tindie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\hexedit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\atmel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\microchip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\texasinstruments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\adafruit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\python.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\circuitlab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\encrypt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\4-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\7-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\highpass.png" />
+    <Resource Include="images\lowpass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\empty_filter-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\ohmslaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\book-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\pastebin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\plus2-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\ledmatrix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\2048.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1000px-555_Astable_Diagram.svg.png" />
+    <Resource Include="images\1000px-555_Bistable.svg.png" />
+    <Resource Include="images\1000px-555_Monostable.svg.png" />
+    <Resource Include="images\1000px-NE555_Bloc_Diagram.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\portscann.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

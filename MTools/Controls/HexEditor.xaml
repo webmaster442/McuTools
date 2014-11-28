@@ -1,0 +1,27 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Forms="clr-namespace:Be.Windows.Forms" x:Class="MTools.Controls.HexEditor"
+             xmlns:WinForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" VerticalAlignment="Center">
+            <MenuItem Header="New..." x:Name="MenNew" Click="MenNew_Click"/>
+            <MenuItem Header="Load/save">
+                <MenuItem Header="Load from file..." x:Name="MenLoad" Click="MenLoad_Click"/>
+                <MenuItem Header="Save to file..." x:Name="MenSave" Click="MenSave_Click"/>
+            </MenuItem>
+        </Menu>
+        <WindowsFormsHost Grid.Row="1" x:Name="Whost">
+            <Forms:HexBox x:Name="hexBox" StringViewVisible="True" Dock="Fill" KeyDown="hexBox_KeyDown" ColumnInfoVisible="True" VScrollBarVisible="True" UseFixedBytesPerLine="True" BytesPerLine="16">
+            </Forms:HexBox>
+        </WindowsFormsHost>
+    </Grid>
+</UserControl>

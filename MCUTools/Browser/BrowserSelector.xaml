@@ -1,0 +1,30 @@
+﻿<UserControl x:Name="userControl" x:Class="McuTools.Browser.BrowserSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Link to be opened:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+        <TextBlock x:Name="LinkDisplay" Text="" Grid.Column="1" Grid.Row="0" FontWeight="Bold" VerticalAlignment="Center"/>
+        <TextBlock Text="Open link with:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+        <WrapPanel Grid.Row="2" Grid.ColumnSpan="2">
+            <controls:ImageButton Click="Browser_Click" x:Name="McuBrowser" ImageSource="../images/browser/Awesomium.png" ImageText="MCU Tools Browser" Width="150" Height="150" Margin="5"/>
+            <controls:ImageButton Click="Browser_Click" x:Name="Firefox" ImageSource="../images/browser/Firefox.png" ImageText="Firefox" Width="150" Height="150" Margin="5"/>
+            <controls:ImageButton Click="Browser_Click" x:Name="Chrome" ImageSource="../images/browser/Chrome.png" ImageText="Chrome" Width="150" Height="150" Margin="5"/>
+            <controls:ImageButton Click="Browser_Click" x:Name="Iexplore" ImageSource="../images/browser/Iexplore.png" ImageText="Internet Explorer" Width="150" Height="150" Margin="5"/>
+            <controls:ImageButton Click="Browser_Click" x:Name="CopyLink" ImageSource="../images/browser/edit-paste.png" ImageText="Copy link to clipboard" Width="150" Height="150" Margin="5"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

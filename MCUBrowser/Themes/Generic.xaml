@@ -1,0 +1,117 @@
+<!-- *****************************************************************************
+ *    Project   : Awesomium.NET (TabbedWPFSample)
+ *    File      : Generic.xaml
+ *    Version   : 1.7.0.0 
+ *    Date      : 3/5/2013
+ *    Author    : Perikles C. Stephanidis (perikles@awesomium.com)
+ *    Copyright : (C)2013 Awesomium Technologies LLC
+ *    
+ *    This code is provided "AS IS" and for demonstration purposes only,
+ *    without warranty of any kind.
+ *     
+ *********************************************************************************
+ *
+ *    Notes     :
+ *
+ *    Main themes dictionary. Also contains the theme of the MainWindow.
+ *    
+ *    
+ ***************************************************************************** -->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TabbedWPFSample"
+    xmlns:awe="http://schemas.awesomium.com/winfx"
+    xmlns:shell="clr-namespace:Microsoft.Windows.Shell">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/WebTabControl.xaml"/>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/ContentSpinner.xaml"/>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/CircularProgressBar.xaml"/>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/SplitButton.xaml"/>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/DownloadsControl.xaml"/>
+        <ResourceDictionary Source="/MCUBrowser;component/Themes/TabView.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <DrawingImage x:Key="awe_vec_icon_logo">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#FFEEC3B3" Geometry="F1 M 20.0587,14.0007 Z M 20.056,14.0033L 20.0547,14.0033L 20.056,14.0033 Z M 20.052,14.006L 20.0507,14.006L 20.052,14.006 Z "/>
+                    <GeometryDrawing Brush="#FFEE4036" Geometry="F1 M 19.0587,10.8808C 19.0587,10.8808 19.0494,11.0861 18.9854,11.1608C 18.908,11.2594 18.8107,11.2621 18.8107,11.2621C 18.8107,11.2621 13.1347,11.6714 10.6814,11.6714C 8.22799,11.6714 2.552,11.2621 2.552,11.2621C 2.552,11.2621 2.45467,11.2594 2.37866,11.1608C 2.316,11.0861 2.30534,10.8808 2.30534,10.8808C 2.25065,9.83276 2.24402,8.31144 2.24402,8.07808C 2.24402,7.74211 2.85335,7.69544 2.85335,7.69544C 2.85335,7.69544 6.22266,7.27942 10.6814,7.27942C 15.1414,7.27942 18.5107,7.69544 18.5107,7.69544C 18.5107,7.69544 19.12,7.74211 19.12,8.07808C 19.1187,8.31144 19.1133,9.83276 19.0587,10.8808 Z M 21.1613,6.2181C 20.9307,5.98877 20.6427,5.95142 20.6427,5.95142C 20.6427,5.95142 16.9733,5.32609 12.6027,5.16878L 8.76534,5.16878C 4.39465,5.32609 0.720011,5.95142 0.720011,5.95142C 0.720011,5.95142 0.430664,5.98877 0.201335,6.2181C 0.00134277,6.41943 0.0146891,6.72876 0.0146891,6.72876C 0.0146891,6.72876 0,10.2048 0.793335,13.2021C 0.883992,13.5501 1.02002,13.8008 1.30668,14.0008C 2.47066,14.8114 6.85335,16.1034 10.2094,16.7114C 10.5067,16.7608 10.8453,16.7648 11.1533,16.7114C 14.512,16.1034 18.8934,14.8114 20.0587,14.0008C 20.344,13.8008 20.4773,13.5501 20.572,13.2021C 21.364,10.2048 21.348,6.72876 21.348,6.72876C 21.348,6.72876 21.364,6.41943 21.1613,6.2181 Z "/>
+                    <GeometryDrawing Brush="#FFEE4036" Geometry="F1 M 12.3425,1.66199C 12.3425,2.57931 11.5986,3.32328 10.6812,3.32328C 9.76388,3.32328 9.01986,2.57931 9.01986,1.66199C 9.01986,0.744629 9.76388,0.000652313 10.6812,0.000652313C 11.5986,0.000652313 12.3425,0.744629 12.3425,1.66199 Z "/>
+                    <GeometryDrawing Brush="#34363637" Geometry="F1 M 17.7644,20.4173C 17.7644,19.9106 14.6297,19.5013 10.7644,19.5013C 6.89909,19.5013 3.7644,19.9106 3.7644,20.4173C 3.7644,20.924 6.89909,21.3333 10.7644,21.3333C 14.6297,21.3333 17.7644,20.924 17.7644,20.4173 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!-- MainWindow Style. We define our own chrome for the main window. This allows us to
+         gain space by bringing the tab items of the tab control into the window bar,
+         on modern operating systems. -->
+    <Style TargetType="{x:Type local:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="Icon" Value="{StaticResource awe_vec_icon_logo}" />
+        <Setter Property="Width" Value="1024" />
+        <Setter Property="Height" Value="768" />
+        <Setter Property="MinWidth" Value="400" />
+        <Setter Property="MinHeight" Value="300" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
+        <Setter Property="Title">
+            <Setter.Value>
+                <Binding 
+                    Path="SelectedView.Browser.Title" 
+                    RelativeSource="{RelativeSource Self}" 
+                    StringFormat="Awesomium Tabbed WPF Sample - {0}"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MainWindow}">
+                    <Border x:Name="ContentBorder" SnapsToDevicePixels="True">
+                        <Grid x:Name="ContentGrid" Background="#FFD2E6FA">
+                            <!-- Wrap within an AdornerDecorator or else there will be no
+                                 adorner layer for the window. This means that ErrorTemplates
+                                 will also not be visible. -->
+                            <AdornerDecorator>
+                                <Grid Margin="0,1,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <local:WebTabControl 
+                                        DataContext="{TemplateBinding Views}" 
+                                        ItemsSource="{Binding}"/>
+                                    <local:DownloadsControl 
+                                        Grid.Row="1" 
+                                        Background="#FFD2E6FA"
+                                        BorderThickness="1" 
+                                        BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+                                        Height="50"
+                                        Source="{TemplateBinding Downloads}"
+                                        Visibility="{Binding DownloadsVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                </Grid>
+                            </AdornerDecorator>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsGlassEnabled, Source={x:Static shell:SystemParameters2.Current}}" Value="True">
+                            <Setter Property="shell:WindowChrome.WindowChrome">
+                                <Setter.Value>
+                                    <shell:WindowChrome GlassFrameThickness="8,30,8,8" ResizeBorderThickness="8"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="ContentBorder" Property="CornerRadius" Value="6" />
+                            <Setter TargetName="ContentBorder" Property="Padding" Value="7,8,7,7" />
+                            <Setter TargetName="ContentGrid" Property="Background" Value="{x:Null}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

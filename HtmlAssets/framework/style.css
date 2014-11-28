@@ -1,0 +1,204 @@
+body {
+    font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background: #fafafa;
+}
+
+#menu {
+    background: white;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    z-index: 1000;
+}
+
+#title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+#searchbox {
+    font-size: 18px;
+    width: 250px;
+}
+
+#items {
+    text-align: center;
+}
+
+#footer {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: white;
+    padding: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+#menu ul {
+    padding: 15px 4px 17px 0px;
+    text-align: left;
+    display: inline;
+    margin: 0;
+    list-style: none;
+    z-index: 1000;
+}
+
+    #menu ul li {
+        font: bold 12px/18px sans-serif;
+        display: inline-block;
+        margin-right: -4px;
+        position: relative;
+        padding: 15px 20px;
+        background: #fff;
+        cursor: pointer;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        z-index: 1000;
+    }
+
+        #menu ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+            #menu ul li a:hover {
+                color: white;
+                text-decoration: underline;
+            }
+
+        #menu ul li:hover {
+            background: #c0c0c0;
+            color: #fff;
+        }
+
+        #menu ul li ul {
+            padding: 0;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 150px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transiton: opacity 0.2s;
+            -moz-transition: opacity 0.2s;
+            -ms-transition: opacity 0.2s;
+            -o-transition: opacity 0.2s;
+            -transition: opacity 0.2s;
+            z-index: 1000;
+        }
+
+            #menu ul li ul li {
+                background: #c0c0c0;
+                display: block;
+                color: #fff;
+                z-index: 1000;
+            }
+
+                #menu ul li ul li a {
+                    color: #fff;
+                }
+
+                #menu ul li ul li:hover {
+                    background: #666;
+                }
+
+        #menu ul li:hover ul {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+.slidercontent {
+    padding: 15px;
+}
+
+.button {
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.big {
+    width: 200px;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button-blue {
+    -moz-box-shadow: inset 0px 1px 0px 0px #f0f7fa;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #f0f7fa;
+    box-shadow: inset 0px 1px 0px 0px #f0f7fa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+    background: -moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+    background: -webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+    background: -o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+    background: -ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+    background: linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+    background-color: #33bdef;
+    border: 1px solid #057fd0;
+}
+
+    .button-blue:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+        background: -moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+        background: -webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+        background: -o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+        background: -ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+        background: linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+        background-color: #019ad2;
+    }
+
+    .button-blue:active {
+        position: relative;
+        top: 1px;
+    }
+
+.button-green {
+    -moz-box-shadow: inset 0px 1px 0px 0px #9acc85;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #9acc85;
+    box-shadow: inset 0px 1px 0px 0px #9acc85;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #74ad5a), color-stop(1, #68a54b));
+    background: -moz-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+    background: -webkit-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+    background: -o-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+    background: -ms-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+    background: linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#74ad5a', endColorstr='#68a54b',GradientType=0);
+    background-color: #74ad5a;
+    border: 1px solid #3b6e22;
+}
+
+    .button-green:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #68a54b), color-stop(1, #74ad5a));
+        background: -moz-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+        background: -webkit-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+        background: -o-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+        background: -ms-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+        background: linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#68a54b', endColorstr='#74ad5a',GradientType=0);
+        background-color: #68a54b;
+    }
+
+    .button-green:active {
+        position: relative;
+        top: 1px;
+    }

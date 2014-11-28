@@ -1,0 +1,14 @@
+﻿<Window x:Class="MTools.AdapterList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Network card" Height="250" Width="500" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" x:Name="AdaptersList" FontSize="14" MouseDoubleClick="AdaptersList_MouseDoubleClick">
+        </ListBox>
+        <Button Content="OK" x:Name="AdapterSelected" Click="AdapterSelected_Click" Grid.Row="1" Margin="5" IsEnabled="{Binding ElementName=AdapterList, Path=SelectedItems.Count}"/>
+    </Grid>
+</Window>

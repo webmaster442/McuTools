@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="MTools.Controls.PinControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             x:Name="PinC"
+             d:DesignHeight="80" MinHeight="80" MinWidth="205" d:DesignWidth="205" Loaded="PinC_Loaded">
+    <UserControl.Resources>
+        <conv:VisibilityConv x:Key="Visconv"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding ElementName=PinC, Path=PinHeader}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" FontWeight="Bold" FontSize="14"/>
+        <TabControl TabStripPlacement="Top" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged" x:Name="PinModeSelect">
+            <TabItem Header="Analog" IsEnabled="{Binding ElementName=PinC, Path=IsAnalogCapeable}" Visibility="{Binding ElementName=PinC, Path=IsAnalogCapeable, Converter={StaticResource Visconv}}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Value:" FontSize="14" VerticalAlignment="Center" Margin="5,0,10,0"/>
+                    <TextBlock x:Name="AnalogValue" Text="0" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="Volts:" FontSize="14" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                    <TextBlock x:Name="AnalogVolts" Text="0" FontSize="14" VerticalAlignment="Center" FontWeight="Bold"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Dig. In">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Value:" VerticalAlignment="Center" FontSize="14" Margin="5,0,10,0"/>
+                    <TextBlock x:Name="DigitalValue" Text="0" FontSize="14" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <Rectangle x:Name="DigitalDisplay" Fill="Red" Width="22" Height="22" RadiusX="2" RadiusY="2"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Dig. Out">
+                <StackPanel>
+                    <ToggleButton Content="0" Margin="5,2" FontWeight="Bold" FontSize="14" Click="ToggleButton_Click" x:Name="OutTogle"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="PWM" IsEnabled="{Binding ElementName=PinC, Path=IsPwmCapeable}" Visibility="{Binding ElementName=PinC, Path=IsPwmCapeable, Converter={StaticResource Visconv}}">
+                <controls:EditableSlider x:Name="PwmSlider" Minimum="0" Maximum="255" DefaultValue="0" Value="0" Margin="5,0" ValueChanged="PwmSlider_ValueChanged"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

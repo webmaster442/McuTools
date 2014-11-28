@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="MTools.ToolsAnalog.ResistorSolver"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:MTools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <controls:PrefixInput x:Name="TargetValue" UnitText="Ω" LabelText="Target value:" Width="200" Margin="10,0"/>
+            <ComboBox SelectedIndex="0" x:Name="SeriesSelector">
+                <ComboBoxItem Content="E12 (10%)"/>
+                <ComboBoxItem Content="E24 (5%)"/>
+                <ComboBoxItem Content="E48 (2%)"/>
+                <ComboBoxItem Content="E96 (1%)"/>
+                <ComboBoxItem Content="E192 (0,5%)"/>
+            </ComboBox>
+            <Button Content="Solve" x:Name="BtnSolve" Click="BtnSolve_Click" Width="100" Margin="5"/>
+        </StackPanel>
+        <TextBox x:Name="TbResult" Grid.Row="1" FontSize="14"></TextBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="MTools.LogicMinimalizer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MTools.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" x:Name="LogicMinim" Loaded="LogicMinim_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel  Width="80" Margin="5,130,0,0"   HorizontalAlignment="Left" Panel.ZIndex="2"  VerticalAlignment="Top">
+            <Button x:Name="Clear" Click="Clear_Click">
+                <TextBlock Text="Clear input" TextWrapping="Wrap"/>
+            </Button>
+            <TextBlock Text="Varaible A is:" TextAlignment="Center" Margin="0,5,0,0"/>
+            <RadioButton Content="MSB" IsChecked="True" Margin="10,5,0,5" Checked="Clear_Click"/>
+            <RadioButton Content="LSB" IsChecked="False" Margin="10,0,0,0" x:Name="LsbBit"  Checked="Clear_Click"/>
+        </StackPanel>
+
+        <TabControl Grid.Column="0" TabStripPlacement="Left" x:Name="InputMode">
+            <TabItem Header="Trouth table">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Number of variables:" FontSize="14"/>
+                        <StackPanel Orientation="Horizontal" Margin="8,5,10,0" x:Name="VarButtons">
+                            <RadioButton Content="2" x:Name="Default" Checked="RadioButton_Checked" IsChecked="True" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="3" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="4" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="5" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="6" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="7" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <RadioButton Content="8" Checked="RadioButton_Checked" FontSize="14" Margin="5,0"/>
+                            <Button Content="View in Minterm table" Margin="20,0" x:Name="SwitchMinterm" Click="SwitchMinterm_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <DataGrid AlternationCount="1" Grid.Column="0" Grid.Row="1" x:Name="TrouthTable" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFF9D995" VerticalScrollBarVisibility="Visible" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Index}" FontFamily="Consolas" Header="Index" Width="50" CanUserResize="False"/>
+                            <DataGridTextColumn x:Name="Variables" FontFamily="Consolas" Header="Variables" Width="100" Binding="{Binding BinaryValue}" CanUserResize="False" />
+                            <DataGridCheckBoxColumn Header="Output" Width="60" Binding="{Binding Checked}" IsThreeState="True" CanUserReorder="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="2 var. Minterm">
+                <Grid>
+                    <Button x:Name="Minterm2" Content="View trouth table" Width="110" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Panel.ZIndex="1" Click="TrouthTableView"/>
+                    <local:MintermTable2 HorizontalAlignment="Center" x:Name="Minterm2x" VerticalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="3 var. Minterm">
+                <Grid>
+                    <Button x:Name="Minterm3" Content="View trouth table" Width="110" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Panel.ZIndex="1" Click="TrouthTableView"/>
+                    <local:MintermTable3 HorizontalAlignment="Center" x:Name="Minterm3x" VerticalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="4 var. Minterm">
+                <Grid>
+                    <Button x:Name="Minterm4" Content="View trouth table" Width="110" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Panel.ZIndex="1" Click="TrouthTableView"/>
+                    <local:MintermTable4 HorizontalAlignment="Center" x:Name="Minterm4x" VerticalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="5 var. Minterm">
+                <Grid>
+                    <Button x:Name="Minterm5" Content="View trouth table" Width="110" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Panel.ZIndex="1" Click="TrouthTableView"/>
+                    <local:MintermTable5 Width="600" Height="340" HorizontalAlignment="Center" x:Name="Minterm5x" VerticalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="HazardSafe" Grid.Row="0" Grid.Column="0" Content="Make Hazard Safe the function" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Content="Minimize" Grid.Row="1" Grid.Column="0"  Height="45" FontSize="18" HorizontalAlignment="Center" Width="120" Click="Button_Click_1" VerticalAlignment="Center"/>
+            <TextBlock Text="Minimized Function:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" />
+            <TabControl Grid.Row="1" Grid.Column="1">
+                <TabItem Header="Minterm form">
+                    <TextBox x:Name="SimpleMinterm" Text=""  TextWrapping="Wrap" Height="32" Margin="10,0" FontSize="22" FontWeight="Bold"/>
+                </TabItem>
+                <TabItem Header="Maxterm form">
+                    <TextBox x:Name="SimpleMaxterm" Text=""  TextWrapping="Wrap" Height="32" Margin="10,0" FontSize="22" FontWeight="Bold"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+    </Grid>
+</UserControl>

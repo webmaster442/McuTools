@@ -1,0 +1,32 @@
+<div>
+    <p>Search Text:</p>
+    <input type="text" name="searchbox" id="searchbox" value="" />
+    <a href="#" id="deletesearch" class="button button-blue">Delete search</a>
+    <hr />
+    <div id="items"></div>
+    <script type="text/javascript">
+        function PageLoaded() {
+            var database = {};
+            database["Images/LogicIC/40xx/4016.png"] = "4016 - Quad bilateral switch";
+            database["Images/LogicIC/40xx/4017.png"] = "4017 - Decade counter with 10 decoded outputs (5-stage Johnson counter)";
+            database["Images/LogicIC/40xx/40106.png"] = "40106 - Hex inverting Schmitt trigger";
+            database["Images/LogicIC/40xx/4049.png"] = "4049 - Hex buffer inverter";
+            database["Images/LogicIC/40xx/4050.png"] = "4050 - Hex buffer/converter (non-inverting)";
+            database["Images/LogicIC/40xx/4093.png"] = "4093 - Quad 2-input Schmitt trigger NAND gate";
+
+            SetTitle("4xxx series pinouts");
+
+            $("#searchbox").keyup(function () {
+                var s = $(searchbox).val();
+                RenderDB(database, "#items", s);
+            });
+
+            $("#deletesearch").click(function () {
+                $(searchbox).val("");
+                RenderDB(database, "#items", $(searchbox).val());
+            });
+
+            RenderDB(database, "#items", "");
+        }
+    </script>
+</div>

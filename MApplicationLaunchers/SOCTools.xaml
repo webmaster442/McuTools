@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="MApplicationLaunchers.SOCTools"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <ScrollViewer>
+        <WrapPanel HorizontalAlignment="Center">
+            <controls:ImageButton Width="150" Height="150" ImageText="Ext2Explore" Margin="5" ImageSource="images/tux.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="KiTTY" Margin="5" ImageSource="images/kitty.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="TFTPD32" Margin="5" ImageSource="images/tftp.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="Universal USB Installer" Margin="5" ImageSource="images/usbinstaller.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="Win32DiskImager" Margin="5" ImageSource="images/win32diskimager.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="WinSCP" Margin="5" ImageSource="images/winscp.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="Remote Desktop Connection" Margin="5" ImageSource="images/remotedesktop.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="Command Line" Margin="5" ImageSource="images/cmd.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="PowerShell" Margin="5" ImageSource="images/powershell.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="7Zip" Margin="5" ImageSource="images/7zip.png" Click="ImageButton_Click"/>
+            <controls:ImageButton Width="150" Height="150" ImageText="Notepad&#43;&#43;" Margin="5" ImageSource="images/npp.png" Click="ImageButton_Click"/>
+            <TextBlock Width="460" Margin="5" Text="Tools that have a shield icon require User Account Control elevation to work properly" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="18" TextAlignment="Center"/>
+        </WrapPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="MTools.Controls.NewHex"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+        Title="New hex..." Height="230" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <StackPanel>
+        <TextBlock Text="Size in bytes:" Margin="5,5,0,0"/>
+        <icontrols:EditableSlider x:Name="SizeSlider" Minimum="1" Maximum="64000" Width="270" Value="1" DefaultValue="1" Margin="10,5,0,0"/>
+        <TextBlock Text="Multiplier:" Margin="5,5,0,0"/>
+        <StackPanel Orientation="Horizontal" x:Name="MultiplySelect" HorizontalAlignment="Center" Margin="0,5,0,0">
+            <RadioButton Content="1" Margin="5" IsChecked="True"/>
+            <RadioButton Content="10" Margin="5"/>
+            <RadioButton Content="100" Margin="5"/>
+            <RadioButton Content="1000" Margin="5"/>
+            <RadioButton Content="1024" Margin="5"/>
+        </StackPanel>
+        <TextBlock Text="Presets:" Margin="0,5"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="1" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="2" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="4" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="8" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="16" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="32" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+            <Button Content="64" Width="30" Height="30" Margin="5" Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+            <Button Content="OK" Height="20" Width="50" Margin="0,0,10,0" x:Name="BtnOk" Click="BtnOk_Click"/>
+            <Button Content="Cancel" Width="50" Margin="0,0,10,0" x:Name="BtnCancel" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
