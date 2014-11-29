@@ -101,22 +101,22 @@
 				<effects:OpacityFadeEffect FuzzyAmount="0.08" Progress="50"/>
 			</StackPanel.Effect>
 			<TextBlock Text="Tools:" Foreground="White" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Margin="0,30,0,0"/>
-			<StackPanel x:Name="Categories">
-				<Button x:Name="All" ToolTip="Everything" Height="50" Width="50" Click="SwitchCategory" Margin="0,5,0,0">
-					<Image Source="images/home/list-64.png"/>
-				</Button>
+            <StackPanel x:Name="Categories">
+                <Button x:Name="All" ToolTip="Everything" Height="50" Width="50" Click="SwitchCategory" Margin="0,5,0,0">
+                    <Image Source="images/home/list-64.png"/>
+                </Button>
                 <Button x:Name="Favorites" Height="50" Width="50" Click="SwitchCategory" ToolTip="Favorites / Most used" Margin="0,5,0,0">
                     <Image Source="images/home/star-64.png"/>
                 </Button>
-				<Button x:Name="Analog" ToolTip="Analog Tools" Height="50" Width="50" Margin="0,5" Click="SwitchCategory">
-					<Image Source="images/home/electrical_threshold-64.png"/>
-				</Button>
-				<Button x:Name="Digital" ToolTip="Digital Tools" Height="50" Width="50" Click="SwitchCategory">
-					<Image Source="images/home/electronics-64.png"/>
-				</Button>
-				<Button x:Name="Web" ToolTip="Web Tools" Height="50" Width="50" Margin="0,5" Click="SwitchCategory">
-					<Image Source="images/home/email-64.png"/>
-				</Button>
+                <Button x:Name="Analog" ToolTip="Analog Tools" Height="50" Width="50" Margin="0,5" Click="SwitchCategory">
+                    <Image Source="images/home/electrical_threshold-64.png"/>
+                </Button>
+                <Button x:Name="Digital" ToolTip="Digital Tools" Height="50" Width="50" Click="SwitchCategory">
+                    <Image Source="images/home/electronics-64.png"/>
+                </Button>
+                <Button x:Name="Web" ToolTip="Web Tools" Height="50" Width="50" Margin="0,5" Click="SwitchCategory">
+                    <Image Source="images/home/email-64.png"/>
+                </Button>
                 <Button x:Name="Other" ToolTip="Other Tools" Height="50" Width="50" Click="SwitchCategory">
                     <Image Source="images/home/puzzle-64.png"/>
                 </Button>
@@ -124,13 +124,10 @@
                     <Image Source="images/home/pdf-64.png"/>
                 </Button>
                 <Button x:Name="External" ToolTip="External Apps" Height="50" Width="50" Margin="0,5" Click="SwitchCategory">
-					<Image Source="images/home/external_link-64.png"/>
-				</Button>
-			</StackPanel>
-			<Button ToolTip="Manage External Apps..." Height="50" Width="50" x:Name="ManageExtApps" Click="ManageExtApps_Click" Margin="0,10,0,0">
-				<Image Source="images/home/settings-64.png"/>
-			</Button>
-		</StackPanel>
+                    <Image Source="images/home/external_link-64.png"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
 		<Rectangle Width="30" Margin="30,0,0,0" Fill="#00000000" Panel.ZIndex="31" Grid.RowSpan="2" HorizontalAlignment="Left" x:Name="TriggerIn">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="MouseEnter">
@@ -166,7 +163,7 @@
 				</TransformGroup>
 			</ScrollViewer.RenderTransform>
 			<StackPanel Orientation="Horizontal">
-				<WrapPanel x:Name="View" Orientation="Vertical" Drop="View_Drop" AllowDrop="True"> 
+				<WrapPanel x:Name="View" Orientation="Vertical"> 
 					<WrapPanel.LayoutTransform>
 						<ScaleTransform ScaleX="{Binding Value, ElementName=ZoomSlider}" ScaleY="{Binding Value, ElementName=ZoomSlider}"/>
 					</WrapPanel.LayoutTransform>

@@ -10,26 +10,18 @@ namespace McuTools.Classes
     [Serializable]
     public class Config
     {
-        public ExtProgram[] Programs;
         public UsageInfo[] Stats;
         public SubConfigDict<string, string> SubConfigs;
     }
 
     public class UserConfiguration
     {
-        private ExternalProgs _programs;
         private UsageStats _stats;
         private SubConfigDict<string, string> _subconfigs;
 
         public UserConfiguration()
         {
-            _programs = new ExternalProgs();
             _stats = new UsageStats();
-        }
-
-        public ExternalProgs ExternalProgs
-        {
-            get { return _programs; }
         }
 
         public UsageStats UsageStats
@@ -60,7 +52,6 @@ namespace McuTools.Classes
                 XmlSerializer ser = new XmlSerializer(typeof(Config));
                 StringWriter textWriter = new StringWriter();
                 Config conf = new Config();
-                conf.Programs = this._programs.ToArray();
                 conf.Stats = this._stats.Pack();
                 conf.SubConfigs = this._subconfigs;
                 ser.Serialize(textWriter, conf);
@@ -83,8 +74,6 @@ namespace McuTools.Classes
                 XmlSerializer ser = new XmlSerializer(typeof(Config));
                 StringReader stringReader = new StringReader(Settings.Default.UserConfigXML);
                 Config loaded = (Config)ser.Deserialize(stringReader);
-                this._programs.Clear();
-                this._programs.AddRange(loaded.Programs);
                 this._stats.Unpack(loaded.Stats);
                 this._subconfigs = loaded.SubConfigs;
                 loaded = null;

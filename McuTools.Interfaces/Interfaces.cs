@@ -27,6 +27,10 @@ namespace McuTools.Interfaces
         /// Indicates that a tool supposed to be put in the web category
         /// </summary>
         Web,
+        /// <summary>
+        /// Indicates that a tool supposed to be put in the external category
+        /// </summary>
+        External,
     }
 
     /// <summary>
@@ -146,7 +150,7 @@ namespace McuTools.Interfaces
         /// </summary>
         public override ToolCategory Category
         {
-            get { return ToolCategory.Other; }
+            get { return ToolCategory.External; }
         }
     }
 

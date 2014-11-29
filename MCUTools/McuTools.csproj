@@ -106,9 +106,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AppConfigManager.xaml.cs">
-      <DependentUpon>AppConfigManager.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Browser\BrowserControl.xaml.cs">
       <DependentUpon>BrowserControl.xaml</DependentUpon>
     </Compile>
@@ -121,7 +118,6 @@
       <DependentUpon>ChildWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\BookManager.cs" />
-    <Compile Include="Classes\ExternalPrograms.cs" />
     <Compile Include="Classes\SubConfigDict.cs" />
     <Compile Include="Classes\TrayIcon.cs" />
     <Compile Include="Classes\UsageStats.cs" />
@@ -135,10 +131,6 @@
     <Compile Include="SmartHomeScreen.xaml.cs">
       <DependentUpon>SmartHomeScreen.xaml</DependentUpon>
     </Compile>
-    <Page Include="AppConfigManager.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Browser\BrowserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,7 +269,6 @@
     <Resource Include="images\home\email-64.png" />
     <Resource Include="images\home\external_link-64.png" />
     <Resource Include="images\home\puzzle-64.png" />
-    <Resource Include="images\home\settings-64.png" />
     <Resource Include="images\TaskBar.ico" />
     <Resource Include="images\8\minimize_window-32.png" />
     <Resource Include="images\8\restore_window-32.png" />

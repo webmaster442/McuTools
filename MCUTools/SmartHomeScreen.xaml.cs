@@ -23,7 +23,6 @@ namespace McuTools
         private List<ToolBase> _tools;
         private enum Toolcat { Analog, Digital, Web, Other, External, All, Books, Favorites }
         private FileToIconConverter _fc;
-        private AppConfigManager _conf;
         private BookManager _books;
 
         public MainWindow MainWin { get; set; }
@@ -68,26 +67,6 @@ namespace McuTools
                 {
                     if ((item as ExternalTool).IsVisible == false) continue;
                 }
-                else View.Children.Add(btn);
-                i++;
-            }
-            return i;
-        }
-
-        private int RenderExternalPrograms(string search = null)
-        {
-            int i = 0;
-            foreach (var prog in App._Config.ExternalProgs.FilterPrograms(search))
-            {
-                ImageButton btn = new ImageButton();
-                btn.Width = 120;
-                btn.Height = 120;
-                btn.ImageText = prog.Name;
-                if (prog.Name.Length > 60) btn.ToolTip = prog.Name;
-                btn.ImageSource = _fc.GetImage(prog.Path, 48);
-                btn.Margin = new Thickness(5);
-                btn.Name = "ext_" + i.ToString();
-                btn.Click += new RoutedEventHandler(ExternalClicked);
                 View.Children.Add(btn);
                 i++;
             }
@@ -163,7 +142,7 @@ namespace McuTools
 
         private void ExternalClicked(object sender, RoutedEventArgs e)
         {
-            try
+            /*try
             {
                 var d = sender.ToString();
                 Process.Start(App._Config.ExternalProgs.GetProgram(d).Path);
@@ -172,7 +151,7 @@ namespace McuTools
             catch (Exception ex)
             {
                 WpfHelpers.ExceptionDialog(ex);
-            }
+            }*/
         }
 
         public void RefreshView()
@@ -190,7 +169,6 @@ namespace McuTools
             {
                 list = (from i in _tools where i.Description.ToLower().Contains(searchtext.ToLower()) orderby i.Description ascending select i).ToList();
                 RenderList(list);
-                RenderExternalPrograms(searchtext);
                 return;
             }
 
@@ -201,14 +179,12 @@ namespace McuTools
                 case Toolcat.All:
                     list = (from i in _tools orderby i.Description ascending select i).ToList();
                     counter += RenderList(list);
-                    counter += RenderExternalPrograms();
                     Header.Text = string.Format("Tools ({0})", counter);
                     break;
                 case Toolcat.Favorites:
                     var items = (from i in _tools where App._Config.UsageStats.ContainsKey(i.Description) orderby App._Config.UsageStats[i.Description] descending select i);
                     counter += RenderList(items.ToList());
                     counter += RenderBooks("**fav**");
-                    counter += RenderExternalPrograms("**fav**");
                     Header.Text = string.Format("Most used ({0})", counter);
                     break;
                 case Toolcat.Analog:
@@ -232,7 +208,8 @@ namespace McuTools
                     Header.Text = string.Format("Web Tools ({0})", counter);
                     break;
                 case Toolcat.External:
-                    counter += RenderExternalPrograms();
+                    list = (from i in _tools where i.Category == ToolCategory.External orderby i.Description ascending select i).ToList();
+                    counter += RenderList(list);
                     Header.Text = string.Format("External Programs ({0})", counter);
                     break;
                 case Toolcat.Books:
@@ -267,28 +244,6 @@ namespace McuTools
             ScrollViewer scv = (ScrollViewer)sender;
             scv.ScrollToHorizontalOffset(scv.HorizontalOffset - e.Delta);
             e.Handled = true;
-        }
-
-        private void ManageExtApps_Click(object sender, RoutedEventArgs e)
-        {
-            _conf = new AppConfigManager();
-            (App.Current.MainWindow as IToolHost).OpenUserControlAsPopup(_conf, "Manage External Applications");
-        }
-
-        private void View_Drop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                string file = files[0];
-                if (file.EndsWith(".exe") || file.EndsWith(".lnk"))
-                {
-                    _conf = new AppConfigManager();
-                    _conf.HandleDrop(file);
-                    (App.Current.MainWindow as IToolHost).OpenUserControlAsPopup(_conf, "Manage External Applications");
-                }
-                else WpfHelpers.ExceptionDialog("Unsupported file type");
-            }
         }
 
         private void ScrollView_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
