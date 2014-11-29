@@ -140,20 +140,6 @@ namespace McuTools
             }
         }
 
-        private void ExternalClicked(object sender, RoutedEventArgs e)
-        {
-            /*try
-            {
-                var d = sender.ToString();
-                Process.Start(App._Config.ExternalProgs.GetProgram(d).Path);
-                App._Config.UsageStats[d] += 1;
-            }
-            catch (Exception ex)
-            {
-                WpfHelpers.ExceptionDialog(ex);
-            }*/
-        }
-
         public void RefreshView()
         {
             RenderItems(Toolcat.All);
