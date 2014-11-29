@@ -69,13 +69,13 @@
   <ItemGroup>
     <Reference Include="Awesomium.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214, processorArchitecture=x86" />
     <Reference Include="Awesomium.Windows.Controls, Version=1.7.5.0, Culture=neutral, PublicKeyToken=7a34e179b8b61c39, processorArchitecture=x86" />
-    <Reference Include="GoogleAnalyticsTracker.Core, Version=3.0.2.0, Culture=neutral, PublicKeyToken=04ab204e84b117c0, processorArchitecture=MSIL">
+    <Reference Include="GoogleAnalyticsTracker.Core, Version=3.0.24.0, Culture=neutral, PublicKeyToken=04ab204e84b117c0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\GoogleAnalyticsTracker.Core.3.0.2\lib\portable-win+net45+wp80\GoogleAnalyticsTracker.Core.dll</HintPath>
+      <HintPath>..\packages\GoogleAnalyticsTracker.Core.3.0.24\lib\portable-net45+win+wp80\GoogleAnalyticsTracker.Core.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleAnalyticsTracker.Simple, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="GoogleAnalyticsTracker.Simple, Version=3.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.3.0.2\lib\net45\GoogleAnalyticsTracker.Simple.dll</HintPath>
+      <HintPath>..\packages\GoogleAnalyticsTracker.Simple.3.0.24\lib\net45\GoogleAnalyticsTracker.Simple.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="System" />
@@ -129,9 +129,6 @@
     <Compile Include="Controls\BatteryInfo.xaml.cs">
       <DependentUpon>BatteryInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\StartMenu.xaml.cs">
-      <DependentUpon>StartMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\StatusbarMenu.xaml.cs">
       <DependentUpon>StatusbarMenu.xaml</DependentUpon>
     </Compile>
@@ -161,10 +158,6 @@
     <Page Include="Controls\BinaryClock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\StartMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\StatusbarMenu.xaml">
       <SubType>Designer</SubType>
@@ -278,7 +271,6 @@
     <Resource Include="images\statusbar\settings-32.png" />
     <Resource Include="images\statusbar\shutdown-32.png" />
     <Resource Include="images\statusbar\sleep-32.png" />
-    <Resource Include="images\statusbar\windows8-32.png" />
     <Resource Include="images\home\list-64.png" />
     <Resource Include="images\home\electrical_threshold-64.png" />
     <Resource Include="images\home\electronics-64.png" />

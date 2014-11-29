@@ -23,7 +23,7 @@ namespace MCalculator.Maths
         /// <param name="intervalEnd">Where the interval stops, inclusive and finite.</param>
         public static double Integrate(Func<double, double> f, double intervalBegin, double intervalEnd)
         {
-            return MathNet.Numerics.Integration.Integrate.OnClosedInterval(f, intervalBegin, intervalEnd);
+            return MathNet.Numerics.Integrate.OnClosedInterval(f, intervalBegin, intervalEnd);
         }
 
         /// <summary>

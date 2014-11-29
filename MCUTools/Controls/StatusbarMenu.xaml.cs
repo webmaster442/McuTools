@@ -24,12 +24,9 @@ namespace McuTools.Controls
         private const uint WM_SYSCOMMAND = 0x0112;
         private const int SC_MONITORPOWER = 0xF170;
 
-        private StartMenu _start;
-
         public StatusbarMenu()
         {
             InitializeComponent();
-            _start = new StartMenu();
         }
 
         private void Power_Click(object sender, RoutedEventArgs e)
@@ -123,11 +120,6 @@ namespace McuTools.Controls
             string[] p = s.Header.ToString().Split('-');
             if (p.Length < 1) return;
             Process.Start("explorer.exe", "/e /root,"+p[0].Trim());
-        }
-
-        private void Start_Click(object sender, RoutedEventArgs e)
-        {
-            (App.Current.MainWindow as IToolHost).OpenUserControlAsPopup(_start, "Start Menu");
         }
 
         private void Console_Click(object sender, RoutedEventArgs e)
