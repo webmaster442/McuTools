@@ -12,12 +12,14 @@ namespace MLaunchers
 
         public override void RunTool()
         {
-            if (string.IsNullOrEmpty(Path))
+            string location = Environment.ExpandEnvironmentVariables(Path);
+
+            if (string.IsNullOrEmpty(location))
             {
                 MessageBox.Show("Tool Path has not been set. Please use settings", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (!File.Exists(Path))
+            if (!File.Exists(location))
             {
                 MessageBox.Show("File not found. Please use settings", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -25,7 +27,7 @@ namespace MLaunchers
             try
             {
                 Process P = new Process();
-                P.StartInfo.FileName = Path;
+                P.StartInfo.FileName = location;
                 if (AdministratorRequired) P.StartInfo.Verb = "runas";
                 P.Start();
             }

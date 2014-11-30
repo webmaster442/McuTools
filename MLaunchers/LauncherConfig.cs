@@ -12,6 +12,8 @@ namespace MLaunchers
         public string EaglePath { get; set; }
         public string LibreOfficePath { get; set; }
         public string LtSpicePath { get; set; }
+        public string ArduinoPath { get; set; }
+        public string ProcessingPath { get; set; }
 
         public static LauncherConfig Load(string path)
         {

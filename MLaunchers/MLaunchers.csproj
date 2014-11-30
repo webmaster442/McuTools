@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="External.cs" />
+    <Compile Include="ExternalConfig.xaml.cs">
+      <DependentUpon>ExternalConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LauncherConfig.cs" />
     <Compile Include="Eprog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -83,7 +86,6 @@
   <ItemGroup>
     <Resource Include="Icons\7zip.png" />
     <Resource Include="Icons\arduino.png" />
-    <Resource Include="Icons\clock.png" />
     <Resource Include="Icons\cmd.png" />
     <Resource Include="Icons\eagle.png" />
     <Resource Include="Icons\kitty.png" />
@@ -92,13 +94,17 @@
     <Resource Include="Icons\powershell.png" />
     <Resource Include="Icons\processing.png" />
     <Resource Include="Icons\remotedesktop.png" />
-    <Resource Include="Icons\settings2-128.png" />
-    <Resource Include="Icons\soc.png" />
     <Resource Include="Icons\tftp.png" />
     <Resource Include="Icons\tux.png" />
     <Resource Include="Icons\usbinstaller.png" />
     <Resource Include="Icons\win32diskimager.png" />
     <Resource Include="Icons\winscp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ExternalConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
