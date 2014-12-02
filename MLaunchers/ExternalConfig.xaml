@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,16 +15,19 @@
         <ScrollViewer Grid.Row="0">
             <StackPanel>
                 <TextBlock Text="Arduino Path:" Margin="8,5"/>
-                <icontrols:FileFolderSelector Margin="16,5"/>
+                <icontrols:FileFolderSelector x:Name="FfsArduino" Margin="16,5"/>
                 <TextBlock Text="Eagle Path:" Margin="8,5"/>
-                <icontrols:FileFolderSelector Margin="16,5"/>
+                <icontrols:FileFolderSelector x:Name="FfsEagle" Margin="16,5"/>
                 <TextBlock Text="Libre Office:" Margin="8,5"/>
-                <icontrols:FileFolderSelector Margin="16,5"/>
+                <icontrols:FileFolderSelector x:Name="FfsLibreOffice" Margin="16,5"/>
                 <TextBlock Text="LTSpice:" Margin="8,5"/>
-                <icontrols:FileFolderSelector Margin="16,5"/>
+                <icontrols:FileFolderSelector x:Name="FfsLtSpice" Margin="16,5"/>
                 <TextBlock Text="Processing:" Margin="8,5"/>
-                <icontrols:FileFolderSelector Margin="16,5"/>
+                <icontrols:FileFolderSelector x:Name="FfsProcessing" Margin="16,5"/>
             </StackPanel>
         </ScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Save" x:Name="BtnSave" Width="100" Margin="10,2" Click="BtnSave_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>

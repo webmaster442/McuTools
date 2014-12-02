@@ -32,7 +32,7 @@ namespace MLaunchers
             }
         }
 
-        public void Save(LauncherConfig cf, string path)
+        public static void Save(LauncherConfig cf, string path)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace MLaunchers
             
             if (Configuration == null)
             {
-                if (File.Exists(AppDir + "\\launchers.xml")) Configuration = LauncherConfig.Load("launchers.xml");
+                if (File.Exists(AppDir + "\\launchers.xml")) Configuration = LauncherConfig.Load(AppDir + "\\launchers.xml");
                 else Configuration = new LauncherConfig();
             }
         }

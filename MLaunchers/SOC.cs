@@ -74,14 +74,45 @@ namespace MLaunchers
             get { return "TFTPD32"; }
         }
 
-        public override bool AdministratorRequired
+        public override System.Windows.Media.ImageSource Icon
         {
-            get { return true; }
+            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/tftp.png", UriKind.Relative)); }
+        }
+    }
+
+    public class Npp : Eprog
+    {
+        public override string Path
+        {
+            get { return ConfigReader.AppDir + "\\SOC\\npp\npp.exe"; }
+        }
+
+        public override string Description
+        {
+            get { return "Notepad++"; }
         }
 
         public override System.Windows.Media.ImageSource Icon
         {
-            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/tftp.png", UriKind.Relative)); }
+            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/npp.png", UriKind.Relative)); }
+        }
+    }
+
+    public class Zip7 : Eprog
+    {
+        public override string Path
+        {
+            get { return ConfigReader.AppDir + "\\SOC\\7zip\\7zfm.exe"; }
+        }
+
+        public override string Description
+        {
+            get { return "7Zip"; }
+        }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/7zip.png", UriKind.Relative)); }
         }
     }
 

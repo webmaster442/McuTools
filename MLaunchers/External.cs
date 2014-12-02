@@ -94,4 +94,23 @@ namespace MLaunchers
             get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/processing.png", UriKind.Relative)); }
         }
     }
+
+    public class LibreOffice : Eprog
+    {
+
+        public override string Path
+        {
+            get { return ConfigReader.Configuration.LibreOfficePath; }
+        }
+
+        public override string Description
+        {
+            get { return "Libre Office"; }
+        }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/libreoffice.png", UriKind.Relative)); }
+        }
+    }
 }

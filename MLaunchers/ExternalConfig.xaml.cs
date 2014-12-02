@@ -24,5 +24,24 @@ namespace MLaunchers
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            FfsArduino.SelectedPath = ConfigReader.Configuration.ArduinoPath;
+            FfsEagle.SelectedPath = ConfigReader.Configuration.EaglePath;
+            FfsLibreOffice.SelectedPath = ConfigReader.Configuration.LibreOfficePath;
+            FfsLtSpice.SelectedPath = ConfigReader.Configuration.LtSpicePath;
+            FfsProcessing.SelectedPath = ConfigReader.Configuration.ProcessingPath;
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigReader.Configuration.ArduinoPath = FfsArduino.SelectedPath;
+            ConfigReader.Configuration.EaglePath = FfsEagle.SelectedPath;
+            ConfigReader.Configuration.LibreOfficePath = FfsLibreOffice.SelectedPath;
+            ConfigReader.Configuration.LtSpicePath = FfsLtSpice.SelectedPath;
+            ConfigReader.Configuration.ProcessingPath = FfsProcessing.SelectedPath;
+            LauncherConfig.Save(ConfigReader.Configuration, ConfigReader.AppDir + "\\launchers.xml");
+        }
     }
 }
