@@ -477,10 +477,9 @@
             </Button>
         </StackPanel>
         <Grid>
-            <TabControl x:Name="Tabs" Style="{DynamicResource TabControlStyleKey}">
-            </TabControl>
+            <TabControl x:Name="Tabs" Style="{StaticResource TabControlStyleKey}"/>
         </Grid>
-        <Grid x:Name="PopupWin" Margin="20" Opacity="0.98" Background="#FFF3F3F3" Panel.ZIndex="600" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="PopupWin" Margin="20" Background="#FFF3F3F3" Panel.ZIndex="600" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

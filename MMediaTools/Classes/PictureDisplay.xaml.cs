@@ -1,4 +1,5 @@
-﻿using MMediaTools.Tools;
+﻿using McuTools.Interfaces.WPF;
+using MMediaTools.Tools;
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
@@ -87,20 +88,27 @@ namespace MMediaTools.Classes
 
         public void SwitchImage(int index = -1)
         {
-            if (Items == null) return;
-            if (index > -1) Index = index;
-            switch (Display.SelectedIndex)
+            try
             {
-                case 0:
-                    Image2.Source = new BitmapImage(new Uri(Items[Index].Path));
-                    Container2.Background = GetDominantColor(Items[Index].Path);
-                    Display.SelectedIndex++;
-                    break;
-                case 1:
-                    Image1.Source = new BitmapImage(new Uri(Items[Index].Path));
-                    Container1.Background = GetDominantColor(Items[Index].Path);
-                    Display.SelectedIndex--;
-                    break;
+                if (Items == null) return;
+                if (index > -1) Index = index;
+                switch (Display.SelectedIndex)
+                {
+                    case 0:
+                        Image2.Source = new BitmapImage(new Uri(Items[Index].Path));
+                        Container2.Background = GetDominantColor(Items[Index].Path);
+                        Display.SelectedIndex++;
+                        break;
+                    case 1:
+                        Image1.Source = new BitmapImage(new Uri(Items[Index].Path));
+                        Container1.Background = GetDominantColor(Items[Index].Path);
+                        Display.SelectedIndex--;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                WpfHelpers.ExceptionDialog(ex);
             }
         }
 
