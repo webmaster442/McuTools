@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 
 
-namespace McuTools.Interfaces.Controls.Syntax
+namespace MCalculator.Classes.Syntax
 {
     /// <summary>
     /// Highlight rule

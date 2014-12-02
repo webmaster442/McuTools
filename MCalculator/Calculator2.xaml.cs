@@ -1,5 +1,5 @@
 ﻿using MCalculator.Classes;
-using McuTools.Interfaces.Controls.Syntax;
+using MCalculator.Classes.Syntax;
 using McuTools.Interfaces.WPF;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:syn="clr-namespace:McuTools.Interfaces.Controls.Syntax;assembly=McuTools.Interfaces"
+             xmlns:syn="clr-namespace:MCalculator.Classes.Syntax"
              xmlns:local="clr-namespace:MCalculator.Classes"
              xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
              xmlns:wpf="clr-namespace:McuTools.Interfaces.WPF;assembly=McuTools.Interfaces"

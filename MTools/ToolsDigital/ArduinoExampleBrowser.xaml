@@ -3,29 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:syn="clr-namespace:McuTools.Interfaces.Controls.Syntax;assembly=McuTools.Interfaces"
              xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
-    <UserControl.Resources>
-        <Style TargetType="syn:SyntaxHighlightTextBox">
-            <Setter Property="CursorColor" Value="Black" />
-            <Setter Property="BackgroundBrush" Value="{DynamicResource Gradient}"/>
-            <Setter Property="ForegroundBrush" Value="Black"/>
-            <Setter Property="SyntaxRules">
-                <Setter.Value>
-                    <syn:SyntaxRuleCollection>
-                        <syn:SyntaxRuleItem RuleType="Comment" Foreground="#149426"/>
-                        <syn:SyntaxRuleItem RuleType="Keyword" Foreground="#2361d1"/>
-                        <syn:SyntaxRuleItem RuleType="Number" Foreground="#a39601"/>
-                        <syn:SyntaxRuleItem RuleType="String" Foreground="#b00ca3"/>
-                        <syn:SyntaxRuleItem RuleType="Operator" Foreground="#d21010"/>
-                        <syn:SyntaxRuleItem RuleType="Indentifier" Foreground="Black"/>
-                    </syn:SyntaxRuleCollection>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="190"/>
@@ -56,6 +36,6 @@
         </StackPanel>
         <TreeView Grid.Row="2" Grid.Column="0" x:Name="SampleTree" MouseDoubleClick="SampleTree_MouseDoubleClick"/>
         <GridSplitter Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" />
-        <syn:SyntaxHighlightTextBox x:Name="Editor" Grid.Row="2" Grid.Column="2" FontSize="14" FontFamily="Courier new"/>
+        <TextBox x:Name="Editor" Grid.Row="2" Grid.Column="2" FontSize="14" FontFamily="Courier new"/>
     </Grid>
 </UserControl>

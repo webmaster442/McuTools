@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McuTools.Interfaces.Controls.Syntax
+namespace MCalculator.Classes.Syntax
 {
     /// <summary>
     /// Collection of SyntaxHighlightItem

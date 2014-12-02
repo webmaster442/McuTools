@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace McuTools.Interfaces.Controls.Syntax
+namespace MCalculator.Classes.Syntax
 {
 
     public class HighlightWordsCollection : IList<string>

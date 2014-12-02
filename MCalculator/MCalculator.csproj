@@ -99,6 +99,14 @@
       <DependentUpon>CustomActions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\HelpGenerator.cs" />
+    <Compile Include="Classes\Syntax\CodeToken.cs" />
+    <Compile Include="Classes\Syntax\HighlightWordsCollection.cs" />
+    <Compile Include="Classes\Syntax\ISyntaxLexer.cs" />
+    <Compile Include="Classes\Syntax\SyntaxHighlightTextBox.xaml.cs">
+      <DependentUpon>SyntaxHighlightTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Syntax\SyntaxRuleCollection.cs" />
+    <Compile Include="Classes\Syntax\SyntaxRuleItem.cs" />
     <Compile Include="FunctionTester.xaml.cs">
       <DependentUpon>FunctionTester.xaml</DependentUpon>
     </Compile>
@@ -153,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Classes\ProgressControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Classes\Syntax\SyntaxHighlightTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

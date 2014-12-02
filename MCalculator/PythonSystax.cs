@@ -1,4 +1,4 @@
-﻿using McuTools.Interfaces.Controls.Syntax;
+﻿using MCalculator.Classes.Syntax;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
 

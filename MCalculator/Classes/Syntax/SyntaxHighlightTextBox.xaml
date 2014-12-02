@@ -1,7 +1,7 @@
-﻿<TextBox x:Class="McuTools.Interfaces.Controls.Syntax.SyntaxHighlightTextBox"
+﻿<TextBox x:Class="MCalculator.Classes.Syntax.SyntaxHighlightTextBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:McuTools.Interfaces.Controls.Syntax"
+    xmlns:local="clr-namespace:MCalculator.Classes.Syntax"
     xmlns:a="clr-namespace:System;assembly=mscorlib">
     <TextBox.Template>
         <ControlTemplate TargetType="local:SyntaxHighlightTextBox">

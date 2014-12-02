@@ -66,6 +66,13 @@
     <Compile Include="Controls\AlphaSelectControl.xaml.cs">
       <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SyntaxHighlight\DrawingControl.cs" />
+    <Compile Include="Controls\SyntaxHighlight\HighlighterManager.cs" />
+    <Compile Include="Controls\SyntaxHighlight\IHighlighter.cs" />
+    <Compile Include="Controls\SyntaxHighlight\SyntaxHighlightBox.xaml.cs">
+      <DependentUpon>SyntaxHighlightBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SyntaxHighlight\TextUtilities.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
@@ -90,15 +97,6 @@
     </Compile>
     <Compile Include="Controls\ShaderTransition\TransitionControl.cs" />
     <Compile Include="Controls\ShaderTransition\TransitionHelpers.cs" />
-    <Compile Include="Controls\Syntax\CodeToken.cs" />
-    <Compile Include="Controls\Syntax\CodeTokenType.cs" />
-    <Compile Include="Controls\Syntax\HighlightWordsCollection.cs" />
-    <Compile Include="Controls\Syntax\ISyntaxLexer.cs" />
-    <Compile Include="Controls\Syntax\SyntaxHighlightTextBox.xaml.cs">
-      <DependentUpon>SyntaxHighlightTextBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Syntax\SyntaxRuleCollection.cs" />
-    <Compile Include="Controls\Syntax\SyntaxRuleItem.cs" />
     <Compile Include="Controls\VirtualizingWrapPanel.cs" />
     <Compile Include="DenseArray.cs" />
     <Compile Include="Effects\BlodTransitionEffectEffect.cs" />
@@ -135,6 +133,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Resources\syntax.xsd">
+      <SubType>Designer</SubType>
+    </Resource>
     <Resource Include="Effects\PngOverlayEffect.ps" />
     <Resource Include="Effects\ViewEnhancersEffect.ps" />
     <Resource Include="Effects\BwFadeEffect.ps" />
@@ -157,6 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\AlphaSelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SyntaxHighlight\SyntaxHighlightBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -188,10 +193,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Syntax\SyntaxHighlightTextBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -211,6 +212,7 @@
     <Content Include="Effects\FoldTransitionEffect.fx" />
     <Content Include="Effects\OpacityFade.fx" />
     <Content Include="Effects\PivotTransitionEffect.fx" />
+    <Resource Include="Resources\Arduino.xml" />
     <Resource Include="Icons\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

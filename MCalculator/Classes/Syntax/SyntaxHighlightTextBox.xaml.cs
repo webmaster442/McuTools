@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Collections;
 
 
-namespace McuTools.Interfaces.Controls.Syntax
+namespace MCalculator.Classes.Syntax
 {
     /// <summary>
     /// Interaction logic for SyntaxHighlightTextBox.xaml

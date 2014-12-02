@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Syntax name="Arduino">
+	<HighlightWordsRule name="Reserved language words">
+		<Words>
+      struct typedef class public private protected for while do break continue switch case return if else try catch static const register inline sizeof
+      friend operator virtual
+		</Words>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#0080FF</Foreground>
+		<FontWeight>Bold</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightWordsRule>
+
+	<HighlightWordsRule name="Standard types">
+		<Words>
+      int void char short long unsigned signed float double
+    </Words>
+		<IgnoreCase>true</IgnoreCase>
+		<Foreground>#8000FF</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightWordsRule>
+
+	<HighlightWordsRule name="Standard functions">
+		<Words>
+      pinMode digitalRead digitalWrite analogWrite delay setup loop analogRead analogReference analogReadResolution analogWriteResolution
+      noTone tone pulseIn shiftOut shiftIn micros millis delayMicroseconds min max abs constrain map pow sqrt sin cos tan random randomSeed
+      lowByte highByte bitRead bitWrite bitSet bitClear bit attachInterrupt detachInterrupt interrupts noInterrupts
+    </Words>
+		<IgnoreCase>true</IgnoreCase>
+		<Foreground>#0080FF</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightWordsRule>
+
+  <HighlightWordsRule name="Constants">
+    <Words>
+      INPUT OUTPUT LOW HIGH NPUT_PULLUP LED_BUILTIN 
+    </Words>
+    <IgnoreCase>false</IgnoreCase>
+    <Foreground>#FF0000</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </HighlightWordsRule>
+
+  <AdvancedHighlightRule name="Comments">
+    <Expression>//.*</Expression>
+    <IgnoreCase>false</IgnoreCase>
+    <Foreground>#009933</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </AdvancedHighlightRule>
+
+  <AdvancedHighlightRule name="CommentsMultiline">
+    <Expression>/\*(.|\s)*?\*/</Expression>
+    <IgnoreCase>false</IgnoreCase>
+    <Foreground>#009933</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </AdvancedHighlightRule>
+
+	<AdvancedHighlightRule name="Numbers">
+		<Expression>\b([0-9]+)\b</Expression>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#F68A1B</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</AdvancedHighlightRule>
+</Syntax>

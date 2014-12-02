@@ -68,7 +68,6 @@
       <DependentUpon>AdapterList.xaml</DependentUpon>
     </Compile>
     <Compile Include="AnalogTools.cs" />
-    <Compile Include="classes\ArduinoSyntax.cs" />
     <Compile Include="classes\AudioGeneration.cs" />
     <Compile Include="classes\Chunks.cs" />
     <Compile Include="classes\PortDataItem.cs" />

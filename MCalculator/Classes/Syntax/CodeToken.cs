@@ -1,6 +1,21 @@
 ﻿
-namespace McuTools.Interfaces.Controls.Syntax
+namespace MCalculator.Classes.Syntax
 {
+
+    /// <summary>
+    /// Type of syntax rules
+    /// </summary>
+    public enum CodeTokenType
+    {
+        Keyword,
+        String,
+        Number,
+        Comment,
+        Indentifier,
+        Operator,
+        None
+    }
+
     /// <summary>
     /// Code Token
     /// </summary>
