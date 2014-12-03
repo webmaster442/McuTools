@@ -149,7 +149,7 @@ namespace McuTools
         
         private void LoadTools()
         {
-            string AppDir = AppDomain.CurrentDomain.BaseDirectory;
+            string AppDir = Folders.Application;
             bool isnetwork = false;
             DriveInfo di = new DriveInfo(AppDir);
             if (di.DriveType == DriveType.Network) isnetwork = true; 

@@ -1,4 +1,5 @@
-﻿using McuTools.Interfaces.WPF;
+﻿using McuTools.Interfaces;
+using McuTools.Interfaces.WPF;
 using System;
 using System.IO;
 using System.Reflection;
@@ -53,18 +54,11 @@ namespace MLaunchers
     {
         public static LauncherConfig Configuration { get; private set; }
 
-        public static string AppDir { get; private set; }
-
         static ConfigReader()
         {
-            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            AppDir =  Path.GetDirectoryName(path);
-            
             if (Configuration == null)
             {
-                if (File.Exists(AppDir + "\\launchers.xml")) Configuration = LauncherConfig.Load(AppDir + "\\launchers.xml");
+                if (File.Exists(Folders.Application + "\\launchers.xml")) Configuration = LauncherConfig.Load(Folders.Application + "\\launchers.xml");
                 else Configuration = new LauncherConfig();
             }
         }

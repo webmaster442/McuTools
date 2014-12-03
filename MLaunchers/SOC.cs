@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McuTools.Interfaces;
+using System;
 using System.Windows.Media.Imaging;
 
 namespace MLaunchers
@@ -7,7 +8,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir+"\\SOC\\Kitty.exe"; }
+            get { return Folders.Application+"\\SOC\\Kitty.exe"; }
         }
 
         public override string Description
@@ -25,7 +26,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir + "\\SOC\\WinSCP.exe"; }
+            get { return Folders.Application + "\\SOC\\WinSCP.exe"; }
         }
 
         public override string Description
@@ -43,7 +44,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir + "\\SOC\\Win32DiskImager.exe"; }
+            get { return Folders.Application + "\\SOC\\Win32DiskImager.exe"; }
         }
 
         public override string Description
@@ -66,7 +67,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir + "\\SOC\\tftpd32.exe"; }
+            get { return Folders.Application + "\\SOC\\tftpd32.exe"; }
         }
 
         public override string Description
@@ -84,7 +85,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir + "\\SOC\\npp\npp.exe"; }
+            get { return Folders.Application + "\\SOC\\npp\npp.exe"; }
         }
 
         public override string Description
@@ -102,7 +103,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return ConfigReader.AppDir + "\\SOC\\7zip\\7zfm.exe"; }
+            get { return Folders.Application + "\\SOC\\7zip\\7zfm.exe"; }
         }
 
         public override string Description

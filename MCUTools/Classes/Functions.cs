@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Diagnostics;
+using McuTools.Interfaces;
 
 namespace McuTools
 {
@@ -14,10 +15,10 @@ namespace McuTools
                 var dialog = MessageBox.Show("Delete Browser cache?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (dialog == MessageBoxResult.No) return;
             }
-            var appdir = System.AppDomain.CurrentDomain.BaseDirectory;
-            if (Directory.Exists(appdir + "\\Cache"))
+            var local = Folders.Local;
+            if (Directory.Exists(local + "\\Cache"))
             {
-                try { Directory.Delete(appdir + "\\Cache", true); }
+                try { Directory.Delete(local + "\\Cache", true); }
                 catch (IOException) { MessageBox.Show("Cache delete failed", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
                 finally 
                 { 
@@ -64,9 +65,8 @@ namespace McuTools
 
             if (!adress.StartsWith("asset://")) browser = "McuBrowserSelector.exe";
 
-            var appdir = System.AppDomain.CurrentDomain.BaseDirectory;
             Process p = new Process();
-            p.StartInfo.FileName = appdir + browser;
+            p.StartInfo.FileName = Folders.Application + browser;
             p.StartInfo.Arguments = adress;
             p.StartInfo.UseShellExecute = false;
             p.Start();

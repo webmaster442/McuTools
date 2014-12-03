@@ -1,4 +1,5 @@
-﻿using System;
+﻿using McuTools.Interfaces;
+using System;
 using System.IO;
 
 namespace McuTools.Browser
@@ -29,7 +30,7 @@ namespace McuTools.Browser
         {
             string pf = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string appdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string appdir = AppDomain.CurrentDomain.BaseDirectory;
+            string appdir = Folders.Application;
             Firefox = new BrowserData(pf + @"\Mozilla Firefox\firefox.exe");
             ChromeGlobal = new BrowserData(pf + @"\Google\Chrome\Application\chrome.exe");
             ChromeLocal = new BrowserData(appdata + @"\Google\Chrome\Application\chrome.exe");

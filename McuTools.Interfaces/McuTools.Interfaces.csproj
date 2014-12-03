@@ -107,6 +107,7 @@
     <Compile Include="Effects\PngOverlayEffect.cs" />
     <Compile Include="Effects\ViewEnhancersEffect.cs" />
     <Compile Include="EventRaisingStreamWriter.cs" />
+    <Compile Include="Folders.cs" />
     <Compile Include="NativeCode\NativeConsts.cs" />
     <Compile Include="NativeCode\NativeMethods.cs" />
     <Compile Include="NativeCode\NativeTypes.cs" />
