@@ -1,0 +1,18 @@
+﻿<Window x:Class="MTools.ToolOther.MainSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainSelector" Height="300" Width="300"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterOwner"
+        x:Name="dialog">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Please select sketch main file:"/>
+        <ListBox x:Name="list" Grid.Row="1" ItemsSource="{Binding ElementName=dialog, Path=ListItems}"/>
+        <Button Content="Ok" Grid.Row="2" Click="Button_Click"/>
+    </Grid>
+</Window>

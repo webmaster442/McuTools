@@ -57,16 +57,24 @@ namespace McuTools.Interfaces.WPF
 
         public static void ExceptionDialog(Exception ex)
         {
-        #if DEBUG
+#if DEBUG
             MessageBox.Show(string.Format("{0},\r\nSource: {1}\r\nTrace: {2}", ex.Message, ex.Source, ex.StackTrace), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        #else
+#else
              MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        #endif
+#endif
         }
 
-        public static void ExceptionDialog(string text)
+        public static void ExceptionDialog(string text, Exception ex = null)
         {
-            MessageBox.Show(text, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (ex == null)  MessageBox.Show(text, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+#if DEBUG
+                MessageBox.Show(string.Format("{0}\r\n{1},\r\nSource: {2}\r\nTrace: {3}", text, ex.Message, ex.Source, ex.StackTrace), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+#else
+                MessageBox.Show(text+"\r\n"+ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+#endif
+            }
         }
 
 

@@ -82,4 +82,87 @@ namespace McuTools.Interfaces.WPF
             return value;
         }
     }
+
+
+    /// <summary>
+    /// Converts string to line numbers
+    /// </summary>
+    [ValueConversion(typeof(string), typeof(int))]
+    public class LineNumberConverter: IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string input = (string)value;
+            int lines = 0;
+            for (int i=0; i<input.Length; i++)
+            {
+                if (input[i] == '\n') ++lines;
+            }
+            return lines;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts string to word numbers
+    /// </summary>
+    [ValueConversion(typeof(string), typeof(int))]
+    public class WordNumberConverter: IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string input = ((string)value).Trim();
+            var q = input.Split(' ').Length;
+            return q;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts int to file size
+    /// </summary>
+    [ValueConversion(typeof(int), typeof(string))]
+    public class FileSizeConverter: IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int size = (int)value;
+            string postfix = "";
+            float outp = 0.0f;
+            if (size > 1073741824)
+            {
+                outp = size / 1073741824.0f;
+                postfix = "GiB";
+            }
+            else if (size > 1048576)
+            {
+                outp = size / 1048576.0f;
+                postfix = "MiB";
+            }
+            else if (size > 1024)
+            {
+                outp = size / 1024.0f;
+                postfix = "KiB";
+            }
+            else
+            {
+                outp = size;
+                postfix = "Bytes";
+            }
+            return string.Format("{0:0.000} {1}", outp, postfix);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

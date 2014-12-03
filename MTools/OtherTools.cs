@@ -125,4 +125,22 @@ namespace MTools
             get { return new BitmapImage(new Uri("/MTools.Tool;component/icons/portscann.png", UriKind.Relative)); }
         }
     }
+
+    public class SketchEdit: Tool
+    {
+        public override System.Windows.Controls.UserControl GetControl()
+        {
+            return new SketchEditor();
+        }
+
+        public override string Description
+        {
+            get { return "Sketch Editor"; }
+        }
+
+        public override ToolCategory Category
+        {
+            get { return ToolCategory.Other; }
+        }
+    }
 }

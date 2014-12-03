@@ -88,6 +88,9 @@
     <Compile Include="Controls\IPInput.xaml.cs">
       <DependentUpon>IPInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MainSelectorWindow.xaml.cs">
+      <DependentUpon>MainSelectorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MintermTable5.xaml.cs">
       <DependentUpon>MintermTable5.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,9 @@
     </Compile>
     <Compile Include="Controls\ResultsView.xaml.cs">
       <DependentUpon>ResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextInputWindow.xaml.cs">
+      <DependentUpon>TextInputWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DigitalTools.cs" />
     <Compile Include="libs\Be.Windows.Forms.HexBox\BuiltInContextMenu.cs">
@@ -226,11 +232,11 @@
     <Compile Include="ToolOther\Crypto.xaml.cs">
       <DependentUpon>Crypto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToolOther\DocumentBrowser.xaml.cs">
-      <DependentUpon>DocumentBrowser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ToolOther\EagleBackupRem.xaml.cs">
       <DependentUpon>EagleBackupRem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\SketchEditor.xaml.cs">
+      <DependentUpon>SketchEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolOther\PortScanner.xaml.cs">
       <DependentUpon>PortScanner.xaml</DependentUpon>
@@ -395,6 +401,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\MainSelectorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\MintermTable5.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -415,6 +425,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\TextInputWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SerialSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -423,13 +437,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ToolOther\DocumentBrowser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ToolOther\EagleBackupRem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\SketchEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ToolOther\PortScanner.xaml">
       <SubType>Designer</SubType>
