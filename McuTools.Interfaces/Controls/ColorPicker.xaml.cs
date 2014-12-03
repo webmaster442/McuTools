@@ -219,7 +219,7 @@ namespace McuTools.Interfaces.Controls
                 ColorSelected(this, new RoutedEventArgs());
         }
 
-        private bool GetArgb(string hexColor, out byte a, out byte r, out byte g, out byte b)
+        private static bool GetArgb(string hexColor, out byte a, out byte r, out byte g, out byte b)
         {
             a = r = b = g = 0;
             if (hexColor.Length != 9) return false;

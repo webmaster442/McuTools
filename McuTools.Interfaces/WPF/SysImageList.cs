@@ -367,7 +367,7 @@ namespace McuTools.Interfaces.WPF
             if (iImageList == null)
             {
                 pimldp.himl = hIml;
-                int ret = NativeMethods.ImageList_DrawIndirect(ref pimldp);
+                NativeMethods.ImageList_DrawIndirect(ref pimldp);
             }
             else
             {
@@ -381,7 +381,7 @@ namespace McuTools.Interfaces.WPF
         /// or above
         /// </summary>
         /// <returns>True if system is running XP or above, False otherwise</returns>
-        private bool isXpOrAbove()
+        private static bool isXpOrAbove()
         {
             bool ret = false;
             if (Environment.OSVersion.Version.Major > 5)
@@ -409,7 +409,7 @@ namespace McuTools.Interfaces.WPF
             {
                 // Get the System IImageList object from the Shell:
                 Guid iidImageList = new Guid("46EB5926-582E-4017-9FDF-E8998DAA0950");
-                int ret = NativeMethods.SHGetImageList(
+                NativeMethods.SHGetImageList(
                     (int)size,
                     ref iidImageList,
                     ref iImageList
@@ -510,7 +510,7 @@ namespace McuTools.Interfaces.WPF
     /// <summary>
     /// Helper Methods for Connecting SysImageList to Common Controls
     /// </summary>
-    internal class SysImageListHelper
+    internal static class SysImageListHelper
     {
         #region UnmanagedMethods
         private const int LVM_FIRST = 0x1000;

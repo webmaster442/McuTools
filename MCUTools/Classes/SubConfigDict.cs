@@ -8,7 +8,7 @@ using System.Text;
 namespace McuTools.Classes
 {
     [Serializable()]
-    public class SubConfigDict<TKey, TVal> : Dictionary<TKey, TVal>, IXmlSerializable, ISerializable
+    public sealed class SubConfigDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable, ISerializable
     {
         #region Constants
         private const string DictionaryNodeName = "Dictionary";
@@ -17,27 +17,27 @@ namespace McuTools.Classes
         private const string ValueNodeName = "Value";
         #endregion
         #region Constructors
-        public SubConfigDict() { }
+        public SubConfigDictionary() { }
 
-        public SubConfigDict(IDictionary<TKey, TVal> dictionary): base(dictionary) { }
+        public SubConfigDictionary(IDictionary<TKey, TValue> dictionary): base(dictionary) { }
 
-        public SubConfigDict(IEqualityComparer<TKey> comparer): base(comparer) { }
+        public SubConfigDictionary(IEqualityComparer<TKey> comparer): base(comparer) { }
 
-        public SubConfigDict(int capacity): base(capacity) { }
+        public SubConfigDictionary(int capacity): base(capacity) { }
 
-        public SubConfigDict(IDictionary<TKey, TVal> dictionary, IEqualityComparer<TKey> comparer): base(dictionary, comparer) { }
+        public SubConfigDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer): base(dictionary, comparer) { }
 
-        public SubConfigDict(int capacity, IEqualityComparer<TKey> comparer) : base(capacity, comparer) { }
+        public SubConfigDictionary(int capacity, IEqualityComparer<TKey> comparer) : base(capacity, comparer) { }
 
         #endregion
         #region ISerializable Members
 
-        protected SubConfigDict(SerializationInfo info, StreamingContext context)
+        protected SubConfigDictionary(SerializationInfo info, StreamingContext context)
         {
             int itemCount = info.GetInt32("ItemCount");
             for (int i = 0; i < itemCount; i++)
             {
-                KeyValuePair<TKey, TVal> kvp = (KeyValuePair<TKey, TVal>)info.GetValue(String.Format("Item{0}", i), typeof(KeyValuePair<TKey, TVal>));
+                KeyValuePair<TKey, TValue> kvp = (KeyValuePair<TKey, TValue>)info.GetValue(String.Format("Item{0}", i), typeof(KeyValuePair<TKey, TValue>));
                 this.Add(kvp.Key, kvp.Value);
             }
         }
@@ -46,9 +46,9 @@ namespace McuTools.Classes
         {
             info.AddValue("ItemCount", this.Count);
             int itemIdx = 0;
-            foreach (KeyValuePair<TKey, TVal> kvp in this)
+            foreach (KeyValuePair<TKey, TValue> kvp in this)
             {
-                info.AddValue(String.Format("Item{0}", itemIdx), kvp, typeof(KeyValuePair<TKey, TVal>));
+                info.AddValue(String.Format("Item{0}", itemIdx), kvp, typeof(KeyValuePair<TKey, TValue>));
                 itemIdx++;
             }
         }
@@ -59,7 +59,7 @@ namespace McuTools.Classes
         void IXmlSerializable.WriteXml(System.Xml.XmlWriter writer)
         {
             //writer.WriteStartElement(DictionaryNodeName);
-            foreach (KeyValuePair<TKey, TVal> kvp in this)
+            foreach (KeyValuePair<TKey, TValue> kvp in this)
             {
                 writer.WriteStartElement(ItemNodeName);
                 writer.WriteStartElement(KeyNodeName);
@@ -94,7 +94,7 @@ namespace McuTools.Classes
                 TKey key = (TKey)KeySerializer.Deserialize(reader);
                 reader.ReadEndElement();
                 reader.ReadStartElement(ValueNodeName);
-                TVal value = (TVal)ValueSerializer.Deserialize(reader);
+                TValue value = (TValue)ValueSerializer.Deserialize(reader);
                 reader.ReadEndElement();
                 reader.ReadEndElement();
                 this.Add(key, value);
@@ -112,13 +112,13 @@ namespace McuTools.Classes
 
         #endregion
         #region Private Properties
-        protected XmlSerializer ValueSerializer
+        private XmlSerializer ValueSerializer
         {
             get
             {
                 if (valueSerializer == null)
                 {
-                    valueSerializer = new XmlSerializer(typeof(TVal));
+                    valueSerializer = new XmlSerializer(typeof(TValue));
                 }
                 return valueSerializer;
             }

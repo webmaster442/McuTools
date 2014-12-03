@@ -628,7 +628,7 @@ namespace McuTools.Interfaces.Controls
                 element = (UIElement)VisualTreeHelper.GetParent(element);
                 itemIndex = gen.IndexFromContainer(element);
             }
-            int section = _abstractPanel[itemIndex].Section;
+            //int section = _abstractPanel[itemIndex].Section;
             Rect elementRect = _realizedChildLayout[element];
             if (Orientation == Orientation.Horizontal)
             {

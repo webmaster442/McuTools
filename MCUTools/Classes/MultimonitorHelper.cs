@@ -11,14 +11,14 @@ namespace McuTools
         public string Device { get; set; }
         public bool Primary { get; set; }
         public Size WorkArea { get; set; }
-        public Size WorkAreaStartPos { get; set; }
+        public Size WorkAreaStartPosition { get; set; }
 
         public Monitor()
         {
             Device = null;
             Primary = false;
             WorkArea = new Size(0, 0);
-            WorkAreaStartPos = new Size(0, 0);
+            WorkAreaStartPosition = new Size(0, 0);
         }
 
         public static Monitor CreateFromScreen(System.Windows.Forms.Screen screen)
@@ -27,7 +27,7 @@ namespace McuTools
             mon.WorkArea = new Size(screen.WorkingArea.Width, screen.WorkingArea.Height);
             mon.Primary = screen.Primary;
             mon.Device = screen.DeviceName;
-            mon.WorkAreaStartPos = new Size(screen.WorkingArea.Left, screen.WorkingArea.Top);
+            mon.WorkAreaStartPosition = new Size(screen.WorkingArea.Left, screen.WorkingArea.Top);
             return mon;
         }
     }
@@ -62,7 +62,7 @@ namespace McuTools
             }
         }
 
-        public Monitor WindowToMonitor(Window w)
+        public static Monitor WindowToMonitor(Window w)
         {
             var screen = System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle((int)w.Left, (int)w.Top, (int)w.Width, (int)w.Height));
             return Monitor.CreateFromScreen(screen);
@@ -82,8 +82,8 @@ namespace McuTools
             if (left < (20 - width) || left > current.WorkArea.Width) left = 0;
             if (top < (20 - height) || top > current.WorkArea.Height) top = 0;
 
-            win.Left = current.WorkAreaStartPos.Width + left;
-            win.Top = current.WorkAreaStartPos.Height + top;
+            win.Left = current.WorkAreaStartPosition.Width + left;
+            win.Top = current.WorkAreaStartPosition.Height + top;
 
         }
 
@@ -93,8 +93,8 @@ namespace McuTools
             Settings.Default.WindowDevice = current.Device;
             Settings.Default.WindowWidth = win.Width;
             Settings.Default.WindowHeight = win.Height;
-            Settings.Default.WindowLeft = win.Left - current.WorkAreaStartPos.Width;
-            Settings.Default.WindowTop = win.Top - current.WorkAreaStartPos.Height;
+            Settings.Default.WindowLeft = win.Left - current.WorkAreaStartPosition.Width;
+            Settings.Default.WindowTop = win.Top - current.WorkAreaStartPosition.Height;
         }
 
         public int Count

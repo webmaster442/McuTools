@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace McuTools.Interfaces.NativeCode
 {
-    internal class NativeConsts
+    internal static class NativeConsts
     {
         public const int MAX_PATH = 260;
 

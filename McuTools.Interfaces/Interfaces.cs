@@ -36,7 +36,7 @@ namespace McuTools.Interfaces
     /// <summary>
     /// Loadable attribute
     /// </summary>
-    public class Loadable : Attribute { }
+    public sealed class Loadable : Attribute { }
 
     /// <summary>
     /// Tool Host Interface;

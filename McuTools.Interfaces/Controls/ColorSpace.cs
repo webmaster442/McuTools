@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace McuTools.Interfaces.Controls
 {
-    internal class ColorSpace
+    internal static class ColorSpace
     {
         private const byte MIN = 0;
         private const byte MAX = 255;

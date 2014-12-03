@@ -13,10 +13,10 @@ namespace McuTools.Classes
     }
 
     [Serializable]
-    public class UsageStats : Dictionary<string, int>
+    public class UsageStatsDictionary : Dictionary<string, int>
     {
-        public UsageStats() : base() { }
-        protected UsageStats(SerializationInfo info, StreamingContext context): base(info, context) { }
+        public UsageStatsDictionary() : base() { }
+        protected UsageStatsDictionary(SerializationInfo info, StreamingContext context): base(info, context) { }
 
         public new void Add(string key, int value)
         {
@@ -45,10 +45,10 @@ namespace McuTools.Classes
             return q.ToArray();
         }
 
-        public void Unpack(UsageInfo[] inf)
+        public void Unpack(UsageInfo[] information)
         {
             this.Clear();
-            foreach (var i in inf) this.Add(i.Name, i.Count);
+            foreach (var i in information) this.Add(i.Name, i.Count);
         }
     }
 }

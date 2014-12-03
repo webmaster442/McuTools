@@ -93,7 +93,7 @@ namespace McuTools.Interfaces.WPF
                     //UI Thread
                     var delta = target.Height - height;
                     var newWidth = width > target.Width ? (int)target.Width : width;
-                    var newHeight = height > target.Height ? (int)target.Height : height;
+                    //var newHeight = height > target.Height ? (int)target.Height : height;
                     Int32Rect outRect = new Int32Rect(0, (int)(delta >= 0 ? delta : 0) / 2, newWidth, newWidth);
                     try
                     {
@@ -109,7 +109,7 @@ namespace McuTools.Interfaces.WPF
             {
                 var delta = target.Height - height;
                 var newWidth = width > target.Width ? (int)target.Width : width;
-                var newHeight = height > target.Height ? (int)target.Height : height;
+                //var newHeight = height > target.Height ? (int)target.Height : height;
                 Int32Rect outRect = new Int32Rect(0, (int)(delta >= 0 ? delta : 0) / 2, newWidth, newWidth);
                 try
                 {
@@ -243,16 +243,14 @@ namespace McuTools.Interfaces.WPF
         private static bool isImage(string fileName)
         {
             string ext = Path.GetExtension(fileName).ToLower();
-            if (ext == "")
-                return false;
+            if (string.IsNullOrEmpty(ext)) return false;
             return (imageFilter.IndexOf(ext) != -1 && File.Exists(fileName));
         }
 
         private static bool isExecutable(string fileName)
         {
             string ext = Path.GetExtension(fileName).ToLower();
-            if (ext == "")
-                return false;
+            if (string.IsNullOrEmpty(ext)) return false;
             return (exeFilter.IndexOf(ext) != -1 && File.Exists(fileName));
         }
 
@@ -290,7 +288,7 @@ namespace McuTools.Interfaces.WPF
         private static Dictionary<string, ImageSource> iconDic = new Dictionary<string, ImageSource>();
         private static SysImageList _imgList = new SysImageList(SysImageListSize.jumbo);
 
-        private Bitmap loadJumbo(string lookup)
+        private static Bitmap loadJumbo(string lookup)
         {
             _imgList.ImageListSize = isVistaUp() ? SysImageListSize.jumbo : SysImageListSize.extraLargeIcons;
             Icon icon = _imgList.Icon(_imgList.IconIndex(lookup, isFolder(lookup)));

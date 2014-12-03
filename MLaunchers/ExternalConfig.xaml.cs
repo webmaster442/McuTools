@@ -1,4 +1,5 @@
 ﻿using McuTools.Interfaces;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -50,7 +51,7 @@ namespace MLaunchers
             }
             else
             {
-                LauncherConfig.Save(ConfigReader.Configuration, Folders.Application + "\\launchers.xml");
+                LauncherConfig.Save(ConfigReader.Configuration, Path.Combine(Folders.Application, "launchers.xml"));
                 MessageBox.Show("Configuration saved.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 

@@ -58,18 +58,5 @@ namespace McuTools
             System.Runtime.ProfileOptimization.SetProfileRoot(profiledir);
             System.Runtime.ProfileOptimization.StartProfile("McuTools");
         }
-
-        public static void OpenUrl(string adress)
-        {
-            string browser = "\\mcubrowser.exe";
-
-            if (!adress.StartsWith("asset://")) browser = "McuBrowserSelector.exe";
-
-            Process p = new Process();
-            p.StartInfo.FileName = Folders.Application + browser;
-            p.StartInfo.Arguments = adress;
-            p.StartInfo.UseShellExecute = false;
-            p.Start();
-        }
     }
 }

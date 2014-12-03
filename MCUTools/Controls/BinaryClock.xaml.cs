@@ -15,12 +15,12 @@ namespace McuTools.Controls
     {
         private DispatcherTimer t;
 
-        public static DependencyProperty HumanTimePropery = DependencyProperty.Register("HumanTime", typeof(string), typeof(BinaryClock));
+        public static DependencyProperty HumanTimeProperty = DependencyProperty.Register("HumanTime", typeof(string), typeof(BinaryClock));
 
         public string HumanTime
         {
-            get { return (string)GetValue(HumanTimePropery); }
-            set { SetValue(HumanTimePropery, value); }
+            get { return (string)GetValue(HumanTimeProperty); }
+            set { SetValue(HumanTimeProperty, value); }
         }
 
         public BinaryClock()
@@ -28,7 +28,7 @@ namespace McuTools.Controls
             InitializeComponent();
         }
 
-        private void SetRectangle(int column, Grid grid, Color c)
+        private static void SetRectangle(int column, Grid grid, Color c)
         {
             var q = from Rectangle i in grid.Children where Grid.GetColumn(i) == column select i;
             Rectangle r = q.FirstOrDefault();
@@ -36,7 +36,7 @@ namespace McuTools.Controls
             r.Fill = new SolidColorBrush(c);
         }
 
-        private void SetDigitValue(Grid Display, int value)
+        private static void SetDigitValue(Grid Display, int value)
         {
             switch (value)
             {

@@ -30,12 +30,12 @@ namespace McuTools.Browser
         {
             string pf = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string appdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string appdir = Folders.Application;
-            Firefox = new BrowserData(pf + @"\Mozilla Firefox\firefox.exe");
-            ChromeGlobal = new BrowserData(pf + @"\Google\Chrome\Application\chrome.exe");
-            ChromeLocal = new BrowserData(appdata + @"\Google\Chrome\Application\chrome.exe");
-            Iexplore = new BrowserData(pf + @"\Internet Explorer\iexplore.exe");
-            McuBrowser = new BrowserData(appdir + @"\MCUBrowser.exe");
+
+            Firefox = new BrowserData(Path.Combine(pf, @"\Mozilla Firefox\firefox.exe"));
+            ChromeGlobal = new BrowserData(Path.Combine(pf, @"\Google\Chrome\Application\chrome.exe"));
+            ChromeLocal = new BrowserData(Path.Combine(appdata, @"\Google\Chrome\Application\chrome.exe"));
+            Iexplore = new BrowserData(Path.Combine(pf , @"\Internet Explorer\iexplore.exe"));
+            McuBrowser = new BrowserData(Path.Combine(Folders.Application, @"\MCUBrowser.exe"));
         }
 
         public static BrowserData Firefox { get; private set; }

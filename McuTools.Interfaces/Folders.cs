@@ -18,7 +18,7 @@ namespace McuTools.Interfaces
 
             string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (!Directory.Exists(documents + "\\mcutools")) Directory.CreateDirectory(documents + "\\mcutools");
-            Local = documents += "\\mcutools";
+            Local = Path.Combine(documents, "mcutools");
         }
 
         public static bool IsDirectoryWritable(string dirPath, bool throwIfFails = false)

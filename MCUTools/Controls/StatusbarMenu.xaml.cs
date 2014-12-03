@@ -13,7 +13,7 @@ namespace McuTools.Controls
     /// <summary>
     /// Interaction logic for StatusbarMenu.xaml
     /// </summary>
-    public partial class StatusbarMenu : UserControl
+    public partial class StatusBarMenu : UserControl
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass"), DllImport("user32")]
         private static extern void LockWorkStation();
@@ -24,7 +24,7 @@ namespace McuTools.Controls
         private const uint WM_SYSCOMMAND = 0x0112;
         private const int SC_MONITORPOWER = 0xF170;
 
-        public StatusbarMenu()
+        public StatusBarMenu()
         {
             InitializeComponent();
         }

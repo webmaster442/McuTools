@@ -87,6 +87,7 @@ namespace McuTools.Controls
                     ++cnt;
                 }
                 if (cnt == 0) InfoVisible = Visibility.Collapsed;
+                searcher.Dispose();
             }
             catch (ManagementException) { InfoVisible = Visibility.Collapsed; }
         }

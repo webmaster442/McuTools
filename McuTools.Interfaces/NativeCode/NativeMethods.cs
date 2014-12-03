@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace McuTools.Interfaces.NativeCode
 {
-    internal class NativeMethods
+    internal static class NativeMethods
     {
         [DllImport("user32.dll")]
         public static extern int DestroyIcon(IntPtr hIcon);

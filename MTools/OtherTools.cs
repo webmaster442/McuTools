@@ -103,30 +103,6 @@ namespace MTools
         }
     }
 
-    public class ArduinoInst : Tool
-    {
-
-        public override System.Windows.Controls.UserControl GetControl()
-        {
-            return new ArduinoInstaller();
-        }
-
-        public override string Description
-        {
-            get { return "Arduino Installer"; }
-        }
-
-        public override ToolCategory Category
-        {
-            get { return ToolCategory.Other; }
-        }
-
-        public override System.Windows.Media.ImageSource Icon
-        {
-            get { return new BitmapImage(new Uri("/MTools.Tool;component/icons/arduino.png", UriKind.Relative)); }
-        }
-    }
-
     public class NetScan : Tool
     {
         public override System.Windows.Controls.UserControl GetControl()

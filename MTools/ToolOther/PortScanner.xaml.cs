@@ -79,7 +79,7 @@ namespace MTools.ToolOther
             }
             catch (Exception)
             {
-                WpfHelpers.ExceptionDialog("Scann Canceled");
+                WpfHelpers.ExceptionDialog("Scan Canceled");
             }
         }
 

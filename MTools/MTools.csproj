@@ -28,6 +28,8 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -220,9 +222,6 @@
     <Compile Include="OtherTools.cs" />
     <Compile Include="SerialSettings.xaml.cs">
       <DependentUpon>SerialSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ToolOther\ArduinoInstaller.xaml.cs">
-      <DependentUpon>ArduinoInstaller.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolOther\Crypto.xaml.cs">
       <DependentUpon>Crypto.xaml</DependentUpon>
@@ -419,10 +418,6 @@
     <Page Include="SerialSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ToolOther\ArduinoInstaller.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="ToolOther\Crypto.xaml">
       <SubType>Designer</SubType>

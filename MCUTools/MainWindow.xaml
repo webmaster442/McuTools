@@ -109,7 +109,7 @@
                 <cont:BatteryInfo/>
             </StatusBarItem>
             <StatusBarItem Grid.Column="3">
-                <cont:StatusbarMenu/>
+                <cont:StatusBarMenu/>
             </StatusBarItem>
         </StatusBar>
     </Grid>

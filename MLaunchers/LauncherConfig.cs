@@ -58,7 +58,7 @@ namespace MLaunchers
         {
             if (Configuration == null)
             {
-                if (File.Exists(Folders.Application + "\\launchers.xml")) Configuration = LauncherConfig.Load(Folders.Application + "\\launchers.xml");
+                if (File.Exists(Path.Combine(Folders.Application, "launchers.xml"))) Configuration = LauncherConfig.Load(Path.Combine(Folders.Application, "launchers.xml"));
                 else Configuration = new LauncherConfig();
             }
         }

@@ -10,21 +10,21 @@ namespace McuTools.Classes
     [Serializable]
     public class Config
     {
-        public UsageInfo[] Stats;
-        public SubConfigDict<string, string> SubConfigs;
+        public UsageInfo[] Stats {get; set; }
+        public SubConfigDictionary<string, string> Configs { get; set; }
     }
 
     public class UserConfiguration
     {
-        private UsageStats _stats;
-        private SubConfigDict<string, string> _subconfigs;
+        private UsageStatsDictionary _stats;
+        private SubConfigDictionary<string, string> _subconfigs;
 
         public UserConfiguration()
         {
-            _stats = new UsageStats();
+            _stats = new UsageStatsDictionary();
         }
 
-        public UsageStats UsageStats
+        public UsageStatsDictionary UsageStats
         {
             get { return _stats; }
         }
@@ -53,11 +53,12 @@ namespace McuTools.Classes
                 StringWriter textWriter = new StringWriter();
                 Config conf = new Config();
                 conf.Stats = this._stats.Pack();
-                conf.SubConfigs = this._subconfigs;
+                conf.Configs = this._subconfigs;
                 ser.Serialize(textWriter, conf);
                 Settings.Default.UserConfigXML = textWriter.ToString();
                 Settings.Default.Save();
                 conf = null;
+                textWriter.Close();
 
             }
             catch (Exception ex)
@@ -75,8 +76,9 @@ namespace McuTools.Classes
                 StringReader stringReader = new StringReader(Settings.Default.UserConfigXML);
                 Config loaded = (Config)ser.Deserialize(stringReader);
                 this._stats.Unpack(loaded.Stats);
-                this._subconfigs = loaded.SubConfigs;
+                this._subconfigs = loaded.Configs;
                 loaded = null;
+                stringReader.Close();
             }
             catch (Exception ex)
             {

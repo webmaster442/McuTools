@@ -67,9 +67,9 @@ namespace McuTools
 
         #region Interface
 
-        public void SetTitle(string s)
+        public void SetTitle(string title)
         {
-            Tabs.SetCurrentTitle(s);
+            Tabs.SetCurrentTitle(title);
         }
 
         public void OpenUrl(string url, string description = null)
@@ -137,7 +137,7 @@ namespace McuTools
 
         #region Tool Loading
         
-        private Assembly LoadModule(string path, bool network = false)
+        private static Assembly LoadModule(string path, bool network = false)
         {
             if (!network) return Assembly.LoadFile(path);
             else
@@ -149,12 +149,11 @@ namespace McuTools
         
         private void LoadTools()
         {
-            string AppDir = Folders.Application;
             bool isnetwork = false;
-            DriveInfo di = new DriveInfo(AppDir);
+            DriveInfo di = new DriveInfo(Folders.Application);
             if (di.DriveType == DriveType.Network) isnetwork = true; 
-            string[] tools = Directory.GetFiles(AppDir, "*.Tool.dll");
-            object l = new object();
+            string[] tools = Directory.GetFiles(Folders.Application, "*.Tool.dll");
+            //object l = new object();
             SetProgressValue(TaskbarItemProgressState.Indeterminate, 100);
             foreach (var tool in tools)
             {
@@ -212,67 +211,67 @@ namespace McuTools
             Tabs.AddControl(c, TabHeader);
         }
 
-        public void RunTool(Tool t)
+        public void RunTool(Tool tool)
         {
             try
             {
-                ShowControlAsTab(t.GetControl(), t.Description);
-                ReportAnalytics(t.Description, t.TrackId);
+                ShowControlAsTab(tool.GetControl(), tool.Description);
+                ReportAnalytics(tool.Description, tool.TrackId);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error runing tool: " + t.Description +
+                MessageBox.Show("Error runing tool: " + tool.Description +
                                 "\r\nException:" + ex.Message + "\r\n" +
                                 "Trace: " + ex.StackTrace, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
 
-        public void RunPopupTool(PopupTool t)
+        public void RunPopupTool(PopupTool tool)
         {
             try
             {
-                UserControl control = t.GetControl();
+                UserControl control = tool.GetControl();
                 if (control == null) return;
-                Tabs.OpenPopup(control, t.Description);
-                ReportAnalytics(t.Description, t.TrackId);
+                Tabs.OpenPopup(control, tool.Description);
+                ReportAnalytics(tool.Description, tool.TrackId);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error runing tool: " + t.Description +
+                MessageBox.Show("Error runing tool: " + tool.Description +
                                 "\r\nException:" + ex.Message + "\r\n" +
                                 "Trace: " + ex.StackTrace, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
 
-        public void RunETool(ExternalTool t)
+        public void RunETool(ExternalTool tool)
         {
             try
             {
-                t.RunTool();
-                ReportAnalytics(t.Description, t.TrackId);
+                tool.RunTool();
+                ReportAnalytics(tool.Description, tool.TrackId);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error runing tool: " + t.Description +
+                MessageBox.Show("Error runing tool: " + tool.Description +
                                 "\r\nException:" + ex.Message + "\r\n" +
                                 "Trace: " + ex.StackTrace, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        public void RunWebTool(WebTool t)
+        public void RunWebTool(WebTool tool)
         {
-            OpenUrl(t.URL, t.Description);
-            ReportAnalytics(t.Description, t.TrackId);
+            OpenUrl(tool.URL, tool.Description);
+            ReportAnalytics(tool.Description, tool.TrackId);
         }
 
-        public void RunTool(string toolname)
+        public void RunTool(string toolName)
         {
-            Tool t = (from tool in App._Tools where tool.Description == toolname select tool).FirstOrDefault();
+            Tool t = (from tool in App._Tools where tool.Description == toolName select tool).FirstOrDefault();
             if (t == null)
             {
-                ExternalTool et = (from tool in App._ExtTools where tool.Description == toolname select tool).FirstOrDefault();
+                ExternalTool et = (from tool in App._ExtTools where tool.Description == toolName select tool).FirstOrDefault();
                 RunETool(et);
             }
             else RunTool(t);

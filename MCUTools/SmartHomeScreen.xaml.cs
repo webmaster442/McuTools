@@ -22,7 +22,6 @@ namespace McuTools
         private bool _loaded;
         private List<ToolBase> _tools;
         private enum Toolcat { Analog, Digital, Web, Other, External, All, Books, Favorites }
-        private FileToIconConverter _fc;
         private BookManager _books;
 
         public MainWindow MainWin { get; set; }
@@ -35,7 +34,6 @@ namespace McuTools
             _tools.AddRange(App._WebTools);
             _tools.AddRange(App._ExtTools);
             _tools.AddRange(App._Popups);
-            _fc = new FileToIconConverter();
             _books = new BookManager();
         }
 
@@ -65,7 +63,7 @@ namespace McuTools
                 btn.Click += new RoutedEventHandler(ToolClicked);
                 if (item is ExternalTool)
                 {
-                    if ((item as ExternalTool).IsVisible == false) continue;
+                    if (((ExternalTool)(item)).IsVisible == false) continue;
                 }
                 View.Children.Add(btn);
                 i++;

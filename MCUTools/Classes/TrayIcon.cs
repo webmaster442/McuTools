@@ -11,6 +11,7 @@ namespace McuTools.Classes
     {
         private NotifyIcon _notify;
         private bool _closed;
+        private ContextMenuStrip _menu;
 
         public TrayIcon()
         {
@@ -21,12 +22,12 @@ namespace McuTools.Classes
             _notify.DoubleClick += _notify_DoubleClick;
             _closed = false;
 
-            var menu = new ContextMenuStrip();
+            _menu = new ContextMenuStrip();
             
-            var exit = menu.Items.Add("Exit Program");
+            var exit = _menu.Items.Add("Exit Program");
             exit.Click += exit_Click;
 
-            _notify.ContextMenuStrip = menu;
+            _notify.ContextMenuStrip = _menu;
 
         }
 
@@ -54,6 +55,11 @@ namespace McuTools.Classes
 
         protected virtual void Dispose(bool native)
         {
+            if (_menu != null)
+            {
+                _menu.Dispose();
+                _menu = null;
+            }
             if (_notify != null)
             {
                 _notify.Dispose();
