@@ -243,6 +243,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Browser\RequestFailed.html" />
+    <Resource Include="images\statusbar\cloud-32.png" />
+    <Resource Include="images\statusbar\documents_folder-32.png" />
+    <Resource Include="images\statusbar\dropbox_copyrighted-32.png" />
+    <Resource Include="images\statusbar\google_drive_copyrighted-32.png" />
+    <Resource Include="images\statusbar\skydrive_copyrighted-32.png" />
     <Resource Include="images\statusbar\console-32.png" />
     <Resource Include="images\folder.png" />
     <Resource Include="images\statusbar\windows_client-32.png" />
@@ -251,7 +256,6 @@
     <Resource Include="images\pdf-128.png" />
     <Resource Include="images\home\pdf-64.png" />
     <Resource Include="images\statusbar\cd-32.png" />
-    <Resource Include="images\statusbar\cloud_storage-32.png" />
     <Resource Include="images\statusbar\hdd-32.png" />
     <Resource Include="images\statusbar\usb_on-32.png" />
     <Resource Include="images\statusbar\computer-32.png" />

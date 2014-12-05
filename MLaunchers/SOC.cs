@@ -85,7 +85,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\npp\npp.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\npp\\npp.exe"); }
         }
 
         public override string Description

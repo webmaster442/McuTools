@@ -1,8 +1,9 @@
-﻿using McuTools.Interfaces;
+﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,7 @@ namespace McuTools.Controls
         public StatusBarMenu()
         {
             InitializeComponent();
+            ListCloudProviders();
         }
 
         private void Power_Click(object sender, RoutedEventArgs e)
@@ -73,9 +75,67 @@ namespace McuTools.Controls
             Process.Start("control.exe");
         }
 
+        private void ListCloudProviders()
+        {
+            CloudMenu.Items.Clear();
+            MenuItem clouditem = new MenuItem();
+            try
+            {
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string dbPath = System.IO.Path.Combine(appDataPath, "Dropbox\\host.db"); string[] lines = System.IO.File.ReadAllLines(dbPath);
+                byte[] dbBase64Text = Convert.FromBase64String(lines[1]);
+                clouditem.Header = "Dropbox";
+                clouditem.ToolTip = System.Text.ASCIIEncoding.ASCII.GetString(dbBase64Text);
+                Image img = new Image();
+                img.Width = 16;
+                img.Height = 16;
+                img.Source = new BitmapImage(new Uri("pack://application:,,,/images/statusbar/dropbox_copyrighted-32.png", UriKind.Absolute));
+                clouditem.Click += clouditem_Click;
+                clouditem.Icon = img;
+                CloudMenu.Items.Add(clouditem);
+            }
+            catch (Exception) { }
+            try
+            {
+                clouditem = new MenuItem();
+                string dbFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google\\Drive\\sync_config.db");
+                File.Copy(dbFilePath, "temp.db", true);
+                string text = File.ReadAllText("temp.db", Encoding.ASCII);
+                // The "29" refers to the end position of the keyword plus a few extra chars
+                string trim = text.Substring(text.IndexOf("local_sync_root_pathvalue") + 29);
+                // The "30" is the ASCII code for the record separator
+                clouditem.Header = "Google drive";
+                clouditem.ToolTip = trim.Substring(0, trim.IndexOf(char.ConvertFromUtf32(30)));
+                Image img = new Image();
+                img.Width = 16;
+                img.Height = 16;
+                img.Source = new BitmapImage(new Uri("pack://application:,,,/images/statusbar/google_drive_copyrighted-32.png", UriKind.Absolute));
+                clouditem.Click += clouditem_Click;
+                clouditem.Icon = img;
+                CloudMenu.Items.Add(clouditem);
+
+            }
+            catch (Exception) { }
+            try
+            {
+                clouditem = new MenuItem();
+                clouditem.Header = "One Drive";
+                clouditem.ToolTip = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SkyDrive", "UserFolder", null).ToString();
+                Image img = new Image();
+                img.Width = 16;
+                img.Height = 16;
+                img.Source = new BitmapImage(new Uri("pack://application:,,,/images/statusbar/skydrive_copyrighted-32.png", UriKind.Absolute));
+                clouditem.Click += clouditem_Click;
+                clouditem.Icon = img;
+                CloudMenu.Items.Add(clouditem);
+
+            }
+            catch (Exception) { }
+        }
+
         private void Drives_SubmenuOpened(object sender, RoutedEventArgs e)
         {
-            Drives.Items.Clear();
+            Local.Items.Clear();
             string[] drives = Environment.GetLogicalDrives();
             DriveInfo di;
             string label;
@@ -110,8 +170,14 @@ namespace McuTools.Controls
                         break;
                 }
                 m.Icon = img;
-                Drives.Items.Add(m);
+                Local.Items.Add(m);
             }
+        }
+
+        private void clouditem_Click(object sender, RoutedEventArgs e)
+        {
+            string path = (sender as MenuItem).ToolTip.ToString();
+            Process.Start("explorer.exe", "/e /root," + path);
         }
 
         private void m_Click(object sender, RoutedEventArgs e)

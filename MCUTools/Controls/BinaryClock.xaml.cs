@@ -28,7 +28,7 @@ namespace McuTools.Controls
             InitializeComponent();
         }
 
-        private static void SetRectangle(int column, Grid grid, Color c)
+        private void SetRectangle(int column, Grid grid, Color c)
         {
             var q = from Rectangle i in grid.Children where Grid.GetColumn(i) == column select i;
             Rectangle r = q.FirstOrDefault();
@@ -36,7 +36,7 @@ namespace McuTools.Controls
             r.Fill = new SolidColorBrush(c);
         }
 
-        private static void SetDigitValue(Grid Display, int value)
+        private void SetDigitValue(Grid Display, int value)
         {
             switch (value)
             {

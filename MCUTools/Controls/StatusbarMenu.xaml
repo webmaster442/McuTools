@@ -11,10 +11,20 @@
                 <Image Source="../images/statusbar/console-32.png" Width="16" Height="16"/>
             </MenuItem.Icon>
         </MenuItem>
-        <MenuItem Header="Drives" x:Name="Drives" Click="Drives_SubmenuOpened">
+        <MenuItem Header="Drives" x:Name="Drives" SubmenuOpened="Drives_SubmenuOpened">
             <MenuItem.Icon>
                 <Image Source="../images/statusbar/hdd-32.png" Width="16" Height="16"/>
             </MenuItem.Icon>
+            <MenuItem Header="Local &amp; Network" x:Name="Local">
+                <MenuItem.Icon>
+                    <Image Source="../images/statusbar/documents_folder-32.png" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Cloud" x:Name="CloudMenu">
+                <MenuItem.Icon>
+                    <Image Source="../images/statusbar/cloud-32.png" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
         </MenuItem>
         <MenuItem Header="Windows">
             <MenuItem.Icon>

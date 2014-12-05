@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
              xmlns:local="clr-namespace:MTools.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700" x:Name="LogicMinim" Loaded="LogicMinim_Loaded">
@@ -12,7 +13,7 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
 
-        <StackPanel  Width="80" Margin="5,130,0,0"   HorizontalAlignment="Left" Panel.ZIndex="2"  VerticalAlignment="Top">
+        <StackPanel  Width="80" Margin="5,150,0,0"   HorizontalAlignment="Left" Panel.ZIndex="2"  VerticalAlignment="Top">
             <Button x:Name="Clear" Click="Clear_Click">
                 <TextBlock Text="Clear input" TextWrapping="Wrap"/>
             </Button>
@@ -74,6 +75,16 @@
                     <local:MintermTable5 Width="600" Height="340" HorizontalAlignment="Center" x:Name="Minterm5x" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Minterm numbers">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="180">
+                    <TextBlock Text="Number of variables:" Margin="10"/>
+                    <icontrols:EditableSlider Minimum="2" Maximum="8" Value="2" x:Name="MintermNumbers" Margin="10,0"/>
+                    <TextBlock Text="Input numbers: (comma seperated)" Margin="10"/>
+                    <TextBox x:Name="MintermInput" Margin="10,0"/>
+                    <TextBlock Text="Don't care numbers: (comma seperated)" Margin="10"/>
+                    <TextBox x:Name="DontcarInput" Margin="10,0"/>
+                </StackPanel>
+            </TabItem>
         </TabControl>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -85,7 +96,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <CheckBox x:Name="HazardSafe" Grid.Row="0" Grid.Column="0" Content="Make Hazard Safe the function" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Content="Minimize" Grid.Row="1" Grid.Column="0"  Height="45" FontSize="18" HorizontalAlignment="Center" Width="120" Click="Button_Click_1" VerticalAlignment="Center"/>
+            <Button Content="Minimize" Grid.Row="1" Grid.Column="0"  Height="45" FontSize="18" HorizontalAlignment="Center" Width="120" Click="Button_Minimize_Click" VerticalAlignment="Center"/>
             <TextBlock Text="Minimized Function:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" />
             <TabControl Grid.Row="1" Grid.Column="1">
                 <TabItem Header="Minterm form">

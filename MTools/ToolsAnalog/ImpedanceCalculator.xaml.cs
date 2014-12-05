@@ -81,7 +81,7 @@ namespace MTools
                     Zt = Replus(parts.Pop(), parts.Pop());
                     if (parts.Count > 0) Zt = Replus(Zt, parts.Pop());
                 }
-                else Zt = parts.Pop();
+                else if (parts.Count > 0) Zt = parts.Pop();
             }
             if (L1.Value != 0 && C1.Value != 0)
             {
@@ -89,7 +89,7 @@ namespace MTools
                 Resonance.Text = string.Format("{0:0.0000}", resonance);
             }
             Z.Text = ComplexString(Zt);
-            Cosfi.Text = string.Format("{0:0.0000}", Rad2Deg(Zt.Phase));
+            Cosfi.Text = string.Format("{0:0.0000}, ({1:0.0000} °)", Cosinus(Zt.Phase), Rad2Deg(Zt.Phase));
         }
 
         private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)

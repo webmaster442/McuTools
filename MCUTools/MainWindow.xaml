@@ -95,7 +95,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="375"/>
+                            <ColumnDefinition Width="310"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>

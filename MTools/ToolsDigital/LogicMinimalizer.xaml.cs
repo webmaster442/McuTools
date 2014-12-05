@@ -1,14 +1,12 @@
-﻿using McuTools.Interfaces;
+﻿using McuTools.Interfaces.WPF;
 using MTools.classes;
 using MTools.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Linq;
 
 namespace MTools
 {
@@ -73,7 +71,7 @@ namespace MTools
             GenerateTable(_variables, (bool)LsbBit.IsChecked);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Minimize_Click(object sender, RoutedEventArgs e)
         {
             if (!_loaded) return;
             string simple = null;
@@ -99,6 +97,44 @@ namespace MTools
                 case 4:
                     mintermatble = Minterm5x;
                     _variables = 5;
+                    break;
+                case 5:
+                    _variables = (int)MintermNumbers.Value;
+                    try
+                    {
+                        if (string.IsNullOrEmpty(MintermInput.Text)) throw new Exception("No minterm numbers entered");
+                        string[] items = MintermInput.Text.Split(',');
+                        string[] dontcare = null;
+                        if (!string.IsNullOrEmpty(DontcarInput.Text)) dontcare = DontcarInput.Text.Split(',');
+                        if (items.Length < 1) items = MintermInput.Text.Split(' ');
+                        if (items.Length < 1) throw new Exception("Incorrect input");
+                        if (dontcare.Length < 1) items = DontcarInput.Text.Split(' ');
+                        List<LogicItem> litems = new List<LogicItem>();
+                        foreach (var item in items)
+                        {
+                            litems.Add(new LogicItem()
+                            {
+                                Index = Convert.ToInt32(item),
+                                BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
+                                Checked = true
+                            });
+                        }
+                        foreach (var item in dontcare)
+                        {
+                            litems.Add(new LogicItem()
+                            {
+                                Index = Convert.ToInt32(item),
+                                BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
+                                Checked = null
+                            });
+                        }
+                        SimpleMinterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, false);
+                        SimpleMaxterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        WpfHelpers.ExceptionDialog(ex);
+                    }
                     break;
 
             }
