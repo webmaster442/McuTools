@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Windows;
 
 namespace McuTools.Interfaces
 {
@@ -12,9 +13,20 @@ namespace McuTools.Interfaces
         static Folders()
         {
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            string assemblyname = Assembly.GetExecutingAssembly().GetName().Name;
             UriBuilder uri = new UriBuilder(codeBase);
-            string path = Uri.UnescapeDataString(uri.Path);
-            Application = Path.GetDirectoryName(path);
+            
+            //network location fix
+            if (!string.IsNullOrEmpty(uri.Host))
+            {
+                string path = string.Format("\\\\{0}\\{1}", uri.Host, Uri.UnescapeDataString(uri.Path).Replace(assemblyname+".DLL", "").Replace("/", "\\"));
+                Application = path;
+            }
+            else
+            {
+                string path = Uri.UnescapeDataString(uri.Path);
+                Application = Path.GetDirectoryName(path);
+            }
 
             string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (!Directory.Exists(documents + "\\mcutools")) Directory.CreateDirectory(documents + "\\mcutools");

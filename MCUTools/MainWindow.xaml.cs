@@ -150,9 +150,15 @@ namespace McuTools
         private void LoadTools()
         {
             bool isnetwork = false;
-            DriveInfo di = new DriveInfo(Folders.Application);
-            if (di.DriveType == DriveType.Network) isnetwork = true; 
+
+            try
+            {
+                DriveInfo di = new DriveInfo(Folders.Application);
+                if (di.DriveType == DriveType.Network) isnetwork = true;
+            }
+            catch (ArgumentException) { isnetwork = true; }
             string[] tools = Directory.GetFiles(Folders.Application, "*.Tool.dll");
+
             //object l = new object();
             SetProgressValue(TaskbarItemProgressState.Indeterminate, 100);
             foreach (var tool in tools)

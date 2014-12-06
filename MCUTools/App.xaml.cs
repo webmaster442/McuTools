@@ -67,12 +67,13 @@ namespace McuTools
         {
             Exception ex = (Exception)e.ExceptionObject;
             string filename = string.Format("crashlog_{0}_{1}_{2}_{3}_{4}_{5}.txt", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            using (var f = File.CreateText(filename))
+            using (var f = File.CreateText(Path.Combine(Folders.Local, filename)))
             {
                 f.WriteLine("---------------------------------------------");
                 f.WriteLine("Application Crash: {0}", DateTime.Now);
                 f.WriteLine("---------------------------------------------");
                 f.WriteLine("Message: {0}\r\nSource: {1}", ex.Message, ex.Source);
+                f.WriteLine("Exception type: {0}", ex.GetType().FullName);
                 f.WriteLine("---------------------------------------------");
                 f.WriteLine("Target Site:");
                 f.WriteLine(ex.TargetSite);
@@ -82,7 +83,7 @@ namespace McuTools
                 f.WriteLine("---------------------------------------------");
             }
             Process P = new Process();
-            P.StartInfo.FileName = filename;
+            P.StartInfo.FileName = Path.Combine(Folders.Local, filename);
             P.Start();
             MessageBox.Show("Application crashed\r\nDetails saved to crashlog.txt");
         }
