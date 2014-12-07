@@ -1,0 +1,24 @@
+﻿<Window x:Class="MCUTools.Loader.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="120" Width="525"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="MCU Tools network path:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="" x:Name="McuPath" VerticalAlignment="Center" Margin="10,0" FontSize="14"/>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25">
+            <Button Content="Ok" Width="60" x:Name="BtnOk" Click="BtnOk_Click"/>
+            <Button Content="Cancel" Width="60" Margin="10,0" x:Name="BtnCancel" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

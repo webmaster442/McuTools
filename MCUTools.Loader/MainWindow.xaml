@@ -1,0 +1,18 @@
+﻿<Window x:Class="MCUTools.Loader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MCU Tools Network launcher" Height="250" Width="525"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="splash.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="Options" x:Name="BtnOptions" Height="25" Width="60" Click="BtnOptions_Click"/>
+            <Button Content="Launch" x:Name="BtnLaunch" Height="25" Width="60" Margin="10,0,0,0" Click="BtnLaunch_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
