@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McuShell.Kernel", "McuShell.Kernel\McuShell.Kernel.csproj", "{8190BE50-C9BF-44CA-B7DA-9304A7BF7659}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "df", "df\df.csproj", "{15233910-25F3-4B6A-A267-0014B929AFFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commands", "Commands", "{823327C6-01DD-414B-BC89-274C70D3E9AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8190BE50-C9BF-44CA-B7DA-9304A7BF7659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8190BE50-C9BF-44CA-B7DA-9304A7BF7659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8190BE50-C9BF-44CA-B7DA-9304A7BF7659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8190BE50-C9BF-44CA-B7DA-9304A7BF7659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15233910-25F3-4B6A-A267-0014B929AFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15233910-25F3-4B6A-A267-0014B929AFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15233910-25F3-4B6A-A267-0014B929AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15233910-25F3-4B6A-A267-0014B929AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15233910-25F3-4B6A-A267-0014B929AFFA} = {823327C6-01DD-414B-BC89-274C70D3E9AE}
+	EndGlobalSection
+EndGlobal
