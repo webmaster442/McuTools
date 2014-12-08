@@ -217,5 +217,10 @@ namespace MTools
         {
             get { return "Various IC Pinouts"; }
         }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MTools.Tool;component/icons/electronics-100.png", UriKind.Relative)); }
+        }
     }
 }

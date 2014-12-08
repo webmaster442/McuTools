@@ -392,5 +392,10 @@ namespace MTools
         {
             get { return ToolCategory.Digital; }
         }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MTools.Tool;component/icons/f_lowercase-100.png", UriKind.Relative)); }
+        }
     }
 }

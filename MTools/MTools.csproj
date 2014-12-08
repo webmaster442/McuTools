@@ -769,9 +769,6 @@
     <Resource Include="icons\ohmslaw.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons\book-128.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icons\pastebin.png" />
   </ItemGroup>
   <ItemGroup>
@@ -791,6 +788,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\portscann.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\electronics-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\f_lowercase-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\resistor-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

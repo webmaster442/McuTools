@@ -20,6 +20,11 @@ namespace MLaunchers
         {
             get { return ToolCategory.External; }
         }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MLaunchers.Tool;component/Icons/external_link-100.png", UriKind.Relative)); }
+        }
     }
 
     public class Eagle : Eprog

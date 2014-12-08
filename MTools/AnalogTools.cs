@@ -324,6 +324,11 @@ namespace MTools
         {
             get { return ToolCategory.Analog; }
         }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MTools.Tool;component/icons/resistor-100.png", UriKind.Relative)); }
+        }
     }
 
 }
