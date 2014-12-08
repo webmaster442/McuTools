@@ -11,22 +11,22 @@ namespace McuShell.Kernel
         /// 1 PetaByte
         /// </summary>
         [Description("PiB")]
-        PetaByte = 1125899906842624,
+        PetaByte = TerraByte * 1024L,
         /// <summary>
         /// 1 TerraByte
         /// </summary>
         [Description("TiB")]
-        TerraByte = 1073741824,
+        TerraByte = GigaByte * 1024L,
         /// <summary>
         /// 1 GigaByte
         /// </summary>
         [Description("GiB")]
-        GigaByte = 1073741824,
+        GigaByte = MegaByte * 1024L,
         /// <summary>
         /// 1 MegaByte
         /// </summary>
         [Description("MiB")]
-        MegaByte = 1048576,
+        MegaByte = KiloByte * 1024L,
         /// <summary>
         /// 1 KiloByte
         /// </summary>

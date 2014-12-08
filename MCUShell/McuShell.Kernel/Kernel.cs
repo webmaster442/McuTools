@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace McuShell.Kernel
 {
+    /// <summary>
+    /// Various Functions for Shell programs
+    /// </summary>
     public static class Kernel
     {
         /// <summary>
@@ -47,7 +46,7 @@ namespace McuShell.Kernel
                 outp = value;
                 size = FileSize.Byte;
             }
-            return string.Format("{0:0.000} {1}", outp, size);
+            return string.Format("{0:0.000} {1}", outp, size.GetDescription());
         }
     }
 }

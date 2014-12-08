@@ -6,3 +6,12 @@ for /D %%d in (*) do if exist "%%d\bin" echo Y | rmdir /s "%%d\bin"
 for /D %%d in (*) do if exist "%%d\obj" echo Y | rmdir /s "%%d\obj"
 for /D %%d in (*) do if exist "%%d\bin" echo I | rmdir /s "%%d\bin"
 for /D %%d in (*) do if exist "%%d\obj" echo I | rmdir /s "%%d\obj"
+
+cd MCUShell
+
+for /D %%d in (*) do if exist "%%d\bin" echo Y | rmdir /s "%%d\bin"
+for /D %%d in (*) do if exist "%%d\obj" echo Y | rmdir /s "%%d\obj"
+for /D %%d in (*) do if exist "%%d\bin" echo I | rmdir /s "%%d\bin"
+for /D %%d in (*) do if exist "%%d\obj" echo I | rmdir /s "%%d\obj"
+
+cd..

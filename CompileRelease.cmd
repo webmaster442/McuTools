@@ -25,6 +25,9 @@ rem ---------------------------------------------------------------------------
 rem compile
 rem ---------------------------------------------------------------------------
 msbuild /m McuTools.sln /p:Configuration=Release
+cd MCUShell
+msbuild /m McuShell.sln /p:Configuration=Release
+cd ..
 
 rem ---------------------------------------------------------------------------
 rem pack
@@ -53,6 +56,11 @@ del MathNet.Numerics.IO.xml
 del MathNet.Numerics.xml
 del MahApps.Metro.xml
 del System.Windows.Interactivity.xml
+cd shell
+del *.pdb
+del *.vshost.exe.config
+del *.vshost.exe
+cd ..
 echo Y | rmdir /s de
 echo Y | rmdir /s el-GR
 echo Y | rmdir /s es
