@@ -11,8 +11,9 @@
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Source="splash.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Options" x:Name="BtnOptions" Height="25" Width="60" Click="BtnOptions_Click"/>
-            <Button Content="Launch" x:Name="BtnLaunch" Height="25" Width="60" Margin="10,0,0,0" Click="BtnLaunch_Click"/>
+            <Button Content="Installer" x:Name="BtnInstaller" Height="25" Width="60" Click="BtnInstaller_Click" />
+            <Button Content="Options" x:Name="BtnOptions" Height="25" Width="60" Margin="10,0" Click="BtnOptions_Click"/>
+            <Button Content="Launch" x:Name="BtnLaunch" Height="25" Width="60" Click="BtnLaunch_Click"/>
         </StackPanel>
     </Grid>
 </Window>

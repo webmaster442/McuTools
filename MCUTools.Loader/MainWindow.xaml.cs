@@ -72,5 +72,12 @@ namespace MCUTools.Loader
             SettingsWindow sw = new SettingsWindow();
             sw.ShowDialog();
         }
+
+        private void BtnInstaller_Click(object sender, RoutedEventArgs e)
+        {
+            Installer ist = new Installer();
+            ist.Show();
+            this.Close();
+        }
     }
 }

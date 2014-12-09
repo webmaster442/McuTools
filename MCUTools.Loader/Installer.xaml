@@ -1,0 +1,56 @@
+﻿<Window x:Class="MCUTools.Loader.Installer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MCUTools.Loader"
+        Title="MCU Tools Installer" Height="350" Width="500"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <local:DoWork x:Name="Worker" Panel.ZIndex="99" Visibility="Collapsed"/>
+        <TabControl Grid.Row="0" TabStripPlacement="Bottom">
+            <TabItem Header="Packages:">
+                <ListView x:Name="PackageList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <CheckBox IsChecked="{Binding Selected}" Grid.Column="0" Grid.RowSpan="2"/>
+                                <TextBlock Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
+                                <TextBlock Text="{Binding Description}" Grid.Row="1" Grid.Column="1"/>
+                                <TextBlock Text="{Binding ReleaseDate}" Grid.Column="2" Grid.RowSpan="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Repository settings:">
+                <StackPanel>
+                    <TextBlock Text="Repository url:"/>
+                    <TextBox x:Name="TbRepoUrl"/>
+                    <TextBlock Text="Proxy username:"/>
+                    <TextBox x:Name="TbProxyUser"/>
+                    <TextBlock Text="Proxy password:"/>
+                    <PasswordBox x:Name="TbProxyPasswd"/>
+                    <Button Content="Save" x:Name="BtnSave" Click="BtnSave_Click"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Content="Refreesh List" x:Name="BtnRefresh" Click="BtnRefresh_Click"/>
+            <Button Content="Select/Deselect All" x:Name="BrnSelectDeleselct"/>
+            <Button Content="Install selected" x:Name="BtnInstall"/>
+            <Button Content="Exit" x:Name="BtnExit"/>
+        </StackPanel>
+    </Grid>
+</Window>
