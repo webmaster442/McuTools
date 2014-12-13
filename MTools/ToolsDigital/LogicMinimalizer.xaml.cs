@@ -52,6 +52,52 @@ namespace MTools
             }
         }
 
+        private void InputByNumbers()
+        {
+            _variables = (int)MintermNumbers.Value;
+            try
+            {
+                if (string.IsNullOrEmpty(MintermInput.Text)) throw new Exception("No minterm numbers entered");
+                string[] items = MintermInput.Text.Split(',');
+                string[] dontcare = null;
+                if (!string.IsNullOrEmpty(DontcarInput.Text))
+                {
+                    dontcare = DontcarInput.Text.Split(',');
+                    if (dontcare.Length < 1) items = DontcarInput.Text.Split(' ');
+                }
+                if (items.Length < 1) items = MintermInput.Text.Split(' ');
+                if (items.Length < 1) throw new Exception("Incorrect input");
+                List<LogicItem> litems = new List<LogicItem>();
+                foreach (var item in items)
+                {
+                    litems.Add(new LogicItem()
+                    {
+                        Index = Convert.ToInt32(item),
+                        BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
+                        Checked = true
+                    });
+                }
+                if (dontcare != null)
+                {
+                    foreach (var item in dontcare)
+                    {
+                        litems.Add(new LogicItem()
+                        {
+                            Index = Convert.ToInt32(item),
+                            BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
+                            Checked = null
+                        });
+                    }
+                }
+                SimpleMinterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, false);
+                SimpleMaxterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, true);
+            }
+            catch (Exception ex)
+            {
+                WpfHelpers.ExceptionDialog(ex);
+            }
+        }
+
         private void LogicMinim_Loaded(object sender, RoutedEventArgs e)
         {
             if (_loaded) return;
@@ -74,7 +120,7 @@ namespace MTools
         private void Button_Minimize_Click(object sender, RoutedEventArgs e)
         {
             if (!_loaded) return;
-            string simple = null;
+            //string simple = null;
             IMintermTable mintermatble = null;
             switch (InputMode.SelectedIndex)
             {
@@ -99,42 +145,7 @@ namespace MTools
                     _variables = 5;
                     break;
                 case 5:
-                    _variables = (int)MintermNumbers.Value;
-                    try
-                    {
-                        if (string.IsNullOrEmpty(MintermInput.Text)) throw new Exception("No minterm numbers entered");
-                        string[] items = MintermInput.Text.Split(',');
-                        string[] dontcare = null;
-                        if (!string.IsNullOrEmpty(DontcarInput.Text)) dontcare = DontcarInput.Text.Split(',');
-                        if (items.Length < 1) items = MintermInput.Text.Split(' ');
-                        if (items.Length < 1) throw new Exception("Incorrect input");
-                        if (dontcare.Length < 1) items = DontcarInput.Text.Split(' ');
-                        List<LogicItem> litems = new List<LogicItem>();
-                        foreach (var item in items)
-                        {
-                            litems.Add(new LogicItem()
-                            {
-                                Index = Convert.ToInt32(item),
-                                BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
-                                Checked = true
-                            });
-                        }
-                        foreach (var item in dontcare)
-                        {
-                            litems.Add(new LogicItem()
-                            {
-                                Index = Convert.ToInt32(item),
-                                BinaryValue = LogicItem.GetBinaryValue(Convert.ToInt32(item), _variables),
-                                Checked = null
-                            });
-                        }
-                        SimpleMinterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, false);
-                        SimpleMaxterm.Text = QuineMcclusky.GetSimplified(litems, _variables, (bool)HazardSafe.IsChecked, (bool)LsbBit.IsChecked, true);
-                    }
-                    catch (Exception ex)
-                    {
-                        WpfHelpers.ExceptionDialog(ex);
-                    }
+                    InputByNumbers();
                     break;
 
             }

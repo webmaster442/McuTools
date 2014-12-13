@@ -175,13 +175,8 @@ namespace MTools.classes
                 ImplicantCollection thisGroup = groups[groups.Keys.ElementAt(i)];
                 ImplicantCollection nextGroup = groups[groups.Keys.ElementAt(i + 1)];
 
-                foreach (Implicant a in thisGroup)
-                {
-                    foreach (Implicant b in nextGroup)
-                    {
-                        if (GetDifferences(a.Mask, b.Mask) == 1) relationships.Add(new ImplicantRelationship(a, b));
-                    }
-                }
+                var q = from a in thisGroup from b in nextGroup where GetDifferences(a.Mask, b.Mask) == 1 select new ImplicantRelationship(a, b);
+                relationships.AddRange(q);
             }
 
             /*

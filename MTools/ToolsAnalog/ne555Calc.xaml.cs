@@ -1,9 +1,6 @@
-﻿using McuTools.Interfaces;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace MTools
 {
@@ -26,16 +23,21 @@ namespace MTools
             double f = 1 / ln2 * AstableC.Value * (AstableR1.Value + AstableR2.Value);
             double ton = ln2 * (AstableR1.Value + AstableR2.Value) * AstableC.Value;
             double toff = ln2 * AstableR2.Value * AstableC.Value;
-            AstableF.Text = f.ToString();
-            AstableTOn.Text = ton.ToString();
-            AstableTOff.Text = toff.ToString();
+            double total = ton + toff;
+
+            double percent_on = (ton / total) * 100;
+            double percent_off = (toff / total) * 100;
+
+            AstableF.Text = string.Format("{0:0.00000}", f);
+            AstableTOn.Text = string.Format("{0:0.00000} ({1:0.000} %)", ton, percent_on);
+            AstableTOff.Text = string.Format("{0:0.00000} ({1:0.000} %)", toff, percent_off);
         }
 
         private void Monostable_ValueChanged(object sender, RoutedEventArgs e)
         {
             if (!_loaded) return;
             double t = MonostableR.Value * MonostableC.Value * Math.Log(3, Math.E);
-            MonostableT.Text = t.ToString();
+            MonostableT.Text = string.Format("{0:0.00000}", t);
         }
 
         private void Ne555Calculator_Loaded(object sender, RoutedEventArgs e)

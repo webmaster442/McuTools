@@ -48,6 +48,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock FontSize="16" Text="t:" Margin="10,0"/>
                     <TextBox x:Name="MonostableT" Width="120"/>
+                    <TextBlock Text="Hz" VerticalAlignment="Center" Margin="5,0,0,0"/>
                 </StackPanel>
             </Grid>
         </TabItem>
