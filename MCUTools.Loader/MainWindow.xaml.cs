@@ -32,6 +32,22 @@ namespace MCUTools.Loader
             this.Close();
         }
 
+        private static bool ISMcuRunning()
+        {
+            var proclist = Process.GetProcesses();
+            var mcu = from i in proclist where i.ProcessName.ToLower().Contains("mcutools") select i;
+            return mcu.Count() > 0;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ISMcuRunning())
+            {
+                MessageBox.Show("McuTools allready running. Launcher exits.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+        }
+
         private void BtnLaunch_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -41,9 +57,7 @@ namespace MCUTools.Loader
                 bool check = File.Exists(path);
                 if (check)
                 {
-                    var proclist = Process.GetProcesses();
-                    var mcu = from i in proclist where i.ProcessName.ToLower().Contains("mcutools") select i;
-                    if (mcu.Count() > 0)
+                    if (ISMcuRunning())
                     {
                         _quit = true;
                         throw new Exception("McuTools allready runing. Can't start another instance.\r\nApplication will now Exit");
@@ -69,15 +83,12 @@ namespace MCUTools.Loader
 
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
+            this.Visibility = System.Windows.Visibility.Collapsed;
             SettingsWindow sw = new SettingsWindow();
+            sw.Left = this.Left;
+            sw.Top = this.Top;
             sw.ShowDialog();
-        }
-
-        private void BtnInstaller_Click(object sender, RoutedEventArgs e)
-        {
-            Installer ist = new Installer();
-            ist.Show();
-            this.Close();
+            this.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }
