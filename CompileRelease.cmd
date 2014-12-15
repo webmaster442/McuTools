@@ -18,8 +18,9 @@ rem ---------------------------------------------------------------------------
 rem setup
 rem ---------------------------------------------------------------------------
 set msbuildp=%windir%\Microsoft.NET\Framework\v4.0.30319\
+set installdir=%cd%\Installer
 set awe=c:\Program Files (x86)\Awesomium Technologies LLC\Awesomium SDK\1.7.5.0\build\bin\
-SET PATH=%PATH%;%msbuildp%;%awe%
+SET PATH=%PATH%;%msbuildp%;%awe%;%installdir%
 
 rem ---------------------------------------------------------------------------
 rem compile
@@ -94,4 +95,10 @@ rem ---------------------------------------------------------------------------
 :end
 call clean_binobj.cmd
 echo "Done"
+
+cd bin\Release
+7z a -r ..\mcutools.7z *.*
+cd ..
+cd ..
+
 pause

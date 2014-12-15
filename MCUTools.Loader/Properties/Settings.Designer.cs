@@ -34,41 +34,5 @@ namespace MCUTools.Loader.Properties {
                 this["NetworkPath"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/repository.csv")]
-        public string RepositoryUrl {
-            get {
-                return ((string)(this["RepositoryUrl"]));
-            }
-            set {
-                this["RepositoryUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ProxyUser {
-            get {
-                return ((string)(this["ProxyUser"]));
-            }
-            set {
-                this["ProxyUser"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ProxyPass {
-            get {
-                return ((string)(this["ProxyPass"]));
-            }
-            set {
-                this["ProxyPass"] = value;
-            }
-        }
     }
 }

@@ -5,14 +5,5 @@
     <Setting Name="NetworkPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="RepositoryUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/repository.csv</Value>
-    </Setting>
-    <Setting Name="ProxyUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ProxyPass" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

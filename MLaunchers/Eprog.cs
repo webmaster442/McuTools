@@ -40,7 +40,14 @@ namespace MLaunchers
 
         public override bool IsVisible
         {
-            get { return !string.IsNullOrEmpty(Path); }
+            get 
+            {
+                if (!string.IsNullOrEmpty(Path))
+                {
+                    return File.Exists(Path);
+                }
+                return false;
+            }
         }
 
         public virtual bool AdministratorRequired

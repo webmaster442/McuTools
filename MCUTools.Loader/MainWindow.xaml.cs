@@ -15,10 +15,12 @@ namespace MCUTools.Loader
     {
         private DispatcherTimer _timer;
         private bool _quit;
+        private string _appdir;
 
         public MainWindow()
         {
             InitializeComponent();
+            _appdir = System.AppDomain.CurrentDomain.BaseDirectory;
             _quit = false;
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(3);
@@ -35,8 +37,17 @@ namespace MCUTools.Loader
         private static bool ISMcuRunning()
         {
             var proclist = Process.GetProcesses();
-            var mcu = from i in proclist where i.ProcessName.ToLower().Contains("mcutools") select i;
+            var mcu = from i in proclist where i.ProcessName.ToLower() == "mcutools" select i;
             return mcu.Count() > 0;
+        }
+
+        private static void RunProcess(string path, string dir = null)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = path;
+            if (!string.IsNullOrEmpty(dir)) p.StartInfo.WorkingDirectory = dir;
+            p.StartInfo.UseShellExecute = false;
+            p.Start();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,6 +56,22 @@ namespace MCUTools.Loader
             {
                 MessageBox.Show("McuTools allready running. Launcher exits.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
+            }
+            else
+            {
+                if (File.Exists(_appdir + "\\mcutools.exe"))
+                {
+                    RunProcess(_appdir + "\\mcutools.exe", _appdir);
+                    this.Close();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(Settings.Default.NetworkPath))
+                    {
+                        MessageBox.Show("MCU Tools is installed in network mode. Please configure Network path", "Network setup", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        BtnOptions_Click(sender, e);
+                    }
+                }
             }
         }
 
@@ -64,11 +91,7 @@ namespace MCUTools.Loader
                     }
                     else
                     {
-                        Process p = new Process();
-                        p.StartInfo.FileName = path;
-                        p.StartInfo.WorkingDirectory = Settings.Default.NetworkPath;
-                        p.StartInfo.UseShellExecute = false;
-                        p.Start();
+                        RunProcess(path, Settings.Default.NetworkPath);
                         _timer.IsEnabled = true;
                     }
                 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using McuTools.Interfaces;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -190,7 +191,8 @@ namespace McuTools.Controls
 
         private void Console_Click(object sender, RoutedEventArgs e)
         {
-
+            string path = Path.Combine(Folders.Application, "shell\\ShellLoader.cmd");
+            Process.Start("cmd.exe", "/k " + path);
         }
     }
 }

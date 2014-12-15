@@ -67,5 +67,10 @@ namespace MMediaTools
         {
             get { return ToolCategory.Other; }
         }
+
+        public override System.Windows.Media.ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/MMediaTools.Tool;component/icons/picture-128.png", UriKind.Relative)); }
+        }
     }
 }
