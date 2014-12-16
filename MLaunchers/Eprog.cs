@@ -44,7 +44,7 @@ namespace MLaunchers
             {
                 if (!string.IsNullOrEmpty(Path))
                 {
-                    return File.Exists(Path);
+                    return File.Exists(Environment.ExpandEnvironmentVariables(Path));
                 }
                 return false;
             }

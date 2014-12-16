@@ -8,7 +8,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\Kitty.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "SOC\\Kitty.exe"); }
         }
 
         public override string Description
@@ -26,7 +26,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\WinSCP.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "SOC\\WinSCP.exe"); }
         }
 
         public override string Description
@@ -44,7 +44,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\Win32DiskImager.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "SOC\\Win32DiskImager.exe"); }
         }
 
         public override string Description
@@ -67,7 +67,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\tftpd32.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "SOC\\tftpd32.exe"); }
         }
 
         public override string Description
@@ -85,7 +85,7 @@ namespace MLaunchers
     {
         public override string Path
         {
-            get { return System.IO.Path.Combine(Folders.Application, "\\SOC\\npp\\npp.exe"); }
+            get { return System.IO.Path.Combine(Folders.Application, "SOC\\npp\\npp.exe"); }
         }
 
         public override string Description

@@ -22,6 +22,24 @@ namespace MLaunchers
             FfsLibreOffice.SelectedPath = ConfigReader.Configuration.LibreOfficePath;
             FfsLtSpice.SelectedPath = ConfigReader.Configuration.LtSpicePath;
             FfsProcessing.SelectedPath = ConfigReader.Configuration.ProcessingPath;
+
+            if (string.IsNullOrEmpty(FfsArduino.SelectedPath))
+            {
+                string arduino = Path.Combine(Folders.Application, "software\\arduino_1_5\\arduino.exe");
+                if (File.Exists(arduino)) FfsArduino.SelectedPath = arduino;
+            }
+
+            if (string.IsNullOrEmpty(FfsLibreOffice.SelectedPath))
+            {
+                string libre = Path.Combine(Folders.Application, "software\\LibreOfficePortable\\LibreOfficePortable.exe");
+                if (File.Exists(libre)) FfsLibreOffice.SelectedPath = libre;
+            }
+
+            if (string.IsNullOrEmpty(FfsProcessing.SelectedPath))
+            {
+                string processing = Path.Combine(Folders.Application, "software\\processing2\\processing.exe");
+                if (File.Exists(processing)) FfsProcessing.SelectedPath = processing;
+            }
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -54,8 +72,6 @@ namespace MLaunchers
                 LauncherConfig.Save(ConfigReader.Configuration, Path.Combine(Folders.Application, "launchers.xml"));
                 MessageBox.Show("Configuration saved.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            
         }
     }
 }

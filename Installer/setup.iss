@@ -12,7 +12,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{06D01260-762C-42F7-9718-67A163B95C42}
+AppId={{5A39446F-90E5-43BA-BED1-6A046405B09C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -33,6 +33,7 @@ MinVersion=0,6.0sp2
 OutputDir=..\bin\setup
 FlatComponentsList=False
 PrivilegesRequired=lowest
+LicenseFile=..\LICENSE
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\*"
@@ -44,14 +45,16 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
+Source: "..\bin\Launcher\MCUTools.Loader.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\bin\Launcher\MCUTools.Loader.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "7z.dll"; Flags: dontcopy
 Source: "7z.exe"; Flags: dontcopy
 Source: "dotNetFx45_Full_setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall ignoreversion uninsremovereadonly
-Source: "{tmp}\mcutools.7z"; Flags: deleteafterinstall external dontcopy
-Source: "{tmp}\SOC.7z"; Flags: deleteafterinstall external dontcopy
-Source: "{tmp}\arduino_1_5.7z"; Flags: deleteafterinstall external dontcopy
-Source: "{tmp}\processing2.7z"; Flags: deleteafterinstall external dontcopy
-Source: "{tmp}\LibreOfficePortable.7z"; Flags: deleteafterinstall external dontcopy
+Source: "{tmp}\mcutools.7z"; Flags: deleteafterinstall external dontcopy; ExternalSize: 3661967
+Source: "{tmp}\SOC.7z"; Flags: deleteafterinstall external dontcopy; ExternalSize: 21677560
+Source: "{tmp}\arduino_1_5.7z"; Flags: deleteafterinstall external dontcopy; ExternalSize: 78046775
+Source: "{tmp}\processing2.7z"; Flags: deleteafterinstall external dontcopy; ExternalSize: 74514021
+Source: "{tmp}\LibreOfficePortable.7z"; Flags: deleteafterinstall external dontcopy; ExternalSize: 131804461
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -70,8 +73,8 @@ Name: "Custom"; Description: "Custom Install"; Flags: iscustom
 
 [Components]
 Name: "Loader"; Description: "Launcher App"; Types: Network Local Full Custom; Flags: fixed
-Name: "Core"; Description: "MCU Tools"; Types: Full Local
-Name: "SOC"; Description: "SOC Development Tools"; Types: Full Local
+Name: "Core"; Description: "MCU Tools"; ExtraDiskSpaceRequired: 67084768; Types: Full Local
+Name: "SOC"; Description: "SOC Development Tools";  ExtraDiskSpaceRequired: 81281230; Types: Full Local
 Name: "Apps"; Description: "Applications"; Types: Full
 Name: "Apps\Arduino15"; Description: "Arduino IDE 1.5"; ExtraDiskSpaceRequired: 634576236; Types: Full
 Name: "Apps\LibreOffice"; Description: "Libre Office"; ExtraDiskSpaceRequired: 389685812; Types: Full
@@ -192,13 +195,21 @@ end;
 
 procedure InitializeWizard;
 begin
-  idpAddFileComp(Dload_MCU, ExpandConstant(Inst_MCU), 'Core');
-  idpAddFileComp(Dload_SOC, ExpandConstant(Inst_SOC), 'SOC'); 
-  idpAddFileComp(Dload_Soft_Arduino,  ExpandConstant(Inst_Soft_Arduino),  'Apps\Arduino15');
-  idpAddFileComp(Dload_Soft_Processing, ExpandConstant(Inst_Soft_Processing), 'Apps\Processing');
-  idpAddFileComp(Dload_Soft_LibreOffice,  ExpandConstant(Inst_Soft_LibreOffice),  'Apps\LibreOffice');
   idpDownloadAfter(wpReady);
 end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+Result := True;
+  if CurPageID = wpSelectTasks then begin
+    if IsComponentSelected('Core') then idpAddFile(Dload_MCU, ExpandConstant(Inst_MCU));
+    if IsComponentSelected('SOC') then idpAddFile(Dload_SOC, ExpandConstant(Inst_SOC));
+    if IsComponentSelected('Apps\Arduino15') then idpAddFile(Dload_Soft_Arduino,  ExpandConstant(Inst_Soft_Arduino));
+    if IsComponentSelected('Apps\Processing') then idpAddFile(Dload_Soft_Processing, ExpandConstant(Inst_Soft_Processing));
+    if IsComponentSelected('Apps\LibreOffice') then idpAddFile(Dload_Soft_LibreOffice,  ExpandConstant(Inst_Soft_LibreOffice));
+  end;
+end;
+
 
 procedure Extract(file: String; Caption: TNewStaticText);
 var
@@ -207,6 +218,16 @@ begin
   if FileExists(expandconstant(file)) then begin
       Caption.Caption := 'Extracting: '+file;
       ShellExec('', ExpandConstant('{tmp}\7z.exe'), 'x -o'+ExpandConstant('{app} ')+ExpandConstant(file), '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  end;
+end;
+
+procedure ExtractTo(file: String; targetdir: string; Caption: TNewStaticText);
+var
+  ErrorCode: Integer;
+begin
+  if FileExists(expandconstant(file)) then begin
+      Caption.Caption := 'Extracting: '+file;
+      ShellExec('', ExpandConstant('{tmp}\7z.exe'), 'x -o'+ExpandConstant(targetdir+' ')+ExpandConstant(file), '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   end;
 end;  
 
@@ -237,9 +258,9 @@ begin
 
         Extract(Inst_MCU, StaticText);
         Extract(Inst_SOC, StaticText);
-        Extract(Inst_Soft_Arduino, StaticText);
-        Extract(Inst_Soft_Processing, StaticText);
-        Extract(Inst_Soft_LibreOffice, StaticText);
+        ExtractTo(Inst_Soft_Arduino, '{app}\software', StaticText);
+        ExtractTo(Inst_Soft_Processing, '{app}\software', StaticText);
+        ExtractTo(Inst_Soft_LibreOffice, '{app}\software', StaticText);
 
         ProgressBar.Visible := false;
         StaticText.Visible := false;
