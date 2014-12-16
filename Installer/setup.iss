@@ -47,6 +47,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "7z.dll"; Flags: dontcopy
 Source: "7z.exe"; Flags: dontcopy
 Source: "dotNetFx45_Full_setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall ignoreversion uninsremovereadonly
+Source: "{tmp}\mcutools.7z"; Flags: deleteafterinstall external dontcopy
+Source: "{tmp}\SOC.7z"; Flags: deleteafterinstall external dontcopy
+Source: "{tmp}\arduino_1_5.7z"; Flags: deleteafterinstall external dontcopy
+Source: "{tmp}\processing2.7z"; Flags: deleteafterinstall external dontcopy
+Source: "{tmp}\LibreOfficePortable.7z"; Flags: deleteafterinstall external dontcopy
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -75,16 +80,16 @@ Name: "Apps\Processing"; Description: "Processing 2"; ExtraDiskSpaceRequired: 21
 [Code]
 //-----------------------------------------------------------------------------
 const
-  Dload-MCU = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/mcutools.7z';
-  Inst-MCU = '{tmp}\mcutools.7z';
-  Dload-SOC = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SOC.7z';
-  Inst-SOC = '{tmp}\SOC.7z';
-  Dload-Soft-Arduino = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/arduino_1_5.7z';
-  Inst-Soft-Arduino = '{tmp}\arduino_1_5.7z';
-  Dload-Soft-Processing = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/processing2.7z';
-  Inst-Soft-Processing = '{tmp}\processing2.7z';
-  Dload-Soft-LibreOffice = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/LibreOfficePortable.7z';
-  Inst-Soft-LibreOffice = '{tmp}\LibreOfficePortable.7z';
+  Dload_MCU = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/mcutools.7z';
+  Inst_MCU = '{tmp}\mcutools.7z';
+  Dload_SOC = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SOC.7z';
+  Inst_SOC = '{tmp}\SOC.7z';
+  Dload_Soft_Arduino = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/arduino_1_5.7z';
+  Inst_Soft_Arduino = '{tmp}\arduino_1_5.7z';
+  Dload_Soft_Processing = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/processing2.7z';
+  Inst_Soft_Processing = '{tmp}\processing2.7z';
+  Dload_Soft_LibreOffice = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/LibreOfficePortable.7z';
+  Inst_Soft_LibreOffice = '{tmp}\LibreOfficePortable.7z';
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
@@ -187,11 +192,56 @@ end;
 
 procedure InitializeWizard;
 begin
-    idpAddFileComp(Dload-MCU, ExpandConstant('Inst-MCU'), 'Core');
-    idpAddFileComp(Dload-SOC, ExpandConstant('Inst-SOC'), 'SOC'); 
-    idpAddFileComp(Dload-Soft-Arduino,  ExpandConstant('Inst-Soft-Arduino'),  'Apps\Arduino15');
-    idpAddFileComp(Dload-Soft-Processing, ExpandConstant('Inst-Soft-Processing'), 'Apps\Processing');
-    idpAddFileComp(Dload-Soft-LibreOffice,  ExpandConstant('Inst-Soft-LibreOffice'),  'Apps\LibreOffice');
+  idpAddFileComp(Dload_MCU, ExpandConstant(Inst_MCU), 'Core');
+  idpAddFileComp(Dload_SOC, ExpandConstant(Inst_SOC), 'SOC'); 
+  idpAddFileComp(Dload_Soft_Arduino,  ExpandConstant(Inst_Soft_Arduino),  'Apps\Arduino15');
+  idpAddFileComp(Dload_Soft_Processing, ExpandConstant(Inst_Soft_Processing), 'Apps\Processing');
+  idpAddFileComp(Dload_Soft_LibreOffice,  ExpandConstant(Inst_Soft_LibreOffice),  'Apps\LibreOffice');
+  idpDownloadAfter(wpReady);
+end;
 
-    idpDownloadAfter(wpReady);
+procedure Extract(file: String; Caption: TNewStaticText);
+var
+  ErrorCode: Integer;
+begin
+  if FileExists(expandconstant(file)) then begin
+      Caption.Caption := 'Extracting: '+file;
+      ShellExec('', ExpandConstant('{tmp}\7z.exe'), 'x -o'+ExpandConstant('{app} ')+ExpandConstant(file), '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  end;
+end;  
+
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  Page: TWizardPage;
+  ProgressBar: TNewProgressBar;
+  StaticText: TNewStaticText;
+begin
+  if (CurStep=ssInstall) then
+  begin
+    if (GetUninstallString() <> '') then UnInstallOldVersion();
+        Page := PageFromID(wpInstalling);
+        ProgressBar := TNewProgressBar.Create(Page);
+        ProgressBar.Top := 100;
+        ProgressBar.Width := Page.SurfaceWidth;
+        ProgressBar.Parent := Page.Surface;
+        ProgressBar.Style := npbstMarquee;
+      
+        StaticText := TNewStaticText.Create(Page);
+        StaticText.Top := 80;
+        StaticText.Caption := '';
+        StaticText.AutoSize := True;
+        StaticText.Parent := Page.Surface;
+  
+        ExtractTemporaryFile('7z.exe');
+        ExtractTemporaryFile('7z.dll');
+
+        Extract(Inst_MCU, StaticText);
+        Extract(Inst_SOC, StaticText);
+        Extract(Inst_Soft_Arduino, StaticText);
+        Extract(Inst_Soft_Processing, StaticText);
+        Extract(Inst_Soft_LibreOffice, StaticText);
+
+        ProgressBar.Visible := false;
+        StaticText.Visible := false;
+  end;
 end;
