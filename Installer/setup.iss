@@ -75,6 +75,10 @@ Name: "Apps\Processing"; Description: "Processing 2"; ExtraDiskSpaceRequired: 21
 [Code]
 //-----------------------------------------------------------------------------
 const
+  Dload-MCU = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/mcutools.7z';
+  Inst-MCU = '{tmp}\mcutools.7z';
+  Dload-SOC = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SOC.7z';
+  Inst-SOC = '{tmp}\SOC.7z';
   Dload-Soft-Arduino = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/arduino_1_5.7z';
   Inst-Soft-Arduino = '{tmp}\arduino_1_5.7z';
   Dload-Soft-Processing = 'https://googledrive.com/host/0BzRxNHSnXbB5QjJZRG1iQWwyR00/install/SoftWare/processing2.7z';
@@ -183,6 +187,8 @@ end;
 
 procedure InitializeWizard;
 begin
+    idpAddFileComp(Dload-MCU, ExpandConstant('Inst-MCU'), 'Core');
+    idpAddFileComp(Dload-SOC, ExpandConstant('Inst-SOC'), 'SOC'); 
     idpAddFileComp(Dload-Soft-Arduino,  ExpandConstant('Inst-Soft-Arduino'),  'Apps\Arduino15');
     idpAddFileComp(Dload-Soft-Processing, ExpandConstant('Inst-Soft-Processing'), 'Apps\Processing');
     idpAddFileComp(Dload-Soft-LibreOffice,  ExpandConstant('Inst-Soft-LibreOffice'),  'Apps\LibreOffice');

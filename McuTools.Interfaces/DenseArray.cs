@@ -3,10 +3,10 @@ using System;
 
 namespace McuTools.Interfaces
 {
-    public class DenseArray<T>: IEnumerable<T>
+    public class DenseArray<T> : IEnumerable<T>
     {
         private T[] _array;
-        
+
         /// <summary>
         /// Creates a new instance of DenseArray
         /// </summary>
@@ -15,6 +15,24 @@ namespace McuTools.Interfaces
         public DenseArray(int rows, int columns)
         {
             _array = new T[rows * columns];
+            Rows = rows;
+            Columns = columns;
+        }
+
+        /// <summary>
+        /// Creates a new instance of DenseArray
+        /// </summary>
+        /// <param name="source">Source DenseArray</param>
+        public DenseArray(DenseArray<T> source)
+            : this(source.Rows, source.Columns)
+        {
+            for (int i = 0; i < source.Rows; i++)
+            {
+                for (int j = 0; i < source.Columns; j++)
+                {
+                    this[i, j] = source[i, j];
+                }
+            }
         }
 
         /// <summary>
@@ -31,6 +49,8 @@ namespace McuTools.Interfaces
                     _array[j * Columns + i] = array[i, j];
                 }
             }
+            Rows = array.GetLength(0);
+            Columns = array.GetLength(1);
         }
 
         /// <summary>
@@ -88,7 +108,7 @@ namespace McuTools.Interfaces
         public T[] GetColumn(int columnindex)
         {
             T[] ret = new T[this.Rows];
-            for (int i = 0; i < this.Rows; i++ )
+            for (int i = 0; i < this.Rows; i++)
             {
                 ret[i] = this[i, columnindex];
             }
@@ -106,8 +126,8 @@ namespace McuTools.Interfaces
             if (items == null) throw new ArgumentNullException("items");
 
             int limit = Math.Min(items.Length, this.Columns);
-            
-            for (int i=0; i<limit; i++)
+
+            for (int i = 0; i < limit; i++)
             {
                 this[row, i] = items[i];
             }
@@ -125,7 +145,7 @@ namespace McuTools.Interfaces
 
             int limit = Math.Min(items.Length, this.Rows);
 
-            for (int i=0; i<limit; i++)
+            for (int i = 0; i < limit; i++)
             {
                 this[i, column] = items[i];
             }

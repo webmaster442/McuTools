@@ -174,17 +174,17 @@ namespace McuShell.Kernel
         {
             var current = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Error:");
-            Console.WriteLine(ex.Message);
+            Console.Error.WriteLine("Error:");
+            Console.Error.WriteLine(ex.Message);
             Console.ForegroundColor = current;
         }
 
         private static void Help(bool clear = false)
         {
             if (clear) Console.Clear();
-            Console.WriteLine(CommandDescription);
-            Console.WriteLine("\r\nArguments & Switches:");
-            Console.WriteLine(ParametersHelp(_settings));
+            Console.Error.WriteLine(CommandDescription);
+            Console.Error.WriteLine("\r\nArguments & Switches:");
+            Console.Error.WriteLine(ParametersHelp(_settings));
 #if DEBUG
             Console.WriteLine();
             Console.ReadKey();

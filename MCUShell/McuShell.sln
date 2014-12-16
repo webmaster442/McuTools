@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commands", "Commands", "{82
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wget", "wget\wget.csproj", "{0CA9F770-8357-4B33-A26D-F76FAECB8DB8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1D280738-A1DB-49DD-8FD0-8B933975793C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "markdown", "md\markdown.csproj", "{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +31,10 @@ Global
 		{0CA9F770-8357-4B33-A26D-F76FAECB8DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA9F770-8357-4B33-A26D-F76FAECB8DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA9F770-8357-4B33-A26D-F76FAECB8DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +42,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{15233910-25F3-4B6A-A267-0014B929AFFA} = {823327C6-01DD-414B-BC89-274C70D3E9AE}
 		{0CA9F770-8357-4B33-A26D-F76FAECB8DB8} = {823327C6-01DD-414B-BC89-274C70D3E9AE}
+		{B95EB610-8A33-4C17-B1C1-3E8D0366FC6B} = {823327C6-01DD-414B-BC89-274C70D3E9AE}
 	EndGlobalSection
 EndGlobal

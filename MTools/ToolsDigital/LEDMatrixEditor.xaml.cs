@@ -1,4 +1,5 @@
-﻿using McuTools.Interfaces.WPF;
+﻿using McuTools.Interfaces;
+using McuTools.Interfaces.WPF;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,12 +47,12 @@ namespace MTools.ToolsDigital
             }
         }
 
-        private int[,] Matrix
+        private DenseArray<int> Matrix
         {
             get
             {
                 Rectangle r;
-                int[,] matrix = new int[8, 8];
+                DenseArray<int> matrix = new DenseArray<int>(8, 8);
                 for (int i = 0; i < 8; i++)
                 {
                     for (int j = 0; j < 8; j++)
@@ -66,9 +67,9 @@ namespace MTools.ToolsDigital
             set
             {
                 Rectangle r;
-                for (int i = 0; i < value.GetLength(0); i++)
+                for (int i = 0; i < value.Rows; i++)
                 {
-                    for (int j = 0; j < value.GetLength(1); j++)
+                    for (int j = 0; j < value.Columns; j++)
                     {
                         r = Functions.GetRectangle(Grid8x, i, j);
                         if (value[i, j] == 0) r.Fill = new SolidColorBrush(Colors.Black);
@@ -78,9 +79,9 @@ namespace MTools.ToolsDigital
             }
         }
 
-        private int[,] Rotate(int[,] data, int angle)
+        private DenseArray<int> Rotate(DenseArray<int> data, int angle)
         {
-            int[,] ret = new int[data.GetLength(0), data.GetLength(1)];
+            DenseArray<int> ret = new DenseArray<int>(data.Rows, data.Columns);
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -92,10 +93,9 @@ namespace MTools.ToolsDigital
             return ret;
         }
 
-        private int[,] Flip(int[,] data, bool horizontal)
+        private DenseArray<int> Flip(DenseArray<int> data, bool horizontal)
         {
-            int[,] ret = new int[data.GetLength(0), data.GetLength(1)];
-
+            DenseArray<int> ret = new DenseArray<int>(data.Rows, data.Columns);
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -107,9 +107,9 @@ namespace MTools.ToolsDigital
             return ret;
         }
 
-        private int[,] Invert(int[,] data)
+        private DenseArray<int> Invert(DenseArray<int> data)
         {
-            int[,] ret = new int[data.GetLength(0), data.GetLength(1)];
+            DenseArray<int> ret = new DenseArray<int>(data.Rows, data.Columns);
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -121,9 +121,9 @@ namespace MTools.ToolsDigital
             return ret;
         }
 
-        private int[,] Shift(int[,] data, int direction)
+        private DenseArray<int> Shift(DenseArray<int> data, int direction)
         {
-            int[,] ret = new int[data.GetLength(0), data.GetLength(1)];
+            DenseArray<int> ret = new DenseArray<int>(data.Rows, data.Columns);
             int i, j;
             switch (direction)
             {
@@ -165,7 +165,7 @@ namespace MTools.ToolsDigital
 
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
-            int[,] m = Matrix;
+            DenseArray<int> m = Matrix;
 
             if (DisRot90.IsChecked == true) m = Rotate(Matrix, 90);
             else if (DisRotM90.IsChecked == true) m = Rotate(Matrix, 90);
@@ -199,55 +199,55 @@ namespace MTools.ToolsDigital
 
         private void FlipX_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Flip(Matrix, false);
+            DenseArray<int> data = Flip(Matrix, false);
             Matrix = data;
         }
 
         private void FlipY_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Flip(Matrix, true);
+            DenseArray<int> data = Flip(Matrix, true);
             Matrix = data;
         }
 
         private void Rotate90cw_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Rotate(Matrix, +90);
+            DenseArray<int> data = Rotate(Matrix, +90);
             Matrix = data;
         }
 
         private void Rotate90ccw_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Rotate(Matrix, -90);
+            DenseArray<int> data = Rotate(Matrix, -90);
             Matrix = data;
         }
 
         private void Invert_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Invert(Matrix);
+            DenseArray<int> data = Invert(Matrix);
             Matrix = data;
         }
 
         private void ShiftUP_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Shift(Matrix, 0);
+            DenseArray<int> data = Shift(Matrix, 0);
             Matrix = data;
         }
 
         private void ShiftLeft_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Shift(Matrix, 2);
+            DenseArray<int> data = Shift(Matrix, 2);
             Matrix = data;
         }
 
         private void ShiftRight_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Shift(Matrix, 3);
+            DenseArray<int> data = Shift(Matrix, 3);
             Matrix = data;
         }
 
         private void ShiftDown_Click(object sender, RoutedEventArgs e)
         {
-            int[,] data = Shift(Matrix, 1);
+            DenseArray<int> data = Shift(Matrix, 1);
             Matrix = data;
         }
     }
