@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
-using System.Windows.Data;
 
 namespace MTools.classes
 {
@@ -49,6 +45,28 @@ namespace MTools.classes
 
             return network1.Equals(network2);
         }
+
+        public static uint GetUint(this IPAddress address)
+        {
+            byte[] bytes = address.GetAddressBytes();
+            uint ret = 0;
+            ret = (uint)bytes[0] << 24;
+            ret += (uint)bytes[1] << 16;
+            ret += (uint)bytes[2] << 8;
+            ret += (uint)bytes[3];
+            return ret;
+        }
+
+        public static IPAddress SetUint(this IPAddress adress, uint value)
+        {
+            byte[] bytes = new byte[4];
+            bytes[0] = (byte)((value & 0xFF000000) >> 24);
+            bytes[1] = (byte)((value & 0x00FF0000) >> 16);
+            bytes[2] = (byte)((value & 0xFF00FF00) >> 8);
+            bytes[3] = (byte)(value & 0xFF0000FF);
+            return new IPAddress(bytes);
+        }
+
     }
 
     public static class SubnetMask
@@ -109,23 +127,6 @@ namespace MTools.classes
                 len += (from c in part where c == '1' select c).Count();
             }
             return len;
-        }
-    }
-
-    [ValueConversion(typeof(IPAddress), typeof(int))]
-    public class IPLenConverter: IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            int input = System.Convert.ToInt32(value);
-            return SubnetMask.CreateByNetBitLength(input);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            IPAddress input = (IPAddress)value;
-            if (input == null) return 0;
-            return SubnetMask.GetBitLength(input);
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using MTools.classes;
-using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace MTools.ToolOther
 {
@@ -64,26 +62,16 @@ namespace MTools.ToolOther
             buffer.AppendLine("--------------------------------------------------------------------------------------");
             buffer.AppendLine();
 
-            byte[] startnetwork = Network.IP.GetAddressBytes();
-            List<int> indexes = new List<int>();
-            int index = GetByteIndex(outmaskbits);
-            int usedbitsinbyte =  maskbits - (index * 8);
-            if (usedbitsinbyte < 0)
-            {
-                
-            }
-            else
-            {
-                int shiftvalue = 8 - usedbitsinbyte - requiredbits;
-                int b = startnetwork[index];
-                IPAddress tmp;
+            uint tmp = Network.IP.GetUint();
+            int shift = 32 - outmaskbits;
 
-                for (int i = 0; i < numnet; i++)
-                {
-                    startnetwork[index] = (byte)(b | (i << shiftvalue));
-                    tmp = new IPAddress(startnetwork);
-                    buffer.AppendFormat("Subnet {0,-4} Network adress: {1,-15} Brodecast Adress: {2,-15}\r\n", i, tmp, tmp.GetBroadcastAddress(SubnetMask.CreateByNetBitLength(outmaskbits)));
-                }
+            for (uint i = 0; i < numnet; i++)
+            {
+                uint sh = i << shift;
+                uint val = tmp + sh;
+                IPAddress addr = new IPAddress(0);
+                addr = addr.SetUint(val);
+                buffer.AppendFormat("Subnet {0,-4} Network adress: {1,-15} Brodecast Adress: {2,-15}\r\n", i, addr, addr.GetBroadcastAddress(SubnetMask.CreateByNetBitLength(outmaskbits)));
             }
 
             Output.Text = buffer.ToString();
