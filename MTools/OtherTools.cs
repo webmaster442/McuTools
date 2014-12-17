@@ -126,7 +126,7 @@ namespace MTools
         }
     }
 
-    public class SketchEdit: Tool
+    /*public class SketchEdit: Tool
     {
         public override System.Windows.Controls.UserControl GetControl()
         {
@@ -136,6 +136,25 @@ namespace MTools
         public override string Description
         {
             get { return "Sketch Editor"; }
+        }
+
+        public override ToolCategory Category
+        {
+            get { return ToolCategory.Other; }
+        }
+    }*/
+
+    public class IPSubnetcalc: Tool
+    {
+
+        public override System.Windows.Controls.UserControl GetControl()
+        {
+            return new SubnetCalculator();
+        }
+
+        public override string Description
+        {
+            get { return "IP Subnet Calculator"; }
         }
 
         public override ToolCategory Category

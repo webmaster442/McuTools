@@ -72,6 +72,7 @@
     <Compile Include="AnalogTools.cs" />
     <Compile Include="classes\AudioGeneration.cs" />
     <Compile Include="classes\Chunks.cs" />
+    <Compile Include="classes\IPExtensions.cs" />
     <Compile Include="classes\PortDataItem.cs" />
     <Compile Include="classes\Counter.cs" />
     <Compile Include="classes\Crypto.cs" />
@@ -243,6 +244,9 @@
     </Compile>
     <Compile Include="ToolOther\StopWatch.xaml.cs">
       <DependentUpon>StopWatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolOther\SubnetCalculator.xaml.cs">
+      <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolsAnalog\FilterDesigner.xaml.cs">
       <DependentUpon>FilterDesigner.xaml</DependentUpon>
@@ -450,6 +454,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolOther\StopWatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\SubnetCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
