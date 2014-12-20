@@ -61,7 +61,7 @@ namespace MCalculator
             CreateButtons(typeof(Maths.Trigonometry), Trig);
             CreateButtons(typeof(Maths.Rnd), Rand);
             CreateButtons(typeof(Maths.Binary), Bin);
-            CreateButtons(typeof(Maths.ComplexAlgebra), Cplx);
+            CreateButtons(typeof(Maths.Complex), Cplx);
             CreateButtons(typeof(Maths.Sets), SetStat);
             CreateButtons(typeof(Maths.Stat), SetStat);
             CreateButtons(typeof(Maths.Matrices), Matrix);

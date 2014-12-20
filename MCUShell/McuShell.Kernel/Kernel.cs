@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace McuShell.Kernel
 {
@@ -47,6 +48,37 @@ namespace McuShell.Kernel
                 size = FileSize.Byte;
             }
             return string.Format("{0:0.000} {1}", outp, size.GetDescription());
+        }
+
+        /// <summary>
+        /// Gets a file type from the file name
+        /// </summary>
+        /// <param name="filename">Input filename</param>
+        /// <returns>A file type based on the file extension</returns>
+        public static FileType GetFileType(string filename)
+        {
+            if (string.IsNullOrEmpty(filename)) return FileType.Unknown;
+            string[] parts = filename.Split('.');
+            if (parts.Length < 2) return FileType.Unknown;
+            string extension = parts[parts.Length - 1];
+            if (string.IsNullOrEmpty(extension)) return FileType.Unknown;
+
+            bool query = false;
+
+            query = (from i in KnownFileExtensions.Archive where i == extension select i).Count() > 0;
+            if (query) return FileType.Archive;
+            query = (from i in KnownFileExtensions.Audio where i == extension select i).Count() > 0;
+            if (query) return FileType.Audio;
+            query = (from i in KnownFileExtensions.Document where i == extension select i).Count() > 0;
+            if (query) return FileType.Document;
+            query = (from i in KnownFileExtensions.Execute where i == extension select i).Count() > 0;
+            if (query) return FileType.Executable;
+            query = (from i in KnownFileExtensions.Image where i == extension select i).Count() > 0;
+            if (query) return FileType.Image;
+            query = (from i in KnownFileExtensions.Video where i == extension select i).Count() > 0;
+            if (query) return FileType.Video;
+
+            return FileType.Unknown;
         }
     }
 }

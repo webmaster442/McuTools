@@ -5,7 +5,7 @@ namespace MCalculator.Maths
     /// <summary>
     /// Complex Algebratic funtions
     /// </summary>
-    public static class ComplexAlgebra
+    public static class Cplx
     {
         /// <summary>
         /// Creates a complex number from its standard repesentation

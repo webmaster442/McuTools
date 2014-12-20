@@ -111,7 +111,7 @@
       <DependentUpon>FunctionTester.xaml</DependentUpon>
     </Compile>
     <Compile Include="Maths\Binary.cs" />
-    <Compile Include="Maths\ComplexAlgebra.cs" />
+    <Compile Include="Maths\Complex.cs" />
     <Compile Include="Maths\Constants.cs" />
     <Compile Include="Maths\Fraction.cs" />
     <Compile Include="Maths\Functions.cs" />
