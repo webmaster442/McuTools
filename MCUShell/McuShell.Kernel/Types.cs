@@ -57,7 +57,7 @@ namespace McuShell.Kernel
         /// </summary>
         public static string[] Video
         {
-            get { return ".avi;.mpg;.mpeg;.mp4;.m4v;.qt;.mov;.asf;.wmv;.mkv;.vob".Split(';'); }
+            get { return "avi;mpg;mpeg;mp4;m4v;qt;mov;asf;wmv;mkv;vob".Split(';'); }
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace McuShell.Kernel
         /// </summary>
         public static string[] Audio
         {
-            get { return ".mp3;.wav;.wma;.ape;.flac;.wv;.m4a;.m4b;.aac;.ac3;.dts;.mid;.rmi".Split(';'); }
+            get { return "mp3;wav;wma;ape;flac;wv;m4a;m4b;aac;ac3;dts;mid;rmi".Split(';'); }
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace McuShell.Kernel
         /// </summary>
         public static string[] Document
         {
-            get { return ".ppt;.xls;.doc;.mdb;.pptx;.xlsx;.docx;.odf;.odt;.txt;.csv;.pdf;.md".Split(';'); }
+            get { return "ppt;xls;doc;mdb;pptx;xlsx;docx;odf;odt;txt;csv;pdf;md".Split(';'); }
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace McuShell.Kernel
         /// </summary>
         public static string[] Image
         {
-            get { return ".jpg;.jpeg;.psd;.png;.bmp;.tiff;.emf;.wmf".Split(';'); }
+            get { return "jpg;jpeg;psd;png;bmp;tiff;emf;wmf".Split(';'); }
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace McuShell.Kernel
         /// </summary>
         public static string[] Execute
         {
-            get { return ".exe;.bat;.cmd;.ps".Split(';'); }
+            get { return "exe;bat;cmd;ps".Split(';'); }
         }
 
         /// <summary>

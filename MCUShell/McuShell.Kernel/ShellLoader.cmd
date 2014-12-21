@@ -20,6 +20,10 @@ echo.
 echo MCUTools Shell v. 2014-12
 echo Shell Path: %SHELL%
 echo Extra commands:
-echo df wget
+echo df wget ls markdown dirsize
 echo.
-echo.                                                                                  
+echo.
+goto end
+
+
+:end

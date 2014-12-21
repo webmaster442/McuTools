@@ -129,6 +129,7 @@ namespace McuShell.Kernel
         private static string ParametersHelp(object SettingsObject)
         {
             StringBuilder result = new StringBuilder();
+            if (SettingsObject == null) return "\tNo arguments or switches required";
             Type t = SettingsObject.GetType();
             if (!t.IsClass) throw new ArgumentException("SettingsObject must be class");
             var properties = t.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
@@ -203,6 +204,7 @@ namespace McuShell.Kernel
             _settings = SettingsObject;
 
             if (HelpRequested()) Help(true);
+            if (SettingsObject == null) return;
 
             Type t = SettingsObject.GetType();
             if (!t.IsClass) throw new ArgumentException("SettingsObject must be class");
@@ -238,7 +240,7 @@ namespace McuShell.Kernel
                             else if (property.PropertyType == typeof(sbyte)) property.SetValue(SettingsObject, Convert.ToSByte(val));
                             else throw new ArgumentException("Property type not supported by parser");
                         }
-                        catch (Exception) { Error("Error parsing argument: {0} or {1}, value: {2}", par.ShortName, par.LongName, val); }
+                        catch (Exception ex) { Error("Error parsing argument: {0} or {1}, value: {2}\r\nReason: {3}", par.ShortName, par.LongName, val, ex.Message); }
                     }
                     else if (attribute is EnumArgument)
                     {
@@ -250,7 +252,7 @@ namespace McuShell.Kernel
                             object enumresult = Enum.Parse(property.PropertyType, val);
                             property.SetValue(SettingsObject, enumresult);
                         }
-                        catch (Exception) { Error("Error parsing argument: {0} or {1}, value: {2}", en.ShortName, en.LongName, val); }
+                        catch (Exception ex) { Error("Error parsing argument: {0} or {1}, value: {2}\r\nReason: {3}", en.ShortName, en.LongName, val, ex.Message); }
                     }
                 }
             }
