@@ -43,7 +43,30 @@
             </TabItem>
             <TabItem>
                 <TabItem.Header>
-                    <TextBlock Text="Compute hash" TextAlignment="Center" TextWrapping="Wrap" Width="60"/>
+                    <TextBlock Text="Caesar Encrypt" TextAlignment="Center" TextWrapping="Wrap" Width="60"/>
+                </TabItem.Header>
+                <StackPanel>
+                    <TextBlock Text="Mode:" Margin="10,10,0,5"/>
+                    <StackPanel>
+                        <RadioButton x:Name="RbCaesarEnc" Content="Encrypt" IsChecked="True" Margin="20,0,0,5"/>
+                        <RadioButton x:Name="RbCaesarDec" Content="Decrypt" Margin="20,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Text="Key rule:" Margin="10,10,0,5"/>
+                    <StackPanel>
+                        <RadioButton x:Name="RbCaesarClassic" Content="Classic" IsChecked="True" IsEnabled="{Binding ElementName=RbCaesarEnc, Path=IsChecked}" Margin="20,0,0,5"/>
+                        <RadioButton x:Name="RbCaesarRandom" Content="Random" Margin="20,0,0,5" IsEnabled="{Binding ElementName=RbCaesarEnc, Path=IsChecked}"/>
+                        <TextBlock Text="Key rule:" Margin="20,0,0,5"/>
+                        <TextBox x:Name="TbCaesarKeyRule" IsReadOnly="{Binding ElementName=RbCaesarEnc, Path=IsChecked}" Margin="20,0,20,0"/>
+                    </StackPanel>
+                    <TextBlock Text="Input Text:" Margin="10,5,0,0"/>
+                    <TextBox x:Name="TbCaesarInput" AcceptsReturn="True" Height="80" Margin="15,5"/>
+                    <TextBlock Text="Output Text:" Margin="10,5,0,0"/>
+                    <TextBox x:Name="TbCaesarOutput" IsReadOnly="True" AcceptsReturn="True" Height="80" Margin="15,5"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Hash Files" TextAlignment="Center" TextWrapping="Wrap" Width="60"/>
                 </TabItem.Header>
                 <StackPanel>
                     <TextBlock Text="Mode:" Margin="10,5,0,0"/>

@@ -48,6 +48,23 @@ namespace MTools.ToolOther
                         }
                         break;
                     case 1:
+                        TbCaesarOutput.Clear();
+
+                        if (RbCaesarEnc.IsChecked == true)
+                        {
+                            var rules = CaesarRules.Classic;
+                            if (RbCaesarRandom.IsChecked == true) rules = CaesarRules.Random;
+                            TbCaesarKeyRule.Text = CaesarRules.SerializeRule(rules);
+                            TbCaesarOutput.Text = Cryptog.CaesarCrypt(TbCaesarInput.Text, rules, false);
+                        }
+                        else
+                        {
+                            var rules = CaesarRules.DeserializeRule(TbCaesarKeyRule.Text);
+                            TbCaesarOutput.Text = Cryptog.CaesarCrypt(TbCaesarInput.Text, rules, true);
+                        }
+
+                        break;
+                    case 2:
                         HashAlgorithms alg = HashAlgorithms.MD5;
                         if ((bool)RbMD5.IsChecked) alg = HashAlgorithms.MD5;
                         else if ((bool)RbSHA1.IsChecked) alg = HashAlgorithms.SHA1;
@@ -57,10 +74,10 @@ namespace MTools.ToolOther
                         string hash = await Cryptog.ComputeHashTask(cts.Token, FInput.SelectedPath, Indicator, alg);
                         TbHashOutput.Text = hash;
                         break;
-                    case 2:
+                    case 3:
                         await Cryptog.XorEncryptTask(cts.Token, XorIn.SelectedPath, XorKey.SelectedPath, XorOut.SelectedPath, Indicator);
                         break;
-                    case 3:
+                    case 4:
                         KeySizeAES keysize = KeySizeAES.bit128;
                         if ((bool)RbAesK128.IsChecked) keysize = KeySizeAES.bit128;
                         else if ((bool)RbAesK192.IsChecked) keysize = KeySizeAES.bit192;

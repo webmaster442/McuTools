@@ -19,6 +19,73 @@ namespace MTools.classes
         bit128 = 128, bit192 = 192, bit256 = 256
     }
 
+    internal static class CaesarRules
+    {
+        private static char[] ValidInputs
+        {
+            get { return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToArray(); }
+        }
+
+        public static Dictionary<char, char> Classic
+        {
+            get
+            {
+                Dictionary<char, char> _ret = new Dictionary<char, char>(65);
+                for (int i = 0; i < ValidInputs.Length - 3; i++ )
+                {
+                    _ret.Add(ValidInputs[i], ValidInputs[i + 3]);
+                }
+                _ret.Add(ValidInputs[ValidInputs.Length - 3], ValidInputs[0]);
+                _ret.Add(ValidInputs[ValidInputs.Length - 2], ValidInputs[1]);
+                _ret.Add(ValidInputs[ValidInputs.Length - 1], ValidInputs[2]);
+                return _ret;
+            }
+        }
+
+        public static Dictionary<char, char> Random
+        {
+            get
+            {
+                Random r = new System.Random();
+                List<char> used = new List<char>(65);
+                Dictionary<char, char> _ret = new Dictionary<char, char>(65);
+                char c = ' ';
+                for (int i = 0; i < ValidInputs.Length; i++)
+                {
+                    do
+                    {
+                        c = (char)r.Next(0, ValidInputs.Length - 1);
+                    }
+                    while (used.Contains(c));
+                    used.Add(c);
+                    _ret.Add(ValidInputs[i], c);
+                }
+                return _ret;
+            }
+        }
+
+        public static string SerializeRule(Dictionary<char, char> rules)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var rule in rules)
+            {
+                sb.AppendFormat("{0}{1}", rule.Key, rule.Value);
+            }
+            return sb.ToString();
+        }
+
+        public static Dictionary<char, char> DeserializeRule(string input)
+        {
+            Dictionary<char, char> rules = new Dictionary<char, char>();
+            if (input.Length % 2 != 0) throw new ArgumentException("Input is invalid");
+            for (int i = 0; i < input.Length; i+=2)
+            {
+                rules.Add(input[i], input[i + 1]);
+            }
+            return rules;
+        }
+    }
+
     internal static class Cryptog
     {
 
@@ -271,6 +338,30 @@ namespace MTools.classes
             {
                 var ch = (from c in iv orderby Guid.NewGuid() select c).Take(1).FirstOrDefault();
                 sb.Append(ch);
+            }
+            return sb.ToString();
+        }
+
+        public static string CaesarCrypt(string input, Dictionary<char, char> Rules, bool decrypt)
+        {
+            StringBuilder sb = new StringBuilder(input.Length);
+            if (decrypt)
+            {
+                foreach (var chr in input)
+                {
+                    var output = (from rule in Rules.AsParallel() where rule.Value == chr select rule.Key).FirstOrDefault();
+                    if (output == (char)0) sb.Append(chr);
+                    else sb.Append(output);
+                }
+            }
+            else
+            {
+                foreach (var chr in input)
+                {
+                    var output = (from rule in Rules.AsParallel() where rule.Key == chr select rule.Value).FirstOrDefault();
+                    if (output == (char)0) sb.Append(chr);
+                    else sb.Append(output);
+                }
             }
             return sb.ToString();
         }
