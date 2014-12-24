@@ -236,6 +236,9 @@
     <Compile Include="ToolOther\EagleBackupRem.xaml.cs">
       <DependentUpon>EagleBackupRem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToolOther\File2Array.xaml.cs">
+      <DependentUpon>File2Array.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToolOther\SketchEditor.xaml.cs">
       <DependentUpon>SketchEditor.xaml</DependentUpon>
     </Compile>
@@ -442,6 +445,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolOther\EagleBackupRem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolOther\File2Array.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

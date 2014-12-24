@@ -162,4 +162,22 @@ namespace MTools
             get { return ToolCategory.Other; }
         }
     }
+
+    public class File2ArrayConv: Tool
+    {
+        public override System.Windows.Controls.UserControl GetControl()
+        {
+            return new File2Array();
+        }
+
+        public override string Description
+        {
+            get { return "File 2 C/C++ Array"; }
+        }
+
+        public override ToolCategory Category
+        {
+            get { return ToolCategory.Other; }
+        }
+    }
 }

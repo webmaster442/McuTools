@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MTools.ToolOther.File2Array"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:icontrols="clr-namespace:McuTools.Interfaces.Controls;assembly=McuTools.Interfaces"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="Input file:" Margin="5,5,0,0"/>
+            <icontrols:FileFolderSelector x:Name="FFSInput" DialogType="OpenFile" Margin="15,0"/>
+            <TextBlock Text="Bytes / row:" Margin="5,5,0,0"/>
+            <icontrols:EditableSlider x:Name="EsBytesRow" Minimum="8" Maximum="16" Value="8" DefaultValue="8" DisplayFormat="0" Margin="15,0"/>
+            <Button x:Name="BtnProcess" Content="Process!" Margin="15,10,15,0" Click="BtnProcess_Click"/>
+            <TextBlock Text="Output:" Margin="5,5,5,0"/>
+        </StackPanel>
+        <TextBox Grid.Row="1" x:Name="Output" FontFamily="Consolas" AcceptsTab="True" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
+    </Grid>
+</UserControl>
