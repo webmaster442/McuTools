@@ -78,7 +78,7 @@
             <TabItem Header="Minterm numbers">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="180">
                     <TextBlock Text="Number of variables:" Margin="10"/>
-                    <icontrols:EditableSlider Minimum="2" Maximum="8" Value="2" x:Name="MintermNumbers" Margin="10,0"/>
+                    <icontrols:EditableSlider Minimum="2" Maximum="8" Value="2" DisplayFormat="0" x:Name="MintermNumbers" Margin="10,0"/>
                     <TextBlock Text="Input numbers: (comma seperated)" Margin="10"/>
                     <TextBox x:Name="MintermInput" Margin="10,0"/>
                     <TextBlock Text="Don't care numbers: (comma seperated)" Margin="10"/>
