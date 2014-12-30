@@ -68,11 +68,22 @@ namespace McuTools.Interfaces
         /// </summary>
         /// <param name="row">Row index</param>
         /// <param name="column">Column index</param>
-        /// <returns>Vaalue at row and column index</returns>
+        /// <returns>Value at row and column index</returns>
         public T this[int row, int column]
         {
             get { return _array[column * Columns + row]; }
             set { _array[column * Columns + row] = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets an element of the array
+        /// </summary>
+        /// <param name="i">Index</param>
+        /// <returns>Value at index</returns>
+        public T this[int i]
+        {
+            get { return _array[i]; }
+            set { _array[i] = value; }
         }
 
         public IEnumerator<T> GetEnumerator()

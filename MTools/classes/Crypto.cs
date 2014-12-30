@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using McuTools.Interfaces;
 
 namespace MTools.classes
 {
@@ -31,7 +32,7 @@ namespace MTools.classes
             get
             {
                 Dictionary<char, char> _ret = new Dictionary<char, char>(65);
-                for (int i = 0; i < ValidInputs.Length - 3; i++ )
+                for (int i = 0; i < ValidInputs.Length - 3; i++)
                 {
                     _ret.Add(ValidInputs[i], ValidInputs[i + 3]);
                 }
@@ -78,7 +79,7 @@ namespace MTools.classes
         {
             Dictionary<char, char> rules = new Dictionary<char, char>();
             if (input.Length % 2 != 0) throw new ArgumentException("Input is invalid");
-            for (int i = 0; i < input.Length; i+=2)
+            for (int i = 0; i < input.Length; i += 2)
             {
                 rules.Add(input[i], input[i + 1]);
             }
@@ -97,6 +98,30 @@ namespace MTools.classes
                 hash.Append(i.ToString("X2").ToUpper());
             }
             return hash.ToString();
+        }
+
+        public static string HashInputString(string input, HashAlgorithms alg = HashAlgorithms.MD5)
+        {
+            HashAlgorithm hashAlgorithm = null;
+
+            switch (alg)
+            {
+                case HashAlgorithms.MD5:
+                    hashAlgorithm = MD5.Create();
+                    break;
+                case HashAlgorithms.SHA1:
+                    hashAlgorithm = SHA1.Create();
+                    break;
+                case HashAlgorithms.SHA256:
+                    hashAlgorithm = SHA256.Create();
+                    break;
+                case HashAlgorithms.SHA512:
+                    hashAlgorithm = SHA512.Create();
+                    break;
+            }
+            byte[] data = Encoding.UTF8.GetBytes(input);
+            byte[] output = hashAlgorithm.ComputeHash(data);
+            return MakeHashString(output);
         }
 
         private static string ComputeHash(CancellationToken ct, string inputfile, IProgress<double> progress, HashAlgorithms alg = HashAlgorithms.MD5)
@@ -325,7 +350,7 @@ namespace MTools.classes
 
         public static string GeneratePassWord(bool lowercase, bool uppercase, bool numbers, string special, int length)
         {
-            List<char> iv = new List<char>();
+            List<char> iv = new List<char>(100);
             if (lowercase) iv.AddRange("abcdefghijklmnopqrstuvwxyz".ToCharArray());
             if (uppercase) iv.AddRange("ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray());
             if (numbers) iv.AddRange("0123456789".ToCharArray());
@@ -363,6 +388,21 @@ namespace MTools.classes
                     else sb.Append(output);
                 }
             }
+            return sb.ToString();
+        }
+
+        public static string RowTransposeEncode(string input, int columns, int[] keysequence)
+        {
+            StringBuilder sb = new StringBuilder();
+            int rows = input.Length / columns;
+            DenseArray<char> matrix = new DenseArray<char>(rows + 1, columns);
+
+            foreach (var key in keysequence)
+            {
+                var column = matrix.GetColumn(key);
+                sb.Append(column);
+            }
+
             return sb.ToString();
         }
 

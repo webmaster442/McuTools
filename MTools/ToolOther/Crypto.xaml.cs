@@ -31,6 +31,7 @@ namespace MTools.ToolOther
         {
             BtnStart.IsEnabled = false;
             Modeselect.IsEnabled = false;
+            HashAlgorithms alg = HashAlgorithms.MD5;
             cts = new CancellationTokenSource();
             try
             {
@@ -65,19 +66,27 @@ namespace MTools.ToolOther
 
                         break;
                     case 2:
-                        HashAlgorithms alg = HashAlgorithms.MD5;
-                        if ((bool)RbMD5.IsChecked) alg = HashAlgorithms.MD5;
-                        else if ((bool)RbSHA1.IsChecked) alg = HashAlgorithms.SHA1;
-                        else if ((bool)RbSHA256.IsChecked) alg = HashAlgorithms.SHA256;
-                        else if ((bool)RbSHA512.IsChecked) alg = HashAlgorithms.SHA512;
+                        if ((bool)RbMD5f.IsChecked) alg = HashAlgorithms.MD5;
+                        else if ((bool)RbSHA1f.IsChecked) alg = HashAlgorithms.SHA1;
+                        else if ((bool)RbSHA256f.IsChecked) alg = HashAlgorithms.SHA256;
+                        else if ((bool)RbSHA512f.IsChecked) alg = HashAlgorithms.SHA512;
 
                         string hash = await Cryptog.ComputeHashTask(cts.Token, FInput.SelectedPath, Indicator, alg);
                         TbHashOutput.Text = hash;
                         break;
                     case 3:
-                        await Cryptog.XorEncryptTask(cts.Token, XorIn.SelectedPath, XorKey.SelectedPath, XorOut.SelectedPath, Indicator);
+                        if ((bool)RbMD5s.IsChecked) alg = HashAlgorithms.MD5;
+                        else if ((bool)RbSHA1s.IsChecked) alg = HashAlgorithms.SHA1;
+                        else if ((bool)RbSHA256s.IsChecked) alg = HashAlgorithms.SHA256;
+                        else if ((bool)RbSHA512s.IsChecked) alg = HashAlgorithms.SHA512;
+
+                        string ret = Cryptog.HashInputString(TbHashStringInput.Text, alg);
+                        TbHashStringOutput.Text = ret;
                         break;
                     case 4:
+                        await Cryptog.XorEncryptTask(cts.Token, XorIn.SelectedPath, XorKey.SelectedPath, XorOut.SelectedPath, Indicator);
+                        break;
+                    case 5:
                         KeySizeAES keysize = KeySizeAES.bit128;
                         if ((bool)RbAesK128.IsChecked) keysize = KeySizeAES.bit128;
                         else if ((bool)RbAesK192.IsChecked) keysize = KeySizeAES.bit192;

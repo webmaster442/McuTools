@@ -70,15 +70,41 @@
                 </TabItem.Header>
                 <StackPanel>
                     <TextBlock Text="Mode:" Margin="10,5,0,0"/>
-                    <RadioButton x:Name="RbMD5" Content="MD5" IsChecked="True" Margin="20,5,0,0"/>
-                    <RadioButton x:Name="RbSHA1" Content="SHA1" Margin="20,5,0,0"/>
-                    <RadioButton x:Name="RbSHA256" Content="SHA256" Margin="20,5,0,0"/>
-                    <RadioButton x:Name="RbSHA512" Content="SHA512" Margin="20,5,0,0"/>
+                    <RadioButton x:Name="RbMD5f" Content="MD5" IsChecked="True" Margin="20,5,0,0"/>
+                    <RadioButton x:Name="RbSHA1f" Content="SHA1" Margin="20,5,0,0"/>
+                    <RadioButton x:Name="RbSHA256f" Content="SHA256" Margin="20,5,0,0"/>
+                    <RadioButton x:Name="RbSHA512f" Content="SHA512" Margin="20,5,0,0"/>
                     <TextBlock Text="Input file:" Margin="10,5,0,0"/>
                     <icontrols:FileFolderSelector x:Name="FInput" Margin="20,5,20,0"/>
                     <TextBlock Text="Hash" Margin="10,5,0,0"/>
                     <TextBox x:Name="TbHashOutput" Margin="20,5" IsReadOnly="True"/>
                 </StackPanel>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Hash text" TextAlignment="Center" TextWrapping="Wrap" Width="60"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Mode:" Margin="10,5,0,0"/>
+                        <RadioButton x:Name="RbMD5s" Content="MD5" IsChecked="True" Margin="20,5,0,0"/>
+                        <RadioButton x:Name="RbSHA1s" Content="SHA1" Margin="20,5,0,0"/>
+                        <RadioButton x:Name="RbSHA256s" Content="SHA256" Margin="20,5,0,0"/>
+                        <RadioButton x:Name="RbSHA512s" Content="SHA512" Margin="20,5,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="Input text:" Grid.Row="1" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox x:Name="TbHashStringInput" Margin="10,5" Grid.Row="2"/>
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text="Output:"  Margin="10,5"/>
+                        <TextBox x:Name="TbHashStringOutput" IsReadOnly="True" Margin="20,0"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
