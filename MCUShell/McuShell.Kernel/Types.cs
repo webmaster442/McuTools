@@ -44,7 +44,7 @@ namespace McuShell.Kernel
     /// </summary>
     public enum FileType
     {
-        Document, Audio, Video, Executable, Image, Unknown, Archive
+        Document, Audio, Video, Executable, Image, Unknown, Archive, All
     }
 
     /// <summary>

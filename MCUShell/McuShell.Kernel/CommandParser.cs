@@ -145,7 +145,7 @@ namespace McuShell.Kernel
                         result.AppendFormat("\t-{0} or {1}, required: {2}\r\n", cmd.ShortName, cmd.LongName, cmd.Required);
                         string[] values = Enum.GetNames(property.PropertyType);
                         result.AppendFormat("\t{0}\r\n", cmd.Description);
-                        result.AppendFormat("\tPossible values: {0}\r\n\r\n", String.Join(",", values.Select(p => p.ToString()).ToArray()));
+                        result.AppendFormat("\tPossible values:\r\n\t\t{0}\r\n", String.Join("\r\n\t\t", values.Select(p => p.ToString()).ToArray()));
                     }
                     if (attribute is CmdArgument)
                     {
@@ -180,9 +180,8 @@ namespace McuShell.Kernel
             Console.ForegroundColor = current;
         }
 
-        private static void Help(bool clear = false)
+        private static void Help()
         {
-            if (clear) Console.Clear();
             Console.Error.WriteLine(CommandDescription);
             Console.Error.WriteLine("\r\nArguments & Switches:");
             Console.Error.WriteLine(ParametersHelp(_settings));
@@ -203,7 +202,7 @@ namespace McuShell.Kernel
             _split = CommandLine;
             _settings = SettingsObject;
 
-            if (HelpRequested()) Help(true);
+            if (HelpRequested()) Help();
             if (SettingsObject == null) return;
 
             Type t = SettingsObject.GetType();
@@ -247,9 +246,10 @@ namespace McuShell.Kernel
                         EnumArgument en = (EnumArgument)attribute;
                         if (en.Required && !IsPresent(en, true)) Error("Required switch parameter missing: -{0} or --{1}", en.ShortName, en.LongName);
                         string val = GetPararm(en);
+                        if (!IsPresent(en, true)) continue;
                         try
                         {
-                            object enumresult = Enum.Parse(property.PropertyType, val);
+                            object enumresult = Enum.Parse(property.PropertyType, val, true);
                             property.SetValue(SettingsObject, enumresult);
                         }
                         catch (Exception ex) { Error("Error parsing argument: {0} or {1}, value: {2}\r\nReason: {3}", en.ShortName, en.LongName, val, ex.Message); }

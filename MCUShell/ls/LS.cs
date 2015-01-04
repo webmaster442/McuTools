@@ -6,8 +6,9 @@ namespace ls
 {
     class LS
     {
-        static void PrintArray(string[] array, bool files = true)
+        static uint PrintArray(string[] array, bool files = true, FileType types = FileType.All)
         {
+            uint counter = 0;
             if (files)
             {
                 foreach (var item in array)
@@ -15,6 +16,12 @@ namespace ls
                     FileInfo fi = new FileInfo(item);
                     var currentcolor = Console.ForegroundColor;
                     var type = Kernel.GetFileType(item);
+
+                    if (types != FileType.All)
+                    {
+                        if (types != type) continue;
+                    }
+
                     switch (type)
                     {
                         case FileType.Archive:
@@ -43,6 +50,7 @@ namespace ls
                     Console.WriteLine("{0,-30}\t{1,-10}\t{2,-20}\t{3,-10}", fi.Name, Kernel.GetFileSize(fi.Length), fi.LastWriteTime, type);
 
                     Console.ForegroundColor = currentcolor;
+                    ++counter;
                 }
             }
             else
@@ -53,21 +61,33 @@ namespace ls
                 {
                     DirectoryInfo di = new DirectoryInfo(item);
                     Console.WriteLine("{0,-30}\t{1,-10}\t{2,-20}", di.Name, "<dir>", di.LastWriteTime);
+                    ++counter;
                 }
                 Console.ForegroundColor = currentcolor;
             }
+            return counter;
+        }
+
+        class Options
+        {
+            [EnumArgument(ShortName="f", LongName="filter", Required=false, Description="Sets filter type.")]
+            public FileType FilterType { get; set; }
         }
 
         static void Main(string[] args)
         {
             CommandParser.CommandDescription = "List Directory files & subdirectories";
-            CommandParser.Parse(null, args);
+            Options o = new Options();
+            o.FilterType = FileType.All;
+            CommandParser.Parse(o, args);
 
             string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*.*");
             string[] dirs = Directory.GetDirectories(Environment.CurrentDirectory, "*.*");
 
-            PrintArray(dirs);
-            PrintArray(files);
+
+            uint dc = PrintArray(dirs, false);
+            uint fc = PrintArray(files, true, o.FilterType);
+            Console.WriteLine("Total Files: {0}\t Total Dirs: {1}\t Filter: {2}", fc, dc, o.FilterType);
             Kernel.DebugWait();
         }
     }
