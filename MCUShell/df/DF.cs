@@ -34,9 +34,7 @@ namespace df
                 Console.WriteLine("--------------------------------------------------------------------------------");
                 notready.WriteToConsole();
             }
-#if DEBUG
-            Console.ReadKey();
-#endif
+            Kernel.DebugWait();
         }
     }
 }

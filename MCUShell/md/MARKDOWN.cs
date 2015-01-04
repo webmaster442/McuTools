@@ -45,9 +45,7 @@ namespace markdown
                 CommandParser.Error(ex);
             }
 
-#if DEBUG
-            Console.ReadKey();
-#endif
+            Kernel.DebugWait();
         }
     }
 }

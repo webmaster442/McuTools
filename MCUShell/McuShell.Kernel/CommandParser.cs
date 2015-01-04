@@ -188,7 +188,7 @@ namespace McuShell.Kernel
             Console.Error.WriteLine(ParametersHelp(_settings));
 #if DEBUG
             Console.WriteLine();
-            Console.ReadKey();
+            Kernel.DebugWait();
 #endif
             Environment.Exit(1);
         }

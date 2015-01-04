@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ls", "ls\ls.csproj", "{72C5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dirsize", "dirsize\dirsize.csproj", "{01FABF1E-3308-47B7-8251-FCBA21A6399D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McuShell", "McuShell\McuShell.csproj", "{6466FD53-DC4C-4DBA-B6B9-016071B0FA8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{01FABF1E-3308-47B7-8251-FCBA21A6399D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01FABF1E-3308-47B7-8251-FCBA21A6399D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01FABF1E-3308-47B7-8251-FCBA21A6399D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6466FD53-DC4C-4DBA-B6B9-016071B0FA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6466FD53-DC4C-4DBA-B6B9-016071B0FA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6466FD53-DC4C-4DBA-B6B9-016071B0FA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6466FD53-DC4C-4DBA-B6B9-016071B0FA8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

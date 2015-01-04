@@ -40,7 +40,7 @@ namespace ls
                             break;
                     }
 
-                    Console.WriteLine("{0,-30}\t{1,-10}\t{2,-20}", fi.Name, Kernel.GetFileSize(fi.Length), fi.LastWriteTime);
+                    Console.WriteLine("{0,-30}\t{1,-10}\t{2,-20}\t{3,-10}", fi.Name, Kernel.GetFileSize(fi.Length), fi.LastWriteTime, type);
 
                     Console.ForegroundColor = currentcolor;
                 }
@@ -68,9 +68,7 @@ namespace ls
 
             PrintArray(dirs);
             PrintArray(files);
-#if DEBUG
-            Console.ReadKey();
-#endif
+            Kernel.DebugWait();
         }
     }
 }

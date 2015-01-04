@@ -80,5 +80,16 @@ namespace McuShell.Kernel
 
             return FileType.Unknown;
         }
+
+        /// <summary>
+        /// Debug mode Wait for exit Function
+        /// </summary>
+        public static void DebugWait()
+        {
+#if DEBUG
+            try { Console.ReadKey();  }
+            catch (InvalidOperationException) { }
+#endif
+        }
     }
 }

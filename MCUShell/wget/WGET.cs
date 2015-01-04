@@ -46,9 +46,7 @@ namespace wget
             {
                 CommandParser.Error(ex);
             }
-#if DEBUG
-            Console.ReadKey();
-#endif
+            Kernel.DebugWait();
         }
 
         private static void webclient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)

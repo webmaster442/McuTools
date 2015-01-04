@@ -51,9 +51,7 @@ namespace dirsize
             Console.WriteLine("Directory size:\t\t{0}", Kernel.GetFileSize(size));
             Console.WriteLine("Subdirectories:\t\t{0}", Dirs);
             Console.WriteLine("Files:\t\t\t{0}", Files);
-#if DEBUG
-            Console.ReadKey();
-#endif
+            Kernel.DebugWait();
         }
     }
 }
