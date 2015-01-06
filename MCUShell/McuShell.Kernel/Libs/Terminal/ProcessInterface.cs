@@ -183,6 +183,16 @@ namespace ConsoleControlAPI
         }
 
         /// <summary>
+        /// Sends CTRL+C to process
+        /// </summary>
+        public void SendAbort()
+        {
+            if (IsProcessRunning == false) return;
+            uint pointer = (uint)Process.Handle.ToInt32();
+            Imports.GenerateConsoleCtrlEvent(CTRL_EVENT.CTRL_C_EVENT, pointer);
+        }
+
+        /// <summary>
         /// Handles the Exited event of the currentProcess control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>

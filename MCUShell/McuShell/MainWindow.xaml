@@ -12,10 +12,30 @@
         <Menu Grid.Row="0" VerticalAlignment="Center">
             <MenuItem Header="Shell Commands">
                 <MenuItem Header="Clear console" ToolTip="cls" Click="HandleCommand_Click"/>
+                <MenuItem Header="List Directory" ToolTip="ls" Click="HandleCommand_Click"/>
                 <Separator/>
                 <MenuItem Header="Exit" ToolTip="exit" Click="HandleCommand_Click"/>
             </MenuItem>
+            <MenuItem Header="Drives" x:Name="MenDrives" SubmenuOpened="MenDrives_Click">
+                <Separator/>
+            </MenuItem>
+            <MenuItem Header="Command History" x:Name="MenHistory" Click="History_Click" SubmenuOpened="History_Click">
+                <Separator/>
+            </MenuItem>
         </Menu>
-        <term:Terminal x:Name="Terminal" Grid.Row="1" CommandEntered="Terminal_CommandEntered" Background="Black" Foreground="White" FontFamily="Consolas" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"/>
+        <term:Terminal x:Name="Terminal" Grid.Row="1" 
+                       CommandEntered="Terminal_CommandEntered"
+                       AbortRequested="Terminal_AbortRequested"
+                       Foreground="White" FontFamily="Consolas" VerticalScrollBarVisibility="Auto" 
+                       HorizontalScrollBarVisibility="Disabled" FontSize="14">
+            <term:Terminal.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0.513"/>
+                    <GradientStop Color="#FF707070"/>
+                    <GradientStop Color="#FF2B2B2B" Offset="0.053"/>
+                    <GradientStop Color="#FF272727" Offset="0.053"/>
+                </LinearGradientBrush>
+            </term:Terminal.Background>
+        </term:Terminal>
     </Grid>
 </Window>

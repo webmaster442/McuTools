@@ -50,12 +50,10 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Libs\Markdown.cs" />
-    <Compile Include="Libs\Terminal\Command.cs" />
     <Compile Include="Libs\Terminal\Imports.cs" />
     <Compile Include="Libs\Terminal\ProcessEventArgs.cs" />
     <Compile Include="Libs\Terminal\ProcessInterface.cs" />
     <Compile Include="Libs\Terminal\Terminal.cs" />
-    <Compile Include="Libs\Terminal\TerminalUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types.cs" />
   </ItemGroup>

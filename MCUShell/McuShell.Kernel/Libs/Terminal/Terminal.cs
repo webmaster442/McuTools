@@ -13,8 +13,7 @@ namespace AurelienRibon.Ui.Terminal {
 		public bool IsSystemBeepEnabled { get; set; }
 		public string Prompt { get; set; }
 
-		public List<string> RegisteredCommands { get; private set; }
-		public List<Command> CommandLog { get; private set; }
+		public List<string> CommandLog { get; private set; }
         public int LastPomptIndex { get; private set; }
 		public bool IsInputEnabled { get; private set; }
 
@@ -25,8 +24,7 @@ namespace AurelienRibon.Ui.Terminal {
 			AcceptsReturn = false;
 			AcceptsTab = false;
 
-			RegisteredCommands = new List<string>();
-			CommandLog = new List<Command>();
+			CommandLog = new List<string>();
 			IsPromptInsertedAtLaunch = true;
 			IsSystemBeepEnabled = true;
 			LastPomptIndex = -1;
@@ -140,10 +138,6 @@ namespace AurelienRibon.Ui.Terminal {
 						HandleEnterKey();
 						e.Handled = true;
 						break;
-					case Key.Tab:
-						HandleTabKey();
-						e.Handled = true;
-						break;
 				}
 			}
 
@@ -160,7 +154,7 @@ namespace AurelienRibon.Ui.Terminal {
 					if (indexInLog > 0)
 						indexInLog--;
 					if (CommandLog.Count > 0) {
-						Text = GetTextWithPromptSuffix(CommandLog[indexInLog].Raw);
+						Text = GetTextWithPromptSuffix(CommandLog[indexInLog]);
 						CaretIndex = Text.Length;
 					}
 					break;
@@ -169,7 +163,7 @@ namespace AurelienRibon.Ui.Terminal {
 					if (indexInLog < CommandLog.Count - 1)
 						indexInLog++;
 					if (CommandLog.Count > 0) {
-						Text = GetTextWithPromptSuffix(CommandLog[indexInLog].Raw);
+						Text = GetTextWithPromptSuffix(CommandLog[indexInLog]);
 						CaretIndex = Text.Length;
 					}
 					break;
@@ -182,105 +176,18 @@ namespace AurelienRibon.Ui.Terminal {
 			IsInputEnabled = false;
 			LastPomptIndex = int.MaxValue;
 
-			Command cmd = TerminalUtils.ParseCommandLine(line);
-			CommandLog.Add(cmd);
+			CommandLog.Add(line);
 			indexInLog = CommandLog.Count;
-			RaiseCommandEntered(cmd);
-		}
-
-		protected virtual void HandleTabKey() {
-			// Command completion works only if caret is at last character
-			// and if the user already typed something.
-			if (CaretIndex != Text.Length || CaretIndex == LastPomptIndex)
-				return;
-
-			// Get command name and associated commands
-			string line = Text.Substring(LastPomptIndex);
-			string[] commands = GetAssociatedCommands(line);
-
-			// If some associated command exist...
-			if (commands.Length > 0) {
-				// Get the commands common prefix
-				string commonPrefix = GetCommonPrefix(commands);
-				// If there is no more autocompletion available...
-				if (commonPrefix == line) {
-					// If there are more than one command to print
-					if (commands.Length > 1) {
-						// Print every associated command and insert a new prompt
-						foreach (string cmd in commands)
-							Text += "\n" + cmd;
-						InsertNewPrompt();
-						Text += line;
-						CaretIndex = Text.Length;
-					}
-				} else {
-					// Erase the user input
-					Text = Text.Remove(LastPomptIndex);
-					// Insert the common prefix
-					Text += commonPrefix;
-					// Set the caret at the end of the text
-					CaretIndex = Text.Length;
-				}
-				return;
-			}
-
-			// If no command exists, try path completion
-			if (line.Contains("\"") && line.Split('"').Length % 2 == 0) {
-				int idx = line.LastIndexOf('"');
-				string prefix = line.Substring(0, idx + 1);
-				string suffix = line.Substring(idx + 1, line.Length - prefix.Length);
-				CompletePath(prefix, suffix);
-			} else {
-				int idx = Math.Max(line.LastIndexOf(' '), line.LastIndexOf('\t'));
-				string prefix = line.Substring(0, idx + 1);
-				string suffix = line.Substring(idx + 1, line.Length - prefix.Length);
-				CompletePath(prefix, suffix);
-			}
+			RaiseCommandEntered(line);
 		}
 
 		// --------------------------------------------------------------------
 		// CLASS SPECIFIC UTILITIES
 		// --------------------------------------------------------------------
 
-		protected void CompletePath(string linePrefix, string lineSuffix) {
-			if (lineSuffix.Contains("\\") || lineSuffix.Contains("/")) {
-				int idx = Math.Max(lineSuffix.LastIndexOf("\\"), lineSuffix.LastIndexOf("/"));
-				string dir = lineSuffix.Substring(0, idx + 1);
-				string prefix = lineSuffix.Substring(idx + 1, lineSuffix.Length - dir.Length);
-				string[] files = GetFileList(dir, lineSuffix[idx] == '\\');
-
-				List<string> commonPrefixFiles = new List<string>();
-				foreach (string file in files)
-					if (file.StartsWith(prefix, StringComparison.CurrentCultureIgnoreCase))
-						commonPrefixFiles.Add(file);
-				if (commonPrefixFiles.Count > 0) {
-					string commonPrefix = GetCommonPrefix(commonPrefixFiles.ToArray());
-					if (commonPrefix == prefix) {
-						foreach (string file in commonPrefixFiles)
-							Text += "\n" + file;
-						InsertNewPrompt();
-						Text += linePrefix + lineSuffix;
-						CaretIndex = Text.Length;
-					} else {
-						Text = Text.Remove(LastPomptIndex);
-						Text += linePrefix + dir + commonPrefix;
-						CaretIndex = Text.Length;
-					}
-				}
-			}
-		}
-
 		protected string GetTextWithPromptSuffix(string suffix) {
 			string ret = Text.Substring(0, LastPomptIndex);
 			return ret + suffix;
-		}
-
-		protected string[] GetAssociatedCommands(string prefix) {
-			List<string> ret = new List<string>();
-			foreach (var cmd in RegisteredCommands)
-				if (cmd.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase))
-					ret.Add(cmd);
-			return ret.ToArray();
 		}
 
 		// --------------------------------------------------------------------
@@ -303,23 +210,6 @@ namespace AurelienRibon.Ui.Terminal {
 			return shortestStr;
 		}
 
-		protected string[] GetFileList(string dir, bool useAntislash) {
-			if (!Directory.Exists(dir))
-				return new string[0];
-			string[] dirs = Directory.GetDirectories(dir);
-			string[] files = Directory.GetFiles(dir);
-
-			for (int i = 0; i < dirs.Length; i++)
-				dirs[i] = Path.GetFileName(dirs[i]) + (useAntislash ? "\\" : "/");
-			for (int i = 0; i < files.Length; i++)
-				files[i] = Path.GetFileName(files[i]);
-
-			List<string> ret = new List<string>();
-			ret.AddRange(dirs);
-			ret.AddRange(files);
-			return ret.ToArray();
-		}
-
 		// --------------------------------------------------------------------
 		// CUSTOM EVENTS
 		// --------------------------------------------------------------------
@@ -328,8 +218,8 @@ namespace AurelienRibon.Ui.Terminal {
 		public event EventHandler<CommandEventArgs> CommandEntered;
 
 		public class CommandEventArgs : EventArgs {
-			public Command Command { get; private set; }
-			public CommandEventArgs(Command command) {
+			public string Command { get; private set; }
+			public CommandEventArgs(string command) {
 				Command = command;
 			}
 		}
@@ -339,7 +229,7 @@ namespace AurelienRibon.Ui.Terminal {
 				AbortRequested(this, new EventArgs());
 		}
 
-		private void RaiseCommandEntered(Command command) {
+		private void RaiseCommandEntered(string command) {
 			if (CommandEntered != null)
 				CommandEntered(this, new CommandEventArgs(command));
 		}
