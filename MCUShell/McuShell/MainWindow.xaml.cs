@@ -1,5 +1,6 @@
 ﻿using AurelienRibon.Ui.Terminal;
 using ConsoleControlAPI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -22,18 +23,16 @@ namespace McuShell
             _loaded = false;
             _history = new List<string>(15);
             Terminal.Prompt = "";
-            _cmd = new ProcessInterface();
-            _cmd.OnProcessOutput += cmd_OnProcessOutput;
-            _cmd.OnProcessError += cmd_OnProcessOutput;
-            _cmd.OnProcessExit += cmd_OnProcessExit;
-            _cmd.StartProcess("cmd.exe", "/q");
-            _cmd.WriteInput("chcp 65001");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _loaded = true;
-            _cmd.WriteInput("cls");
+            _cmd = new ProcessInterface();
+            _cmd.OnProcessOutput += cmd_OnProcessOutput;
+            _cmd.OnProcessError += cmd_OnProcessOutput;
+            _cmd.OnProcessExit += cmd_OnProcessExit;
+            _cmd.StartProcess("cmd.exe", "/q /k shellloader.cmd");
         }
 
         private void ExecuteCommand(string command)
@@ -65,9 +64,9 @@ namespace McuShell
             }
             else
             {
-                if (Terminal.Text.Length > 4096)
+                if (Terminal.Text.Length > 16 * 1024)
                 {
-                    string  remain = Terminal.Text.Substring(3600, Terminal.Text.Length - 1);
+                    string remain = Terminal.Text.Substring(16 * 1024, Terminal.Text.Length - (16 * 1024));
                     Terminal.Clear();
                     Terminal.Text = remain + "\r\n";
                 }
@@ -124,6 +123,10 @@ namespace McuShell
                 men.Click += HandleCommand_Click;
                 MenHistory.Items.Add(men);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

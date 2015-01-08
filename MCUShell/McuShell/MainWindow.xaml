@@ -13,6 +13,7 @@
             <MenuItem Header="Shell Commands">
                 <MenuItem Header="Clear console" ToolTip="cls" Click="HandleCommand_Click"/>
                 <MenuItem Header="List Directory" ToolTip="ls" Click="HandleCommand_Click"/>
+                <MenuItem Header="Environment variables" ToolTip="envvars" Click="HandleCommand_Click"/>
                 <Separator/>
                 <MenuItem Header="Exit" ToolTip="exit" Click="HandleCommand_Click"/>
             </MenuItem>
@@ -22,6 +23,7 @@
             <MenuItem Header="Command History" x:Name="MenHistory" Click="History_Click" SubmenuOpened="History_Click">
                 <Separator/>
             </MenuItem>
+            <MenuItem Header="CurrentDir" Click="MenuItem_Click"></MenuItem>
         </Menu>
         <term:Terminal x:Name="Terminal" Grid.Row="1" 
                        CommandEntered="Terminal_CommandEntered"

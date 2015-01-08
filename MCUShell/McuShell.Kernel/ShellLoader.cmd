@@ -1,8 +1,10 @@
 @echo off
 Title McuTools Shell
 
-SET SHELL=%CD%\Shell
+SET SHELL=%CD%
 SET PATH=%PATH%;%SHELL%
+
+chcp 65001
 
 goto intro
 
@@ -22,8 +24,3 @@ echo Shell Path: %SHELL%
 echo Extra commands:
 echo df wget ls markdown dirsize
 echo.
-echo.
-goto end
-
-
-:end
