@@ -124,9 +124,5 @@ namespace McuShell
                 MenHistory.Items.Add(men);
             }
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

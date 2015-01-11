@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace McuShell.Kernel
 {
@@ -79,6 +80,20 @@ namespace McuShell.Kernel
             if (query) return FileType.Video;
 
             return FileType.Unknown;
+        }
+
+        /// <summary>
+        /// Formats a date & time to various formats
+        /// </summary>
+        /// <param name="date">date to format</param>
+        /// <returns></returns>
+        public static string FormatDateTime(DateTime date, string label)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("{0}:\t{1}\r\n", label, date);
+            sb.AppendFormat("UTC Date & time:\t{0}\r\n", date.ToUniversalTime());
+            sb.AppendFormat("Unix Time:\t\t{0}\r\n", (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+            return sb.ToString();
         }
 
         /// <summary>

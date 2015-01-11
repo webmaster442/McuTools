@@ -34,6 +34,7 @@ namespace envvars
                 ++cnt;
             }
             Console.WriteLine("Total: {0}, Filter: {1}", cnt, opt.filter);
+            Kernel.DebugWait();
         }
     }
 }
